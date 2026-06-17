@@ -12,9 +12,9 @@ cd "$PROJECT_DIR"
 
 echo "[$TIMESTAMP] === EDGE Pipeline Start ===" >> "$LOG_FILE"
 
-# Export OpenRouter credentials
-export OPENROUTER_API_KEY="OPENROUTER_API_KEY"
-export OPENROUTER_MODEL="openrouter/owl-alpha"
+# Export OpenRouter credentials (read from .env or environment)
+export OPENROUTER_API_KEY="${OPENROUTER_API_KEY:-$(grep -oP 'OPENROUTER_API_KEY=\K.*' .env 2>/dev/null || echo '')}"
+export OPENROUTER_MODEL="${OPENROUTER_MODEL:-openrouter/owl-alpha}"
 
 # Créer les schemas si absents (ne pas reset la DB !)
 python3 -c "
