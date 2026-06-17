@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}{{ t('digest_title') }} — EDGE{% endblock %}
+
+{% block content %}
+<div class="article-header">
+  <h1>📊 {{ t('digest_title') }}</h1>
+  <p style="color:var(--fg-dim);font-size:0.9rem;">{{ t('digest_week_of') }} {{ week_start }} — {{ week_end }} · {{ articles|length }} {{ t('digest_articles_count') }}</p>
+</div>
+
+{# Week navigation #}
+<div class="digest-nav">
+  {% if prev_week_url %}
+  <a href="{{ prev_week_url }}" class="digest-nav-link">← {{ t('digest_prev_week') }}</a>
+  {% endif %}
+  {% if next_week_url %}
+  <a href="{{ next_week_url }}" class="digest-nav-link">{{ t('digest_next_week') }} →</a>
+  {% endif %}
+</div>
+
+{# Stats bar #}
+<div class="stats-bar">
+  <span><strong>{{ articles|length }}</strong> {{ t('digest_articles_count') }}</span>
+  <span><strong>{{ t('digest_avg_score') }}:</strong> {{ avg_score }}</span>
+  <span><strong>{{ t('digest_top_topic') }}:</strong> {{ top_topic }}</span>
+  <span><strong>{{ t('digest_sources_count') }}:</strong> {{ sources_count }} {{ t('digest_sources') }}</span>
+</div>
+
+{# Top articles (score >= 7) #}
+{% if top_articles %}
+<h2 class="section-title">🏆 {{ t('digest_top_articles') }}</h2>
+<ul class="article-list">
+  {% for article in top_articles %}
+  <li class="article-item">
+    <span class="article-rank">{{ loop.index }}</span>
+    <div class="article-main">
+      <a href="/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
+      <div class="article-meta">
+        <span>{{ article.source_name }}</span>
+        <span>·</span>
+        <span>{{ article.published_at[:10] }}</span>
+        <span class="score-badge {% if article.overall_score >= 7 %}score-high{% elif article.overall_score >= 5 %}score-mid{% else %}score-low{% endif %}">
+          {{ "%.1f"|format(article.overall_score) }}
+        </span>
+        {% for topic in article.topics[:3] %}
+        <a href="/tags/{{ article.topic_slugs[loop.index0] }}.html" class="tag">{{ topic }}</a>
+        {% endfor %}
+      </div>
+      {% if article.summary %}
+      <p style="font-size:0.85rem;color:var(--fg-dim);margin-top:0.4rem;line-height:1.5;">{{ article.summary[:200] }}{% if article.summary|length > 200 %}...{% endif %}</p>
+      {% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{# All articles grouped by day #}
+<h2 class="section-title">📅 {{ t('digest_all_articles') }}</h2>
+{% for day, day_articles in days.items() %}
+<div class="digest-day">
+  <h3 class="digest-day-title">{{ day }}</h3>
+  <ul class="article-list">
+    {% for article in day_articles %}
+    <li class="article-item">
+      <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">{{ loop.index }}</span>
+      <div class="article-main">
+        <a href="/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
+        <div class="article-meta">
+          <span>{{ article.source_name }}</span>
+          <span>·</span>
+          <span class="score-badge {% if article.overall_score >= 7 %}score-high{% elif article.overall_score >= 5 %}score-mid{% else %}score-low{% endif %}">
+            {{ "%.1f"|format(article.overall_score) }}
+          </span>
+          {% for topic in article.topics[:2] %}
+          <a href="/tags/{{ article.topic_slugs[loop.index0] }}.html" class="tag">{{ topic }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endfor %}
+
+{# Topic cloud #}
+{% if topic_cloud %}
+<h2 class="section-title">🏷️ {{ t('digest_topics') }}</h2>
+<div class="tag-cloud">
+  {% for item in topic_cloud %}
+  <a href="/tags/{{ item.slug }}.html" class="tag" style="font-size:{{ 0.7 + item.count * 0.05 }}rem;">{{ item.topic }} <span style="opacity:0.6;">({{ item.count }})</span></a>
+  {% endfor %}
+</div>
+{% endif %}
+
+{# Newsletter CTA #}
+<div class="digest-cta">
+  <p>{{ t('digest_newsletter_cta') }}</p>
+  <a href="/newsletter.html" class="btn-source">{{ t('digest_view_newsletter') }}</a>
+</div>
+{% endblock %}

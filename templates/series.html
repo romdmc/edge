@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{{ t('series_title') }} — EDGE{% endblock %}
+
+{% block content %}
+<div class="article-header">
+  <h1>🔗 {{ t('series_title') }}</h1>
+  <p style="color:var(--fg-dim);font-size:0.9rem;">{{ series|length }} {{ t('series_count_label') }}</p>
+</div>
+
+{# Series list #}
+{% for s in series %}
+<div class="series-card">
+  <div class="series-header">
+    <h2 class="series-name">
+      <a href="/series/{{ s.slug }}.html">{{ s.topic }}</a>
+    </h2>
+    <div class="series-stats">
+      <span class="series-count">{{ s.article_count }} {{ t('series_articles') }}</span>
+      <span class="series-avg">{{ t('series_avg_score') }}: <strong>{{ "%.1f"|format(s.avg_score) }}</strong></span>
+      <span class="series-range">{{ s.first_date[:10] }} → {{ s.last_date[:10] }}</span>
+    </div>
+  </div>
+  {% if s.latest_article %}
+  <p class="series-latest">
+    {{ t('series_latest') }}: <a href="/articles/{{ s.latest_article.id }}.html">{{ s.latest_article.title }}</a>
+  </p>
+  {% endif %}
+  <div class="series-articles-preview">
+    {% for article in s.articles[:3] %}
+    <a href="/articles/{{ article.id }}.html" class="series-article-link">{{ article.title }}</a>
+    {% if not loop.last %} · {% endif %}
+    {% endfor %}
+    {% if s.article_count > 3 %}
+    <span style="color:var(--fg-muted);font-size:0.8rem;"> +{{ s.article_count - 3 }} {{ t('series_more') }}</span>
+    {% endif %}
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

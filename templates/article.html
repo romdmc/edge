@@ -1,0 +1,329 @@
+{% extends "base.html" %}
+{% block title %}EDGE — {{ article.title|truncate(60) }}{% endblock %}
+{% block meta %}
+  <meta name="description" content="{{ article.summary[:160] if article.summary else article.title }}">
+  <meta property="og:title" content="{{ article.title }}">
+  <meta property="og:description" content="{{ article.summary[:200] if article.summary else '' }}">
+{% endblock %}
+{% set active_page = 'article' %}
+
+{% block content %}
+<article>
+  <div class="article-header">
+    <h1>{{ article.title }}</h1>
+    <div class="article-meta">
+      <span>{{ article.source_name }}</span>
+      <span>·</span>
+      <span>{{ article.author or 'Anon' }}</span>
+      <span>·</span>
+      <span>{{ article.published_at[:10] if article.published_at else 'N/A' }}</span>
+      <span>·</span>
+      <a href="{{ article.url }}" target="_blank" rel="noopener" class="source-link">{{ t('source_link') }} ↗</a>
+    </div>
+  </div>
+
+  {#── Score bars ──────────────────────────────────────────────────────#}
+  <div class="scores-grid">
+    <div class="score-card">
+      <div class="label">{{ t('score_edge') }}</div>
+      <div class="value" style="color: var(--accent)">{{ "%.0f"|format(article.edge_score) }}</div>
+      <div class="score-bar"><div class="score-bar-fill" style="width:{{ article.edge_score * 10 }}%;background:var(--accent)"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="label">{{ t('score_value') }}</div>
+      <div class="value" style="color: var(--green)">{{ "%.0f"|format(article.value_score) }}</div>
+      <div class="score-bar"><div class="score-bar-fill" style="width:{{ article.value_score * 10 }}%;background:var(--green)"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="label">{{ t('score_cost') }}</div>
+      <div class="value" style="color: var(--blue)">{{ "%.0f"|format(article.cost_score) }}</div>
+      <div class="score-bar"><div class="score-bar-fill" style="width:{{ article.cost_score * 10 }}%;background:var(--blue)"></div></div>
+    </div>
+    <div class="score-card overall" style="grid-column: span 3">
+      <div class="label">Overall</div>
+      <div class="value">{{ "%.1f"|format(article.overall_score) }}</div>
+      <div class="score-bar"><div class="score-bar-fill" style="width:{{ article.overall_score * 10 }}%;background:var(--accent)"></div></div>
+    </div>
+  </div>
+
+  {#── Vote buttons ────────────────────────────────────────────────────#}
+  <div class="vote-section" id="vote-section">
+    <span class="vote-label">Voter</span>
+    <button class="vote-btn" id="vote-up" onclick="submitVote('up')" aria-label="Upvote">
+      👍 <span id="vote-up-count">—</span>
+    </button>
+    <span class="vote-score zero" id="vote-net-score">0</span>
+    <button class="vote-btn" id="vote-down" onclick="submitVote('down')" aria-label="Downvote">
+      👎 <span id="vote-down-count">—</span>
+    </button>
+    <span class="vote-thanks" id="vote-thanks">Merci pour votre vote !</span>
+    <span class="vote-already" id="vote-already" style="display:none">Vous avez déjà voté</span>
+  </div>
+
+  {#── Tags ────────────────────────────────────────────────────────────#}
+  {% if article.topics %}
+  <div class="article-tags">
+    {% for tag, slug in zip(article.topics, article.topic_slugs) %}
+      <a href="/tags/{{ slug }}.html" class="tag">{{ tag }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {#── Summary ─────────────────────────────────────────────────────────#}
+  {% if article.summary %}
+  <div class="article-section">
+    <h2 class="section-title">{{ t('synthesis') }}</h2>
+    <div class="article-content summary-box">
+      {{ article.summary }}
+    </div>
+  </div>
+  {% endif %}
+
+  {#── Key quotes ──────────────────────────────────────────────────────#}
+  {% if article.key_quotes %}
+  <div class="article-section">
+    <h2 class="section-title">{{ t('key_quotes') }}</h2>
+    <div class="article-content">
+      {% for quote in article.key_quotes %}
+      <blockquote class="key-quote">« {{ quote }} »</blockquote>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {#── Related: other articles from same source ────────────────────────#}
+  {% if related_articles %}
+  <div class="article-section">
+    <h2 class="section-title">{{ t('same_source') }}</h2>
+    <ul class="related-list">
+      {% for rel in related_articles %}
+      <li><a href="/articles/{{ rel.id }}.html">{{ rel.title }}</a> <span style="opacity:.5;">— {{ "%.1f"|format(rel.overall_score) }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {#── Source link box ─────────────────────────────────────────────────#}
+  <div class="source-box">
+    <a href="{{ article.url }}" target="_blank" rel="noopener" class="btn-source">
+      {{ t('read_original') }} ↗
+    </a>
+  </div>
+
+  {#── Comments ────────────────────────────────────────────────────────#}
+  <div class="comments-section" id="comments-section">
+    <h2 class="section-title" id="comments-title">{{ t('comments_title') }}</h2>
+
+    <div class="comments-list" id="comments-list">
+      <!-- Comments loaded by JS -->
+    </div>
+
+    <div class="comments-empty" id="comments-empty" style="display:none">
+      {{ t('no_comments') }}
+    </div>
+
+    <div class="comment-form-wrapper">
+      <textarea
+        class="comment-textarea"
+        id="comment-textarea"
+        rows="3"
+        placeholder="{{ t('comment_placeholder') }}"
+      ></textarea>
+      <div class="comment-form-row">
+        <input
+          class="comment-author-input"
+          type="text"
+          id="comment-author"
+          placeholder="{{ t('comment_author_placeholder') }}"
+        />
+        <button class="comment-submit-btn" id="comment-submit" onclick="submitComment()">
+          {{ t('comment_submit') }}
+        </button>
+      </div>
+      <div class="comment-feedback" id="comment-feedback"></div>
+    </div>
+  </div>
+
+</article>
+
+<script>
+(function() {
+  var articleId = "{{ article.id }}";
+  var storageKey = 'edge_vote_' + articleId;
+  var voteUpBtn = document.getElementById('vote-up');
+  var voteDownBtn = document.getElementById('vote-down');
+  var netScoreEl = document.getElementById('vote-net-score');
+  var upCountEl = document.getElementById('vote-up-count');
+  var downCountEl = document.getElementById('vote-down-count');
+  var thanksEl = document.getElementById('vote-thanks');
+  var alreadyEl = document.getElementById('vote-already');
+
+  // Check if user already voted
+  var previousVote = localStorage.getItem(storageKey);
+  if (previousVote) {
+    if (previousVote === 'up') {
+      voteUpBtn.classList.add('voted-up');
+    } else {
+      voteDownBtn.classList.add('voted-down');
+    }
+    alreadyEl.style.display = '';
+  }
+
+  // Fetch current vote counts
+  function fetchVotes() {
+    fetch('/api/articles/' + articleId)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var up = data.upvotes || 0;
+        var down = data.downvotes || 0;
+        var net = up - down;
+        upCountEl.textContent = up;
+        downCountEl.textContent = down;
+        netScoreEl.textContent = (net > 0 ? '+' : '') + net;
+        netScoreEl.className = 'vote-score ' + (net > 0 ? 'positive' : net < 0 ? 'negative' : 'zero');
+      })
+      .catch(function() { /* silent fail */ });
+  }
+
+  // Submit a vote
+  window.submitVote = function(direction) {
+    if (localStorage.getItem(storageKey)) return; // already voted
+
+    voteUpBtn.disabled = true;
+    voteDownBtn.disabled = true;
+
+    fetch('/api/articles/' + articleId + '/vote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ direction: direction })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      localStorage.setItem(storageKey, direction);
+      if (direction === 'up') {
+        voteUpBtn.classList.add('voted-up');
+      } else {
+        voteDownBtn.classList.add('voted-down');
+      }
+      alreadyEl.style.display = '';
+      // Update counts from response
+      var up = data.upvotes || 0;
+      var down = data.downvotes || 0;
+      var net = up - down;
+      upCountEl.textContent = up;
+      downCountEl.textContent = down;
+      netScoreEl.textContent = (net > 0 ? '+' : '') + net;
+      netScoreEl.className = 'vote-score ' + (net > 0 ? 'positive' : net < 0 ? 'negative' : 'zero');
+      // Show thanks message
+      thanksEl.classList.add('show');
+      setTimeout(function() { thanksEl.classList.remove('show'); }, 2000);
+    })
+    .catch(function() {
+      voteUpBtn.disabled = false;
+      voteDownBtn.disabled = false;
+    });
+  };
+
+  // Load counts on page load
+  fetchVotes();
+
+  // ── Comments ───────────────────────────────────────────────────────
+  var commentsList = document.getElementById('comments-list');
+  var commentsEmpty = document.getElementById('comments-empty');
+  var textarea = document.getElementById('comment-textarea');
+  var authorInput = document.getElementById('comment-author');
+  var feedback = document.getElementById('comment-feedback');
+  var submitBtn = document.getElementById('comment-submit');
+
+  // Pre-fill author name if logged in
+  var edgeUser = null;
+  try { edgeUser = JSON.parse(localStorage.getItem('edge_user') || 'null'); } catch(e) {}
+  if (edgeUser && edgeUser.display_name) {
+    authorInput.value = edgeUser.display_name;
+    authorInput.readOnly = true;
+  }
+
+  function fetchComments() {
+    fetch('/api/articles/' + articleId + '/comments')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var items = data.data || [];
+        commentsList.innerHTML = '';
+        if (items.length === 0) {
+          commentsEmpty.style.display = '';
+          commentsList.style.display = 'none';
+        } else {
+          commentsEmpty.style.display = 'none';
+          commentsList.style.display = '';
+          items.forEach(function(c) {
+            var el = document.createElement('div');
+            el.className = 'comment-item';
+            var date = (c.created_at || '').slice(0, 10);
+            el.innerHTML =
+              '<div class="comment-meta">' +
+                '<span class="comment-author">' + escapeHtml(c.author_name) + '</span>' +
+                '<span class="comment-date">' + escapeHtml(date) + '</span>' +
+              '</div>' +
+              '<div class="comment-body">' + escapeHtml(c.content) + '</div>';
+            commentsList.appendChild(el);
+          });
+        }
+      })
+      .catch(function() { /* silent fail */ });
+  }
+
+  function escapeHtml(s) {
+    var div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  window.submitComment = function() {
+    var content = textarea.value.trim();
+    var author = authorInput.value.trim();
+    if (!content) {
+      feedback.textContent = 'Please enter a comment.';
+      feedback.className = 'comment-feedback comment-error';
+      return;
+    }
+    if (!author) {
+      feedback.textContent = 'Please enter your name.';
+      feedback.className = 'comment-feedback comment-error';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    feedback.textContent = '';
+    feedback.className = 'comment-feedback';
+
+    fetch('/api/articles/' + articleId + '/comments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: content, author_name: author })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      submitBtn.disabled = false;
+      if (data.id) {
+        textarea.value = '';
+        feedback.textContent = '{{ t("comment_success") }}';
+        feedback.className = 'comment-feedback comment-success';
+        fetchComments();
+        setTimeout(function() { feedback.textContent = ''; }, 3000);
+      } else {
+        feedback.textContent = data.error || '{{ t("comment_error") }}';
+        feedback.className = 'comment-feedback comment-error';
+      }
+    })
+    .catch(function() {
+      submitBtn.disabled = false;
+      feedback.textContent = '{{ t("comment_error") }}';
+      feedback.className = 'comment-feedback comment-error';
+    });
+  };
+
+  // Load comments on page load
+  fetchComments();
+})();
+</script>
+{% endblock %}

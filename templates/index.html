@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}EDGE — {{ t('daily_digest') }}{% endblock %}
+
+{% block content %}
+<div class="search-bar">
+  <input type="text" id="search-input" placeholder="{{ t('search_placeholder') }}" onkeydown="if(event.key==='Enter')doSearch()">
+  <button onclick="doSearch()">{{ t('search_btn') }}</button>
+</div>
+
+<div class="stats-bar">
+  <span>📰 <strong>{{ articles|length }}</strong> {{ t('articles_today') }}</span>
+  <span>📅 <strong>{{ date_today }}</strong></span>
+  <span>{{ t('avg_score_label') }}: <strong>{{ avg_score }}</strong></span>
+</div>
+
+{% if available_dates %}
+<nav class="date-nav">
+  {% for d in available_dates %}
+    <a href="{% if d == date_today %}index.html{% else %}{{ d }}.html{% endif %}"
+       class="{% if d == date_today %}active{% endif %}">{{ d }}</a>
+  {% endfor %}
+</nav>
+{% endif %}
+
+<h2 class="section-title">{{ t('daily_digest') }}</h2>
+
+<ol class="article-list">
+  {% for article in articles %}
+  <li class="article-item">
+    <span class="article-rank">{{ loop.index }}</span>
+    <div class="article-main">
+      <a href="articles/{{ article.id }}.html" class="article-title">{{ article.title_fr or article.title }}</a>
+      <div class="article-meta">
+        <span>{{ article.source_name }}</span>
+        <span>·</span>
+        <span>{{ article.author or 'Anon' }}</span>
+        <span>·</span>
+        <span class="score-badge {% if article.overall_score >= 7 %}score-high{% elif article.overall_score >= 5 %}score-mid{% else %}score-low{% endif %}">
+          {{ "%.1f"|format(article.overall_score) }}
+        </span>
+        {% for tag, slug in zip(article.topics, article.topic_slugs) %}
+          <a href="tags/{{ slug }}.html" class="tag">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </li>
+  {% else %}
+  <li class="article-item">
+    <div class="article-main">
+      <p style="color: var(--fg-muted);">{{ t('no_articles_today') }}</p>
+    </div>
+  </li>
+  {% endfor %}
+</ol>
+
+<div style="text-align: center; margin-top: 1.5rem;">
+  <a href="/all.html" class="btn-source">{{ t('see_all_articles') }} →</a>
+</div>
+{% endblock %}

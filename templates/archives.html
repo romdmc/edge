@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}EDGE — {{ t('nav_archives') }}{% endblock %}
+{% set active_page = 'archives' %}
+
+{% block content %}
+<h2 class="section-title">{{ t('nav_archives') }}</h2>
+
+{% if tag_cloud %}
+<div class="tag-cloud" style="margin-bottom: 2rem;">
+  {% for tag_name, tag_count, tag_slug in tag_cloud %}
+    <a href="tags/{{ tag_slug }}.html" class="tag">
+      {{ tag_name }} <span style="opacity:.6;">({{ tag_count }})</span>
+    </a>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% for month, articles in months %}
+<div class="archive-month">
+  <h3>{{ month }}</h3>
+  <ul class="archive-list">
+    {% for article in articles %}
+    <li>
+      <time>{{ article.published_at[8:10] if article.published_at else '--' }}</time>
+      <span>
+        <a href="articles/{{ article.id }}.html">{{ article.title }}</a>
+        <span class="score-badge {% if article.overall_score >= 7 %}score-high{% elif article.overall_score >= 5 %}score-mid{% else %}score-low{% endif %}" style="margin-left:0.4rem;">
+          {{ "%.1f"|format(article.overall_score) }}
+        </span>
+      </span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% else %}
+<p style="color: var(--fg-muted);">{{ t('no_archives') }}</p>
+{% endfor %}
+{% endblock %}

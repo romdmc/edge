@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S'abonner à la newsletter EDGE</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:         #0d0d0d;
+      --bg-card:    #161616;
+      --bg-hover:   #1e1e1e;
+      --fg:         #e0e0e0;
+      --fg-dim:     #888;
+      --fg-muted:   #555;
+      --accent:     #ff6600;
+      --accent-dim: #cc5200;
+      --border:     #2a2a2a;
+      --radius:     6px;
+      --font:       -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      --max-width:  480px;
+    }
+    html { font-size: 16px; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .container {
+      max-width: var(--max-width);
+      width: 100%;
+      text-align: center;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--fg);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .logo span { color: var(--accent); }
+    .subtitle {
+      color: var(--fg-dim);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    form {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    input[type="email"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 0.7rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      color: var(--fg);
+      font-size: 0.95rem;
+    }
+    input[type="email"]:focus { outline: none; border-color: var(--accent); }
+    button[type="submit"] {
+      padding: 0.7rem 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    button[type="submit"]:hover { background: var(--accent-dim); }
+    .msg {
+      font-size: 0.9rem;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      margin-top: 1rem;
+      display: none;
+    }
+    .msg.success {
+      display: block;
+      background: rgba(76,175,80,.12);
+      color: #4caf50;
+      border: 1px solid rgba(76,175,80,.25);
+    }
+    .msg.error {
+      display: block;
+      background: rgba(244,67,54,.12);
+      color: #f44336;
+      border: 1px solid rgba(244,67,54,.25);
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: var(--fg-dim);
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--accent); text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="logo">EDG<span>E</span></a>
+    <p class="subtitle">Recevez notre digest hebdomadaire par email.</p>
+
+    <form id="newsletter-form" onsubmit="return handleSubscribe(event)">
+      <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+      <button type="submit" id="submit-btn">S'abonner</button>
+    </form>
+
+    <div id="msg" class="msg"></div>
+
+    <a href="/" class="back-link">← Retour à l'accueil</a>
+  </div>
+
+  <script>
+    async function handleSubscribe(e) {
+      e.preventDefault();
+      var email = document.getElementById('email').value.trim();
+      var btn = document.getElementById('submit-btn');
+      var msg = document.getElementById('msg');
+      btn.disabled = true;
+      msg.className = 'msg';
+      msg.style.display = 'none';
+      try {
+        var res = await fetch('/api/newsletter/subscribe', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({email: email})
+        });
+        var data = await res.json();
+        if (res.ok) {
+          msg.textContent = 'Merci ! Vous recevrez notre digest hebdomadaire.';
+          msg.className = 'msg success';
+          document.getElementById('newsletter-form').reset();
+        } else {
+          msg.textContent = (data && data.error) || 'Erreur. Vérifiez votre email.';
+          msg.className = 'msg error';
+        }
+      } catch (err) {
+        msg.textContent = 'Erreur de connexion. Réessayez.';
+        msg.className = 'msg error';
+      } finally {
+        btn.disabled = false;
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>

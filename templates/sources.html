@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ t('sources_title') }} — EDGE{% endblock %}
+
+{% block content %}
+<div class="article-header">
+  <h1>📡 {{ t('sources_title') }}</h1>
+  <p style="color:var(--fg-dim);font-size:0.9rem;">{{ sources|length }} {{ t('sources_count_label') }} · {{ total_articles }} {{ t('sources_articles_total') }}</p>
+</div>
+
+<div class="stats-bar">
+  <span><strong>{{ sources|length }}</strong> {{ t('sources_active') }}</span>
+  <span><strong>{{ t('sources_avg_score') }}:</strong> {{ avg_score }}</span>
+</div>
+
+{# Source list #}
+{% for source in sources %}
+<div class="source-card">
+  <div class="source-header">
+    <h2 class="source-name">
+      <a href="/sources/{{ source.slug }}.html">{{ source.name }}</a>
+    </h2>
+    <div class="source-stats">
+      <span class="source-count">{{ source.article_count }} {{ t('sources_articles') }}</span>
+      <span class="source-avg">{{ t('sources_avg') }}: <strong>{{ "%.1f"|format(source.avg_score) }}</strong></span>
+    </div>
+  </div>
+  {% if source.latest_article and source.latest_article.published_at %}
+  <p class="source-latest">
+    {{ t('sources_latest') }}: <a href="/articles/{{ source.latest_article.id }}.html">{{ source.latest_article.title }}</a>
+    <span style="color:var(--fg-muted);font-size:0.78rem;"> · {{ source.latest_article.published_at[:10] }}</span>
+  </p>
+  {% endif %}
+  {% if source.top_topics %}
+  <div class="source-topics">
+    {% for topic in source.top_topics[:5] %}
+    <span class="tag">{{ topic }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}EDGE — {{ t('login_title') }}{% endblock %}
+
+{% block content %}
+<div class="auth-page" style="max-width:420px;margin:2rem auto;">
+  <h1 style="font-size:1.4rem;font-weight:700;margin-bottom:1.2rem;color:var(--fg);">
+    {{ t('login_title') }}
+  </h1>
+
+  <div id="auth-message" class="auth-message" style="display:none;padding:0.7rem 1rem;border-radius:var(--radius);margin-bottom:1rem;font-size:0.88rem;"></div>
+
+  <form id="login-form" onsubmit="return doLogin(event)">
+    <div style="margin-bottom:1rem;">
+      <label for="email" style="display:block;font-size:0.82rem;font-weight:600;color:var(--fg-dim);margin-bottom:0.3rem;">
+        {{ t('email_label') }}
+      </label>
+      <input type="email" id="email" name="email" required
+             style="width:100%;padding:0.6rem 0.8rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-card);color:var(--fg);font-size:0.92rem;"
+             onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+    </div>
+    <div style="margin-bottom:1.2rem;">
+      <label for="password" style="display:block;font-size:0.82rem;font-weight:600;color:var(--fg-dim);margin-bottom:0.3rem;">
+        {{ t('password_label') }}
+      </label>
+      <input type="password" id="password" name="password" required
+             style="width:100%;padding:0.6rem 0.8rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-card);color:var(--fg);font-size:0.92rem;"
+             onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+    </div>
+    <button type="submit"
+            style="width:100%;padding:0.65rem;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);font-size:0.92rem;font-weight:600;cursor:pointer;"
+            onmouseover="this.style.background='var(--accent-dim)'" onmouseout="this.style.background='var(--accent)'">
+      {{ t('login_btn') }}
+    </button>
+  </form>
+
+  <p style="margin-top:1.2rem;text-align:center;font-size:0.85rem;color:var(--fg-dim);">
+    {{ t('nav_register') }} ? <a href="/register.html">{{ t('register_btn') }}</a>
+  </p>
+</div>
+
+<script>
+function showAuthMessage(msg, isError) {
+  var el = document.getElementById('auth-message');
+  el.textContent = msg;
+  el.style.display = 'block';
+  el.style.background = isError ? 'rgba(244,67,54,.15)' : 'rgba(76,175,80,.15)';
+  el.style.color = isError ? '#f44336' : 'var(--green)';
+  el.style.border = '1px solid ' + (isError ? 'rgba(244,67,54,.3)' : 'rgba(76,175,80,.3)');
+}
+function doLogin(e) {
+  e.preventDefault();
+  var email = document.getElementById('email').value.trim();
+  var password = document.getElementById('password').value;
+  fetch('/api/auth/login', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({email: email, password: password})
+  })
+  .then(function(r) { return r.json().then(function(d) {return {ok:r.ok,status:r.status,data:d};}); })
+  .then(function(r) {
+    if (r.ok) {
+      localStorage.setItem('edge_token', r.data.token);
+      localStorage.setItem('edge_user', JSON.stringify(r.data.user));
+      showAuthMessage({{ t('login_success')|tojson }}, false);
+      setTimeout(function(){ window.location.href = '/'; }, 800);
+    } else {
+      showAuthMessage(r.data.error || {{ t('login_error')|tojson }}, true);
+    }
+  })
+  .catch(function(){ showAuthMessage({{ t('login_error')|tojson }}, true); });
+  return false;
+}
+</script>
+{% endblock %}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Désabonné — Newsletter EDGE</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:         #0d0d0d;
+      --bg-card:    #161616;
+      --fg:         #e0e0e0;
+      --fg-dim:     #888;
+      --fg-muted:   #555;
+      --accent:     #ff6600;
+      --accent-dim: #cc5200;
+      --border:     #2a2a2a;
+      --radius:     6px;
+      --font:       -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      --max-width:  480px;
+    }
+    html { font-size: 16rem; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .container {
+      max-width: var(--max-width);
+      width: 100%;
+      text-align: center;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--fg);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 2rem;
+    }
+    .logo span { color: var(--accent); }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .card h1 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .card p {
+      color: var(--fg-dim);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .card a {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .card a:hover {
+      background: rgba(255,102,0,.12);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="logo">EDG<span>E</span></a>
+    <div class="card">
+      <h1>Vous avez été désabonné de la newsletter EDGE.</h1>
+      <p>Vous ne recevrez plus notre digest hebdomadaire par email. Vous pouvez vous réabonner à tout moment.</p>
+      <a href="/">Retour à l'accueil</a>
+    </div>
+  </div>
+</body>
+</html>
