@@ -110,12 +110,8 @@ jobs:
           # Copy static assets
           cp -r static/. _site/static/
           cp -r static/. _site/en/static/
-          # Copy templates (login, register, newsletter) and replace Jinja2 vars
-          for f in login.html register.html newsletter_subscribe.html newsletter_unsubscribe.html; do
-            if [ -f "templates/$f" ]; then
-              sed 's|{{ site_url }}|https://romdmc.github.io/edge|g; s|{{ api_base }}|http://72.60.187.136:8081|g; s|{{ [^}]* }}||g' "templates/$f" > "_site/$f"
-            fi
-          done
+          # Copy templates (login, register, newsletter) — render with Jinja2
+          python3 render_pages.py _site
           # .nojekyll to disable Jekyll processing
           touch _site/.nojekyll
           # Fix permissions
