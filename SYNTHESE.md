@@ -1,9 +1,9 @@
 # EDGE — Synthèse du projet
 
-> **Statut** : ✅ Terminé (Phases 1-5) — En production
+> **Statut** : ✅ Terminé (Phases 1-6) — En production
 > **URL** : http://72.60.187.136:8080
+> **GitHub Pages** : https://romdmc.github.io/edge/ ✅ LIVE
 > **Repo GitHub** : https://github.com/romdmc/edge
-> **GitHub Pages** : https://romdmc.github.io/edge/
 
 ---
 
