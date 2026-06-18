@@ -10,10 +10,7 @@ on:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
+    timeout-minutes: 30   # Give enough time for scraping + analysis
 
     steps:
       - uses: actions/checkout@v4
@@ -35,18 +32,52 @@ jobs:
           print('✓ Schema ready')
           "
 
-      - name: Run pipeline (scrape → analyze → trends → generate)
+      - name: Scrape articles
+        run: |
+          python3 -c "
+          from scraper import run_scraper
+          stats = run_scraper(config_path='config/sources.yaml', db_path='data/edge.db')
+          print(f'Scraped: {stats[\"total_fetched\"]} fetched, {stats[\"total_stored\"]} stored, {stats.get(\"errors\", 0)} errors')
+          "
+
+      - name: Analyze articles (LLM)
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENROUTER_MODEL: openrouter/owl-alpha
         run: |
-          python3 pipeline.py \
-            config/sources.yaml \
-            --min-score 5.0 \
-            --model openrouter/owl-alpha \
-            --max-articles 30 \
-            --site-url "https://romdmc.github.io/edge" \
-            --verbose
+          OPENROUTER_API_KEY="${OPENROUTER_API_KEY:-}"
+          if [ -z "$OPENROUTER_API_KEY" ]; then
+            echo "⚠ No OPENROUTER_API_KEY — skipping LLM analysis (site will use existing data)"
+            exit 0
+          fi
+          python3 -c "
+          from analyzer import run_analyzer
+          stats = run_analyzer(
+              config_path='config/sources.yaml',
+              min_score=5.0,
+              db_path='data/edge.db',
+              model='openrouter/owl-alpha',
+              max_articles=30,
+          )
+          print(f'Analyzed: {stats.scored} scored, {stats.stored} stored, {stats.total_tokens} tokens')
+          "
+
+      - name: Detect trends
+        run: |
+          python3 -c "
+          from trends import run_trends
+          report = run_trends(db_path='data/edge.db', output_dir='data', min_score=5.0)
+          print(f'Trends: {len(report.top_trends)} top, {len(report.emerging)} emerging')
+          " || echo "⚠ Trends step failed (non-fatal)"
+
+      - name: Generate FR site
+        run: |
+          python3 -c "
+          from generator import generate_site
+          from pathlib import Path
+          stats = generate_site(Path('data/edge.db'), Path('output'), lang='fr')
+          print(f'FR: {stats.pages_generated} pages, {stats.articles_indexed} articles, {stats.errors} errors')
+          "
 
       - name: Generate EN site
         run: |
