@@ -395,7 +395,7 @@ def run_trends(
     TrendReport
     """
     report = build_trend_report(db_path, min_score)
-    json_path = output_dir / "trends.json"
+    json_path = Path(output_dir) / "trends.json"
     write_trends_json(report, json_path)
     return report
 
