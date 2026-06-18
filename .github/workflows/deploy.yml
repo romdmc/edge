@@ -1,13 +1,14 @@
-name: Deploy EDGE
+name: EDGE Pipeline — Scrape, Analyze, Build & Deploy
 
 on:
   push:
     branches: [main]
   schedule:
     - cron: '0 6 * * *'  # Daily at 6am UTC
+  workflow_dispatch:      # Manual trigger
 
 jobs:
-  deploy:
+  pipeline:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -22,22 +23,62 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install jinja2 pyyaml
+        run: pip install jinja2 pyyaml requests
 
-      - name: Run pipeline
+      - name: Init database schema
+        run: |
+          python3 -c "
+          from feedback import ensure_feedback_schema
+          from auth import init_auth_db
+          ensure_feedback_schema('data/edge.db')
+          init_auth_db('data/edge.db')
+          print('✓ Schema ready')
+          "
+
+      - name: Run pipeline (scrape → analyze → trends → generate)
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: openrouter/owl-alpha
         run: |
-          export OPENROUTER_API_KEY
-          bash run.sh
+          python3 pipeline.py \
+            config/sources.yaml \
+            --min-score 5.0 \
+            --model openrouter/owl-alpha \
+            --max-articles 30 \
+            --site-url "https://romdmc.github.io/edge" \
+            --verbose
 
-      - name: Prepare Pages
+      - name: Generate EN site
+        run: |
+          python3 -c "
+          from generator import generate_site
+          from pathlib import Path
+          stats = generate_site(Path('data/edge.db'), Path('output/en'), lang='en')
+          print(f'EN: {stats.pages_generated} pages, {stats.articles_indexed} articles')
+          "
+
+      - name: Prepare GitHub Pages artifact
         run: |
           mkdir -p _site
-          cp -r output/* _site/
-          cp templates/login.html templates/register.html templates/newsletter_subscribe.html templates/newsletter_unsubscribe.html _site/
-          cp -r static _site/
+          # Copy FR site (root)
+          cp -r output/. _site/
+          # Copy EN site (subfolder)
+          cp -r output/en/. _site/en/
+          # Copy static assets
+          cp -r static/. _site/static/
+          cp -r static/. _site/en/static/
+          # Copy templates (login, register, newsletter)
+          cp templates/login.html _site/ 2>/dev/null || true
+          cp templates/register.html _site/ 2>/dev/null || true
+          cp templates/newsletter_subscribe.html _site/ 2>/dev/null || true
+          cp templates/newsletter_unsubscribe.html _site/ 2>/dev/null || true
+          # .nojekyll to disable Jekyll processing
+          touch _site/.nojekyll
+          # Fix permissions
           find _site -type f -exec chmod 644 {} \;
+          find _site -type d -exec chmod 755 {} \;
+          echo "Files: $(find _site -type f | wc -l)"
+          echo "Size: $(du -sh _site/ | cut -f1)"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
