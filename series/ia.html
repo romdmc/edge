@@ -737,17 +737,34 @@
       
 <div class="article-header">
   <h1>🔗 IA</h1>
-  <p style="color:var(--fg-dim);font-size:0.9rem;">3 articles · Score moy.: 5.8</p>
+  <p style="color:var(--fg-dim);font-size:0.9rem;">4 articles · Score moy.: 5.8</p>
 </div>
 
 <div class="stats-bar">
-  <span><strong>3</strong> articles</span>
-  <span><strong>Période:</strong> 2026-06-16 → 2026-06-17</span>
-  <span><strong>sources:</strong> 2</span>
+  <span><strong>4</strong> articles</span>
+  <span><strong>Période:</strong> 2026-06-16 → 2026-06-18</span>
+  <span><strong>sources:</strong> 3</span>
 </div>
 
 
 <ul class="article-list">
+  
+  <li class="article-item">
+    <span class="article-rank" style="font-size:0.85rem;color:var(--fg-muted);">2026-06-18</span>
+    <div class="article-main">
+      <a href="/articles/1294.html" class="article-title">CNCF Welcomes New Silver Members as Global Demand for Cloud Native Infrastructure Grows</a>
+      <div class="article-meta">
+        <span>Cloud Native Computing Foundation</span>
+        <span>·</span>
+        <span class="score-badge score-mid">
+          5.7
+        </span>
+      </div>
+      
+      <p style="font-size:0.85rem;color:var(--fg-dim);margin-top:0.4rem;line-height:1.5;">La CNCF a annoncé l&#39;arrivée de 14 nouveaux membres Silver lors de KubeCon + CloudNativeCon India à Mumbai le 18 juin 2026. Ces nouveaux membres couvrent des domaines variés : ingénierie de plateformes...</p>
+      
+    </div>
+  </li>
   
   <li class="article-item">
     <span class="article-rank" style="font-size:0.85rem;color:var(--fg-muted);">2026-06-17</span>
@@ -811,7 +828,7 @@
 
   <footer>
     <div class="container">
-      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-06-18 02:22 UTC
+      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-06-18 06:30 UTC
       <br>
       <small style="color:var(--fg-muted);font-size:0.72rem;">
         Projet incubé par <strong>DOMORIA SAS</strong> — SIREN 104 147 467 — 31 Voie Romaine, 31410 Saint-Hilaire, Occitanie, France
@@ -840,7 +857,7 @@
       btn.disabled = true;
       msg.style.display = 'none';
       try {
-        var res = await fetch('/api/newsletter/subscribe', {
+        var res = await fetch('http://72.60.187.136:8081/api/newsletter/subscribe', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({email: email})
@@ -930,7 +947,7 @@
     function doLogout() {
       var token = localStorage.getItem('edge_token');
       if (token) {
-        fetch('/api/auth/logout', {
+        fetch('http://72.60.187.136:8081/api/auth/logout', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({token: token})

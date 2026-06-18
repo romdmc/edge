@@ -737,13 +737,29 @@
       
 <h2 class="section-title"># Kubernetes</h2>
 <p style="color: var(--fg-dim); font-size: 0.85rem; margin-bottom: 1.2rem;">
-  1 article tagged &#34;Kubernetes&#34;.
+  3 articles tagged &#34;Kubernetes&#34;.
 </p>
 
 <ol class="article-list">
   
   <li class="article-item">
     <span class="article-rank">1</span>
+    <div class="article-main">
+      <a href="/articles/1291.html" class="article-title">Flipkart Wins CNCF End User Case Study Contest for Kubernetes and Chaos Engineering Scale</a>
+      <div class="article-meta">
+        <span>Cloud Native Computing Foundation</span>
+        <span>·</span>
+        <span>2026-06-18</span>
+        <span>·</span>
+        <span class="score-badge score-mid">
+          6.7
+        </span>
+      </div>
+    </div>
+  </li>
+  
+  <li class="article-item">
+    <span class="article-rank">2</span>
     <div class="article-main">
       <a href="/articles/560.html" class="article-title">From data residency to digital sovereignty: Architectural patterns for  cloud native platforms</a>
       <div class="article-meta">
@@ -758,6 +774,22 @@
     </div>
   </li>
   
+  <li class="article-item">
+    <span class="article-rank">3</span>
+    <div class="article-main">
+      <a href="/articles/1294.html" class="article-title">CNCF Welcomes New Silver Members as Global Demand for Cloud Native Infrastructure Grows</a>
+      <div class="article-meta">
+        <span>Cloud Native Computing Foundation</span>
+        <span>·</span>
+        <span>2026-06-18</span>
+        <span>·</span>
+        <span class="score-badge score-mid">
+          5.7
+        </span>
+      </div>
+    </div>
+  </li>
+  
 </ol>
 
 <a href="/archives.html" style="display:inline-block; margin-top:1.5rem; font-size:0.85rem;">← Back to archives</a>
@@ -767,7 +799,7 @@
 
   <footer>
     <div class="container">
-      EDG<span style="color:var(--accent)">E</span> — Self-improving tech watch · Generated on 2026-06-18 02:22 UTC
+      EDG<span style="color:var(--accent)">E</span> — Self-improving tech watch · Generated on 2026-06-18 06:30 UTC
       <br>
       <small style="color:var(--fg-muted);font-size:0.72rem;">
         Project incubated by <strong>DOMORIA SAS</strong> — SIREN 104 147 467 — 31 Voie Romaine, 31410 Saint-Hilaire, Occitanie, France
@@ -796,7 +828,7 @@
       btn.disabled = true;
       msg.style.display = 'none';
       try {
-        var res = await fetch('/api/newsletter/subscribe', {
+        var res = await fetch('http://72.60.187.136:8081/api/newsletter/subscribe', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({email: email})
@@ -886,7 +918,7 @@
     function doLogout() {
       var token = localStorage.getItem('edge_token');
       if (token) {
-        fetch('/api/auth/logout', {
+        fetch('http://72.60.187.136:8081/api/auth/logout', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({token: token})

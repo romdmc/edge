@@ -737,7 +737,7 @@
       
 <h2 class="section-title"># IA</h2>
 <p style="color: var(--fg-dim); font-size: 0.85rem; margin-bottom: 1.2rem;">
-  3 articles étiquetés « IA ».
+  4 articles étiquetés « IA ».
 </p>
 
 <ol class="article-list">
@@ -761,6 +761,22 @@
   <li class="article-item">
     <span class="article-rank">2</span>
     <div class="article-main">
+      <a href="/articles/1294.html" class="article-title">CNCF Welcomes New Silver Members as Global Demand for Cloud Native Infrastructure Grows</a>
+      <div class="article-meta">
+        <span>Cloud Native Computing Foundation</span>
+        <span>·</span>
+        <span>2026-06-18</span>
+        <span>·</span>
+        <span class="score-badge score-mid">
+          5.7
+        </span>
+      </div>
+    </div>
+  </li>
+  
+  <li class="article-item">
+    <span class="article-rank">3</span>
+    <div class="article-main">
       <a href="/articles/912.html" class="article-title">Comment l’IA simplifie la data de caisse pour la transformer en levier de rentabilité ?</a>
       <div class="article-meta">
         <span>FrenchWeb</span>
@@ -775,7 +791,7 @@
   </li>
   
   <li class="article-item">
-    <span class="article-rank">3</span>
+    <span class="article-rank">4</span>
     <div class="article-main">
       <a href="/articles/588.html" class="article-title">IA en entreprise : ce n&#39;est pas l&#39;outil qui manque, c&#39;est le bon outil</a>
       <div class="article-meta">
@@ -799,7 +815,7 @@
 
   <footer>
     <div class="container">
-      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-06-18 02:22 UTC
+      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-06-18 06:30 UTC
       <br>
       <small style="color:var(--fg-muted);font-size:0.72rem;">
         Projet incubé par <strong>DOMORIA SAS</strong> — SIREN 104 147 467 — 31 Voie Romaine, 31410 Saint-Hilaire, Occitanie, France
@@ -828,7 +844,7 @@
       btn.disabled = true;
       msg.style.display = 'none';
       try {
-        var res = await fetch('/api/newsletter/subscribe', {
+        var res = await fetch('http://72.60.187.136:8081/api/newsletter/subscribe', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({email: email})
@@ -918,7 +934,7 @@
     function doLogout() {
       var token = localStorage.getItem('edge_token');
       if (token) {
-        fetch('/api/auth/logout', {
+        fetch('http://72.60.187.136:8081/api/auth/logout', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({token: token})

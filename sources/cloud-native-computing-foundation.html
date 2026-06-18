@@ -737,13 +737,13 @@
       
 <div class="article-header">
   <h1>📡 Cloud Native Computing Foundation</h1>
-  <p style="color:var(--fg-dim);font-size:0.9rem;">1 articles · Score moy.: 6.3</p>
+  <p style="color:var(--fg-dim);font-size:0.9rem;">3 articles · Score moy.: 6.2</p>
 </div>
 
 <div class="stats-bar">
-  <span><strong>1</strong> articles</span>
-  <span><strong>Score moy.:</strong> 6.3</span>
-  <span><strong>sources_range:</strong> 2026-06-16 → 2026-06-16</span>
+  <span><strong>3</strong> articles</span>
+  <span><strong>Score moy.:</strong> 6.2</span>
+  <span><strong>sources_range:</strong> 2026-06-16 → 2026-06-18</span>
 </div>
 
 
@@ -751,6 +751,54 @@
   
   <li class="article-item">
     <span class="article-rank">1</span>
+    <div class="article-main">
+      <a href="/articles/1291.html" class="article-title">Flipkart Wins CNCF End User Case Study Contest for Kubernetes and Chaos Engineering Scale</a>
+      <div class="article-meta">
+        <span>2026-06-18</span>
+        <span>·</span>
+        <span class="score-badge score-mid">
+          6.7
+        </span>
+        
+        <a href="/tags/chaos-engineering.html" class="tag">chaos engineering</a>
+        
+        <a href="/tags/kubernetes.html" class="tag">Kubernetes</a>
+        
+        <a href="/tags/r-silience.html" class="tag">résilience</a>
+        
+      </div>
+      
+      <p style="font-size:0.85rem;color:var(--fg-dim);margin-top:0.4rem;line-height:1.5;">Flipkart, l&#39;une des plus grandes plateformes e-commerce en Inde, a remporté le concours d&#39;études de cas CNCF End User pour KubeCon + CloudNativeCon India 2026. L&#39;entreprise a développé une plateforme ...</p>
+      
+    </div>
+  </li>
+  
+  <li class="article-item">
+    <span class="article-rank">2</span>
+    <div class="article-main">
+      <a href="/articles/1294.html" class="article-title">CNCF Welcomes New Silver Members as Global Demand for Cloud Native Infrastructure Grows</a>
+      <div class="article-meta">
+        <span>2026-06-18</span>
+        <span>·</span>
+        <span class="score-badge score-mid">
+          5.7
+        </span>
+        
+        <a href="/tags/cloud-native.html" class="tag">cloud native</a>
+        
+        <a href="/tags/kubernetes.html" class="tag">Kubernetes</a>
+        
+        <a href="/tags/infrastructure-distribu-e.html" class="tag">infrastructure distribuée</a>
+        
+      </div>
+      
+      <p style="font-size:0.85rem;color:var(--fg-dim);margin-top:0.4rem;line-height:1.5;">La CNCF a annoncé l&#39;arrivée de 14 nouveaux membres Silver lors de KubeCon + CloudNativeCon India à Mumbai le 18 juin 2026. Ces nouveaux membres couvrent des domaines variés : ingénierie de plateformes...</p>
+      
+    </div>
+  </li>
+  
+  <li class="article-item">
+    <span class="article-rank">3</span>
     <div class="article-main">
       <a href="/articles/560.html" class="article-title">From data residency to digital sovereignty: Architectural patterns for  cloud native platforms</a>
       <div class="article-meta">
@@ -784,7 +832,7 @@
 
   <footer>
     <div class="container">
-      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-06-18 02:22 UTC
+      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-06-18 06:30 UTC
       <br>
       <small style="color:var(--fg-muted);font-size:0.72rem;">
         Projet incubé par <strong>DOMORIA SAS</strong> — SIREN 104 147 467 — 31 Voie Romaine, 31410 Saint-Hilaire, Occitanie, France
@@ -813,7 +861,7 @@
       btn.disabled = true;
       msg.style.display = 'none';
       try {
-        var res = await fetch('/api/newsletter/subscribe', {
+        var res = await fetch('http://72.60.187.136:8081/api/newsletter/subscribe', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({email: email})
@@ -903,7 +951,7 @@
     function doLogout() {
       var token = localStorage.getItem('edge_token');
       if (token) {
-        fetch('/api/auth/logout', {
+        fetch('http://72.60.187.136:8081/api/auth/logout', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({token: token})

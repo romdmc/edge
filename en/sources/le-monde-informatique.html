@@ -856,7 +856,7 @@
 
   <footer>
     <div class="container">
-      EDG<span style="color:var(--accent)">E</span> — Self-improving tech watch · Generated on 2026-06-18 02:22 UTC
+      EDG<span style="color:var(--accent)">E</span> — Self-improving tech watch · Generated on 2026-06-18 06:30 UTC
       <br>
       <small style="color:var(--fg-muted);font-size:0.72rem;">
         Project incubated by <strong>DOMORIA SAS</strong> — SIREN 104 147 467 — 31 Voie Romaine, 31410 Saint-Hilaire, Occitanie, France
@@ -885,7 +885,7 @@
       btn.disabled = true;
       msg.style.display = 'none';
       try {
-        var res = await fetch('/api/newsletter/subscribe', {
+        var res = await fetch('http://72.60.187.136:8081/api/newsletter/subscribe', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({email: email})
@@ -975,7 +975,7 @@
     function doLogout() {
       var token = localStorage.getItem('edge_token');
       if (token) {
-        fetch('/api/auth/logout', {
+        fetch('http://72.60.187.136:8081/api/auth/logout', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({token: token})

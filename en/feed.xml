@@ -5,9 +5,33 @@
     <description>Self-improving tech news. Daily digest of the best tech news, filtered by AI.</description>
     <link>/</link>
     <language>en</language>
-    <lastBuildDate>Thu, 18 Jun 2026 02:22:38 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 06:30:32 GMT</lastBuildDate>
     <generator>EDGE Static Site Generator</generator>
     <ns0:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Flipkart Wins CNCF End User Case Study Contest for Kubernetes and Chaos Engineering Scale</title>
+      <link>/articles/1291.html</link>
+      <guid isPermaLink="true">/articles/1291.html</guid>
+      <description>Flipkart, l'une des plus grandes plateformes e-commerce en Inde, a remporté le concours d'études de cas CNCF End User pour KubeCon + CloudNativeCon India 2026. L'entreprise a développé une plateforme centralisée de chaos engineering multi-locataire construite sur Kubernetes et LitmusChaos, un projet incubé par la CNCF. Cette solution permet d'exécuter environ 90 % des expériences de chaos en environnement de staging avant les périodes de forte affluence. L'équipe a contribué cinq correctifs et améliorations au projet LitmusChaos en amont, bénéficiant à l'ensemble de la communauté cloud native.</description>
+      <pubDate>Thu, 18 Jun 2026 06:00:00 GMT</pubDate>
+      <source>Cloud Native Computing Foundation</source>
+    </item>
+    <item>
+      <title>CNCF Welcomes New Silver Members as Global Demand for Cloud Native Infrastructure Grows</title>
+      <link>/articles/1294.html</link>
+      <guid isPermaLink="true">/articles/1294.html</guid>
+      <description>La CNCF a annoncé l'arrivée de 14 nouveaux membres Silver lors de KubeCon + CloudNativeCon India à Mumbai le 18 juin 2026. Ces nouveaux membres couvrent des domaines variés : ingénierie de plateformes, infrastructure IA, services Kubernetes gérés, fintech et logiciels d'entreprise. Selon le directeur exécutif de la CNCF, 98 % des organisations ont désormais adopté des techniques cloud native, confirmant cet écosystème comme la norme mondiale pour l'infrastructure d'entreprise. L'arrivée d'organisations spécialisées dans l'IA au sein de l'écosystème envoie un signal clair sur le rôle vital des technologies cloud native pour l'infrastructure IA.</description>
+      <pubDate>Thu, 18 Jun 2026 03:30:00 GMT</pubDate>
+      <source>Cloud Native Computing Foundation</source>
+    </item>
+    <item>
+      <title>Forecasting what Matters: Decision-Focused RL for Controlled EV Charging with Unknown Departure Times</title>
+      <link>/articles/1287.html</link>
+      <guid isPermaLink="true">/articles/1287.html</guid>
+      <description>Un cadre d'apprentissage par renforcement décisionnel (DF-RL) est proposé pour la recharge intelligente des véhicules électriques avec des heures de départ inconnues. Le prévisionniste est entraîné de bout en bout avec les retours de l'agent RL, améliorant ainsi la qualité des décisions de recharge. La méthode atteint jusqu'à 14% d'amélioration de la récompense totale et réduit de 55% l'énergie non fournie par rapport au RL sans prévision. Cette approche évite la propagation d'erreurs des modèles de prévision traditionnels.</description>
+      <pubDate>Wed, 17 Jun 2026 15:37:35 GMT</pubDate>
+      <source>arXiv - AI (cs.AI)</source>
+    </item>
     <item>
       <title>Qui paiera les gigawatts de l’intelligence artificielle ?</title>
       <link>/articles/907.html</link>
@@ -143,30 +167,6 @@
       <description>La dérive de configuration dans les environnements AWS multi-comptes est un problème structurel lié à la gouvernance manuelle, et non un échec des outils. L'article défend l'approche Policy-as-Code avec Open Policy Agent (OPA) comme couche d'exécution continue, capable d'éliminer toute dérive grâce à un ensemble minimal de six garde-fous appliqués au niveau de l'API. Contrairement aux audits trimestriels et aux checklists humaines, OPA évalue en permanence chaque changement de ressource avant son application.</description>
       <pubDate>Tue, 16 Jun 2026 11:25:40 GMT</pubDate>
       <source>Dev.to</source>
-    </item>
-    <item>
-      <title>I Built a PDF Tool That Never Uploads Your Files — Here's Why</title>
-      <link>/articles/554.html</link>
-      <guid isPermaLink="true">/articles/554.html</guid>
-      <description>Face au constat que la plupart des outils PDF gratuits en ligne envoient les fichiers vers des serveurs tiers, un développeur a créé PDF Toolbox, un ensemble de 8 outils PDF fonctionnant entièrement dans le navigateur via WebAssembly et pdf-lib. Aucun fichier n'est transmis au serveur, qui se contente de délivrer le JavaScript. L'architecture repose sur Next.js, des Web Workers pour les traitements lourds, et l'API Canvas pour le rendu. Le projet est open source sous licence MIT.</description>
-      <pubDate>Tue, 16 Jun 2026 11:15:05 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>From data residency to digital sovereignty: Architectural patterns for  cloud native platforms</title>
-      <link>/articles/560.html</link>
-      <guid isPermaLink="true">/articles/560.html</guid>
-      <description>La souveraineté numérique est passée du débat politique à une préoccupation concrète d'ingénierie de plateforme, portée par des réglementations comme l'EU Data Act, NIS-2, DORA et le UK Data Use and Access Act 2025. L'article identifie quatre propriétés essentielles pour une plateforme souveraine : le confinement juridictionnel, l'autonomie opérationnelle, le contrôle cryptographique et des accès, et la portabilité des charges de travail. Il montre qu'un simple choix de région cloud ne suffit pas et que la conception du plan de contrôle Kubernetes devient un enjeu central de souveraineté.</description>
-      <pubDate>Tue, 16 Jun 2026 11:00:00 GMT</pubDate>
-      <source>Cloud Native Computing Foundation</source>
-    </item>
-    <item>
-      <title>Restauration et Retail : et si votre plus grosse erreur marketing était de chercher de nouveaux clients ?</title>
-      <link>/articles/586.html</link>
-      <guid isPermaLink="true">/articles/586.html</guid>
-      <description>Dans le retail et la restauration, la course à l'acquisition de nouveaux clients s'avère de plus en plus coûteuse et contre-productive. Face à l'explosion des coûts d'acquisition et à l'érosion des marges, les entreprises devraient repenser leur stratégie marketing. Plutôt que d'investir massivement dans la conquête, fidéliser la clientèle existante apparaît comme une approche plus rentable et durable.</description>
-      <pubDate>Tue, 16 Jun 2026 09:18:23 GMT</pubDate>
-      <source>Journal du Net</source>
     </item>
   </channel>
 </rss>

@@ -737,7 +737,7 @@
       
 <div class="article-header">
   <h1>📊 Digest hebdomadaire</h1>
-  <p style="color:var(--fg-dim);font-size:0.9rem;">Semaine du 2026-06-15 — 2026-06-21 · 21 articles</p>
+  <p style="color:var(--fg-dim);font-size:0.9rem;">Semaine du 2026-06-15 — 2026-06-21 · 24 articles</p>
 </div>
 
 
@@ -750,10 +750,10 @@
 
 
 <div class="stats-bar">
-  <span><strong>21</strong> articles</span>
+  <span><strong>24</strong> articles</span>
   <span><strong>Score moy.:</strong> 6.1</span>
   <span><strong>Topic principal:</strong> IA</span>
-  <span><strong>digest_sources_count:</strong> 6 sources</span>
+  <span><strong>digest_sources_count:</strong> 7 sources</span>
 </div>
 
 
@@ -1280,6 +1280,51 @@
 </div>
 
 <div class="digest-day">
+  <h3 class="digest-day-title">2026-06-18</h3>
+  <ul class="article-list">
+    
+    <li class="article-item">
+      <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">1</span>
+      <div class="article-main">
+        <a href="/articles/1291.html" class="article-title">Flipkart Wins CNCF End User Case Study Contest for Kubernetes and Chaos Engineering Scale</a>
+        <div class="article-meta">
+          <span>Cloud Native Computing Foundation</span>
+          <span>·</span>
+          <span class="score-badge score-mid">
+            6.7
+          </span>
+          
+          <a href="/tags/chaos-engineering.html" class="tag">chaos engineering</a>
+          
+          <a href="/tags/kubernetes.html" class="tag">Kubernetes</a>
+          
+        </div>
+      </div>
+    </li>
+    
+    <li class="article-item">
+      <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">2</span>
+      <div class="article-main">
+        <a href="/articles/1294.html" class="article-title">CNCF Welcomes New Silver Members as Global Demand for Cloud Native Infrastructure Grows</a>
+        <div class="article-meta">
+          <span>Cloud Native Computing Foundation</span>
+          <span>·</span>
+          <span class="score-badge score-mid">
+            5.7
+          </span>
+          
+          <a href="/tags/cloud-native.html" class="tag">cloud native</a>
+          
+          <a href="/tags/kubernetes.html" class="tag">Kubernetes</a>
+          
+        </div>
+      </div>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="digest-day">
   <h3 class="digest-day-title">2026-06-17</h3>
   <ul class="article-list">
     
@@ -1302,6 +1347,25 @@
       </div>
     </li>
     
+    <li class="article-item">
+      <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">2</span>
+      <div class="article-main">
+        <a href="/articles/1287.html" class="article-title">Forecasting what Matters: Decision-Focused RL for Controlled EV Charging with Unknown Departure Times</a>
+        <div class="article-meta">
+          <span>arXiv - AI (cs.AI)</span>
+          <span>·</span>
+          <span class="score-badge score-mid">
+            5.7
+          </span>
+          
+          <a href="/tags/recharge-v-hicules-lectriques.html" class="tag">recharge véhicules électriques</a>
+          
+          <a href="/tags/apprentissage-par-renforcement.html" class="tag">apprentissage par renforcement</a>
+          
+        </div>
+      </div>
+    </li>
+    
   </ul>
 </div>
 
@@ -1311,7 +1375,9 @@
 <h2 class="section-title">🏷️ Topics de la semaine</h2>
 <div class="tag-cloud">
   
-  <a href="/tags/ia.html" class="tag" style="font-size:0.85rem;">IA <span style="opacity:0.6;">(3)</span></a>
+  <a href="/tags/ia.html" class="tag" style="font-size:0.8999999999999999rem;">IA <span style="opacity:0.6;">(4)</span></a>
+  
+  <a href="/tags/kubernetes.html" class="tag" style="font-size:0.85rem;">Kubernetes <span style="opacity:0.6;">(3)</span></a>
   
   <a href="/tags/aws.html" class="tag" style="font-size:0.85rem;">AWS <span style="opacity:0.6;">(3)</span></a>
   
@@ -1349,8 +1415,6 @@
   
   <a href="/tags/edge-computing.html" class="tag" style="font-size:0.75rem;">Edge computing <span style="opacity:0.6;">(1)</span></a>
   
-  <a href="/tags/migration-cloud.html" class="tag" style="font-size:0.75rem;">Migration cloud <span style="opacity:0.6;">(1)</span></a>
-  
 </div>
 
 
@@ -1365,7 +1429,7 @@
 
   <footer>
     <div class="container">
-      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-06-18 02:22 UTC
+      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-06-18 06:30 UTC
       <br>
       <small style="color:var(--fg-muted);font-size:0.72rem;">
         Projet incubé par <strong>DOMORIA SAS</strong> — SIREN 104 147 467 — 31 Voie Romaine, 31410 Saint-Hilaire, Occitanie, France
@@ -1394,7 +1458,7 @@
       btn.disabled = true;
       msg.style.display = 'none';
       try {
-        var res = await fetch('/api/newsletter/subscribe', {
+        var res = await fetch('http://72.60.187.136:8081/api/newsletter/subscribe', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({email: email})
@@ -1484,7 +1548,7 @@
     function doLogout() {
       var token = localStorage.getItem('edge_token');
       if (token) {
-        fetch('/api/auth/logout', {
+        fetch('http://72.60.187.136:8081/api/auth/logout', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({token: token})
