@@ -20,7 +20,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install jinja2 pyyaml requests
+        run: pip install jinja2 pyyaml requests feedparser youtube-transcript-api
 
       - name: Init database schema
         run: |
