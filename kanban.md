@@ -30,15 +30,26 @@
 
 ## ✅ Phase 5 — Commentaires + SEO (TERMINÉE)
 - [x] Système de commentaires (CRUD + API)
-- [x] SEO: sitemap.xml (86 URLs)
+- [x] SEO: sitemap.xml (110 URLs)
 - [x] SEO: robots.txt
 - [x] SEO: RSS feed.xml (20 articles)
 - [x] Meta descriptions + Open Graph
 - [x] Fix nginx 403 (permissions 0600 → 0644)
 
-## 🔜 Phase 6 — À venir
+## ✅ Phase 6 — GitHub Pages Deploy (TERMINÉE)
+- [x] Script `build_ghpages.sh` (build statique pur, sans deps VPS)
+- [x] Script `deploy_ghpages.sh` (push branche gh-pages)
+- [x] Configuration GitHub Pages source → branche `gh-pages`
+- [x] `.nojekyll` pour désactiver Jekyll
+- [x] Intégration dans `run.sh` (auto-deploy après pipeline)
+- [x] Site en ligne : https://romdmc.github.io/edge/
+- [x] FR (racine) + EN (/en/) bilingue
+- [x] 281 fichiers déployés, 27 articles, 72 tags
+
+## 🔜 Phase 7 — À venir
 - [ ] Envoi email SMTP (newsletter réelle)
 - [ ] Admin dashboard (gestion utilisateurs/commentaires)
 - [ ] Fix PWA (manifest.json/sw.js en 403 — Docker overlay)
 - [ ] Tests end-to-end
 - [ ] Optimisation performance (cache API, compression gzip)
+- [ ] OAuth Reddit pour les sources bloquées

@@ -90,4 +90,8 @@ log_run('data/edge.db', {
 print('✓ Run logged')
 " 2>&1 | tee -a "$LOG_FILE"
 
+# Déployer sur GitHub Pages
+echo "[$TIMESTAMP_END] === Deploy GitHub Pages ===" >> "$LOG_FILE"
+bash deploy_ghpages.sh 2>&1 | tee -a "$LOG_FILE"
+
 exit $PIPELINE_EXIT
