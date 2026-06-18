@@ -15,6 +15,9 @@ jobs:
       contents: write
       pages: write
       id-token: write
+    environment:
+      name: github-pages
+      url: https://romdmc.github.io/edge/
 
     steps:
       - uses: actions/checkout@v4
