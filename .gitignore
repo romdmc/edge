@@ -47,3 +47,4 @@ data/pipeline.log
 *.temp
 tmp/
 .github_token
+_site/
