@@ -19,7 +19,7 @@
   <li class="article-item">
     <span class="article-rank">{{ loop.index }}</span>
     <div class="article-main">
-      <a href="/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
+      <a href="{{ site_url }}/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
       <div class="article-meta">
         <span>{{ article.published_at[:10] }}</span>
         <span>·</span>
@@ -27,7 +27,7 @@
           {{ "%.1f"|format(article.overall_score) }}
         </span>
         {% for topic in article.topics[:3] %}
-        <a href="/tags/{{ article.topic_slugs[loop.index0] }}.html" class="tag">{{ topic }}</a>
+        <a href="{{ site_url }}/tags/{{ article.topic_slugs[loop.index0] }}.html" class="tag">{{ topic }}</a>
         {% endfor %}
       </div>
       {% if article.summary %}
@@ -39,6 +39,6 @@
 </ul>
 
 <div style="margin-top:2rem;text-align:center;">
-  <a href="/sources.html" class="btn-source">{{ t('back_to_sources') }}</a>
+  <a href="{{ site_url }}/sources.html" class="btn-source">{{ t('back_to_sources') }}</a>
 </div>
 {% endblock %}

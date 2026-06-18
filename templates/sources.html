@@ -17,7 +17,7 @@
 <div class="source-card">
   <div class="source-header">
     <h2 class="source-name">
-      <a href="/sources/{{ source.slug }}.html">{{ source.name }}</a>
+      <a href="{{ site_url }}/sources/{{ source.slug }}.html">{{ source.name }}</a>
     </h2>
     <div class="source-stats">
       <span class="source-count">{{ source.article_count }} {{ t('sources_articles') }}</span>
@@ -26,7 +26,7 @@
   </div>
   {% if source.latest_article and source.latest_article.published_at %}
   <p class="source-latest">
-    {{ t('sources_latest') }}: <a href="/articles/{{ source.latest_article.id }}.html">{{ source.latest_article.title }}</a>
+    {{ t('sources_latest') }}: <a href="{{ site_url }}/articles/{{ source.latest_article.id }}.html">{{ source.latest_article.title }}</a>
     <span style="color:var(--fg-muted);font-size:0.78rem;"> · {{ source.latest_article.published_at[:10] }}</span>
   </p>
   {% endif %}

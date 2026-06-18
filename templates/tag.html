@@ -13,7 +13,7 @@
   <li class="article-item">
     <span class="article-rank">{{ loop.index }}</span>
     <div class="article-main">
-      <a href="/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
+      <a href="{{ site_url }}/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
       <div class="article-meta">
         <span>{{ article.source_name }}</span>
         <span>·</span>
@@ -28,5 +28,5 @@
   {% endfor %}
 </ol>
 
-<a href="/archives.html" style="display:inline-block; margin-top:1.5rem; font-size:0.85rem;">← {{ t('back_to_archives') }}</a>
+<a href="{{ site_url }}/archives.html" style="display:inline-block; margin-top:1.5rem; font-size:0.85rem;">← {{ t('back_to_archives') }}</a>
 {% endblock %}

@@ -20,7 +20,7 @@
     <span class="trend-direction {% if topic.direction == '↑' %}trend-up{% elif topic.direction == '↓' %}trend-down{% else %}trend-flat{% endif %}">
       {{ topic.direction }}
     </span>
-    <a href="/tags/{{ topic.slug }}.html" class="trend-name">{{ topic.topic }}</a>
+    <a href="{{ site_url }}/tags/{{ topic.slug }}.html" class="trend-name">{{ topic.topic }}</a>
     <span class="trend-score">{{ "%.1f"|format(topic.trend_score) }}</span>
   </div>
   <div class="trend-bar-container">
@@ -51,7 +51,7 @@
 <div class="trend-emerging-card">
   <div class="trend-emerging-header">
     <span class="trend-emerging-badge">✦</span>
-    <a href="/tags/{{ topic.slug }}.html" class="trend-emerging-name">{{ topic.topic }}</a>
+    <a href="{{ site_url }}/tags/{{ topic.slug }}.html" class="trend-emerging-name">{{ topic.topic }}</a>
   </div>
   <div class="trend-emerging-meta">
     <span>{{ topic.recent_count }} {{ t('trends_articles') }}</span>
@@ -77,7 +77,7 @@
 <div class="trend-card trend-card-declining">
   <div class="trend-header">
     <span class="trend-rank">↓</span>
-    <a href="/tags/{{ topic.slug }}.html" class="trend-name">{{ topic.topic }}</a>
+    <a href="{{ site_url }}/tags/{{ topic.slug }}.html" class="trend-name">{{ topic.topic }}</a>
     <span class="trend-declining-label">{{ t('trends_declining_label') }}</span>
   </div>
   <div class="trend-meta">

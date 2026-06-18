@@ -78,20 +78,24 @@ jobs:
           " || echo "⚠ Trends step failed (non-fatal)"
 
       - name: Generate FR site
+        env:
+          EDGE_API_BASE: "http://72.60.187.136:8081"
         run: |
           python3 -c "
           from generator import generate_site
           from pathlib import Path
-          stats = generate_site(Path('data/edge.db'), Path('output'), lang='fr')
+          stats = generate_site(Path('data/edge.db'), Path('output'), lang='fr', site_url='https://romdmc.github.io/edge')
           print(f'FR: {stats.pages_generated} pages, {stats.articles_indexed} articles, {stats.errors} errors')
           "
 
       - name: Generate EN site
+        env:
+          EDGE_API_BASE: "http://72.60.187.136:8081"
         run: |
           python3 -c "
           from generator import generate_site
           from pathlib import Path
-          stats = generate_site(Path('data/edge.db'), Path('output/en'), lang='en')
+          stats = generate_site(Path('data/edge.db'), Path('output/en'), lang='en', site_url='https://romdmc.github.io/edge')
           print(f'EN: {stats.pages_generated} pages, {stats.articles_indexed} articles')
           "
 

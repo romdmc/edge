@@ -33,7 +33,7 @@
   <li class="article-item">
     <span class="article-rank">{{ loop.index }}</span>
     <div class="article-main">
-      <a href="/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
+      <a href="{{ site_url }}/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
       <div class="article-meta">
         <span>{{ article.source_name }}</span>
         <span>·</span>
@@ -42,7 +42,7 @@
           {{ "%.1f"|format(article.overall_score) }}
         </span>
         {% for topic in article.topics[:3] %}
-        <a href="/tags/{{ article.topic_slugs[loop.index0] }}.html" class="tag">{{ topic }}</a>
+        <a href="{{ site_url }}/tags/{{ article.topic_slugs[loop.index0] }}.html" class="tag">{{ topic }}</a>
         {% endfor %}
       </div>
       {% if article.summary %}
@@ -64,7 +64,7 @@
     <li class="article-item">
       <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">{{ loop.index }}</span>
       <div class="article-main">
-        <a href="/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
+        <a href="{{ site_url }}/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
         <div class="article-meta">
           <span>{{ article.source_name }}</span>
           <span>·</span>
@@ -72,7 +72,7 @@
             {{ "%.1f"|format(article.overall_score) }}
           </span>
           {% for topic in article.topics[:2] %}
-          <a href="/tags/{{ article.topic_slugs[loop.index0] }}.html" class="tag">{{ topic }}</a>
+          <a href="{{ site_url }}/tags/{{ article.topic_slugs[loop.index0] }}.html" class="tag">{{ topic }}</a>
           {% endfor %}
         </div>
       </div>
@@ -87,7 +87,7 @@
 <h2 class="section-title">🏷️ {{ t('digest_topics') }}</h2>
 <div class="tag-cloud">
   {% for item in topic_cloud %}
-  <a href="/tags/{{ item.slug }}.html" class="tag" style="font-size:{{ 0.7 + item.count * 0.05 }}rem;">{{ item.topic }} <span style="opacity:0.6;">({{ item.count }})</span></a>
+  <a href="{{ site_url }}/tags/{{ item.slug }}.html" class="tag" style="font-size:{{ 0.7 + item.count * 0.05 }}rem;">{{ item.topic }} <span style="opacity:0.6;">({{ item.count }})</span></a>
   {% endfor %}
 </div>
 {% endif %}
@@ -95,6 +95,6 @@
 {# Newsletter CTA #}
 <div class="digest-cta">
   <p>{{ t('digest_newsletter_cta') }}</p>
-  <a href="/newsletter.html" class="btn-source">{{ t('digest_view_newsletter') }}</a>
+  <a href="{{ site_url }}/newsletter.html" class="btn-source">{{ t('digest_view_newsletter') }}</a>
 </div>
 {% endblock %}

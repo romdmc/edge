@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ff6600">
   <meta name="description" content="EDGE — Veille tech auto-améliorant. Digest quotidien des meilleures actualités tech, filtré par intelligence artificielle.">
-  <link rel="alternate" type="application/rss+xml" title="EDGE RSS" href="/feed.xml">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" type="application/rss+xml" title="EDGE RSS" href="{{ site_url }}/feed.xml">
+  <link rel="manifest" href="{{ site_url }}/manifest.json">
   {% block meta %}{% endblock %}
   <title>{% block title %}EDGE{% endblock %}</title>
   <style>
@@ -705,25 +705,25 @@
 <body>
   <header>
     <div class="container">
-      <a href="/" class="logo">EDG<span>E</span></a>
+      <a href="{{ site_url }}/" class="logo">EDG<span>E</span></a>
       <nav>
-        <a href="/" {% if active_page == 'home' %}class="active"{% endif %}>{{ t('nav_home') }}</a>
-        <a href="/all.html" {% if active_page == 'all' %}class="active"{% endif %}>{{ t('nav_all') }}</a>
-        <a href="/digest.html" {% if active_page == 'digest' %}class="active"{% endif %}>{{ t('nav_digest') }}</a>
-        <a href="/sources.html" {% if active_page == 'sources' %}class="active"{% endif %}>{{ t('nav_sources') }}</a>
-        <a href="/series.html" {% if active_page == 'series' %}class="active"{% endif %}>{{ t('nav_series') }}</a>
-        <a href="/trends.html" {% if active_page == 'trends' %}class="active"{% endif %}>{{ t('nav_trends') }}</a>
-        <a href="/archives.html" {% if active_page == 'archives' %}class="active"{% endif %}>{{ t('nav_archives') }}</a>
-        <a href="/manifeste.html" {% if active_page == 'manifeste' %}class="active"{% endif %}>{{ t('nav_manifesto') }}</a>
+        <a href="{{ site_url }}/" {% if active_page == 'home' %}class="active"{% endif %}>{{ t('nav_home') }}</a>
+        <a href="{{ site_url }}/all.html" {% if active_page == 'all' %}class="active"{% endif %}>{{ t('nav_all') }}</a>
+        <a href="{{ site_url }}/digest.html" {% if active_page == 'digest' %}class="active"{% endif %}>{{ t('nav_digest') }}</a>
+        <a href="{{ site_url }}/sources.html" {% if active_page == 'sources' %}class="active"{% endif %}>{{ t('nav_sources') }}</a>
+        <a href="{{ site_url }}/series.html" {% if active_page == 'series' %}class="active"{% endif %}>{{ t('nav_series') }}</a>
+        <a href="{{ site_url }}/trends.html" {% if active_page == 'trends' %}class="active"{% endif %}>{{ t('nav_trends') }}</a>
+        <a href="{{ site_url }}/archives.html" {% if active_page == 'archives' %}class="active"{% endif %}>{{ t('nav_archives') }}</a>
+        <a href="{{ site_url }}/manifeste.html" {% if active_page == 'manifeste' %}class="active"{% endif %}>{{ t('nav_manifesto') }}</a>
         <div class="lang-switcher">
           <a href="?lang=fr" {% if lang == 'fr' %}class="active-lang"{% endif %}>FR</a>
           <span class="lang-sep">|</span>
           <a href="?lang=en" {% if lang == 'en' %}class="active-lang"{% endif %}>EN</a>
         </div>
         <div id="auth-nav" class="auth-nav" style="display:flex;align-items:center;gap:0.5rem;">
-          <a href="/login.html" id="auth-login-link">{{ t('nav_login') }}</a>
+          <a href="{{ site_url }}/login.html" id="auth-login-link">{{ t('nav_login') }}</a>
           <span class="auth-nav-sep" style="color:var(--fg-muted);opacity:0.4;">|</span>
-          <a href="/register.html" id="auth-register-link">{{ t('nav_register') }}</a>
+          <a href="{{ site_url }}/register.html" id="auth-register-link">{{ t('nav_register') }}</a>
           <span id="auth-user-name" style="display:none;font-size:0.82rem;font-weight:600;color:var(--fg-dim);"></span>
           <a href="#" id="auth-logout-link" style="display:none;font-size:0.82rem;" onclick="doLogout();return false;">{{ t('nav_logout') }}</a>
         </div>
@@ -769,7 +769,7 @@
       btn.disabled = true;
       msg.style.display = 'none';
       try {
-        var res = await fetch('/api/newsletter/subscribe', {
+        var res = await fetch('{{ api_base }}/api/newsletter/subscribe', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({email: email})
@@ -859,7 +859,7 @@
     function doLogout() {
       var token = localStorage.getItem('edge_token');
       if (token) {
-        fetch('/api/auth/logout', {
+        fetch('{{ api_base }}/api/auth/logout', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({token: token})

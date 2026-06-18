@@ -14,7 +14,7 @@
 <nav class="filter-bar">
   <span class="filter-label">{{ t('filter_by_tag') }}:</span>
   {% for tag_name, tag_count, tag_slug in tag_cloud[:20] %}
-    <a href="/tags/{{ tag_slug }}.html" class="tag">{{ tag_name }} <span style="opacity:.5;">({{ tag_count }})</span></a>
+    <a href="{{ site_url }}/tags/{{ tag_slug }}.html" class="tag">{{ tag_name }} <span style="opacity:.5;">({{ tag_count }})</span></a>
   {% endfor %}
 </nav>
 {% endif %}
@@ -25,7 +25,7 @@
   <li class="article-item">
     <span class="article-rank">{{ (page_num - 1) * per_page + loop.index }}</span>
     <div class="article-main">
-      <a href="/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
+      <a href="{{ site_url }}/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
       <div class="article-meta">
         <span>{{ article.source_name }}</span>
         <span>·</span>
@@ -35,7 +35,7 @@
           {{ "%.1f"|format(article.overall_score) }}
         </span>
         {% for tag, slug in zip(article.topics, article.topic_slugs) %}
-          <a href="/tags/{{ slug }}.html" class="tag">{{ tag }}</a>
+          <a href="{{ site_url }}/tags/{{ slug }}.html" class="tag">{{ tag }}</a>
         {% endfor %}
       </div>
     </div>

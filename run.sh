@@ -28,6 +28,8 @@ init_auth_db('data/edge.db')
 print('✓ Feedback + Auth schemas OK')
 "
 
+export EDGE_API_BASE="http://72.60.187.136:8081"
+
 # Lancer le pipeline Python (scrape → analyze → trends → generate FR)
 echo "[$TIMESTAMP] === Running Pipeline ===" >> "$LOG_FILE"
 python3 pipeline.py \
@@ -35,7 +37,7 @@ python3 pipeline.py \
     --min-score 5.0 \
     --model openrouter/owl-alpha \
     --max-articles 30 \
-    --site-url "https://romdmc.github.io/edge" \
+    --site-url "" \
     --verbose \
     2>&1 | tee -a "$LOG_FILE"
 
@@ -44,9 +46,11 @@ PIPELINE_EXIT=${PIPESTATUS[0]}
 # Générer le site EN
 echo "[$TIMESTAMP] === Generation EN ===" >> "$LOG_FILE"
 python3 -c "
+import os
+os.environ['EDGE_API_BASE'] = 'http://72.60.187.136:8081'
 from generator import generate_site
 from pathlib import Path
-stats = generate_site(Path('data/edge.db'), Path('output/en'), lang='en')
+stats = generate_site(Path('data/edge.db'), Path('output/en'), lang='en', site_url='')
 print(f'EN: {stats.pages_generated} pages, {stats.articles_indexed} articles, {stats.errors} errors')
 " 2>&1 | tee -a "$LOG_FILE"
 

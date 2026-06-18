@@ -19,7 +19,7 @@
   <li class="article-item">
     <span class="article-rank" style="font-size:0.85rem;color:var(--fg-muted);">{{ article.published_at[:10] }}</span>
     <div class="article-main">
-      <a href="/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
+      <a href="{{ site_url }}/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
       <div class="article-meta">
         <span>{{ article.source_name }}</span>
         <span>·</span>
@@ -36,6 +36,6 @@
 </ul>
 
 <div style="margin-top:2rem;text-align:center;">
-  <a href="/series.html" class="btn-source">{{ t('back_to_series') }}</a>
+  <a href="{{ site_url }}/series.html" class="btn-source">{{ t('back_to_series') }}</a>
 </div>
 {% endblock %}

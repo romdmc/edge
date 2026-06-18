@@ -12,7 +12,7 @@
   {% for article in articles %}
   <li class="article-item">
     <div class="article-main">
-      <a href="/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
+      <a href="{{ site_url }}/articles/{{ article.id }}.html" class="article-title">{{ article.title }}</a>
       <div class="article-meta">
         <span>{{ article.source_name }}</span>
         <span>·</span>
@@ -22,7 +22,7 @@
           {{ "%.1f"|format(article.overall_score) }}
         </span>
         {% for tag, slug in zip(article.topics, article.topic_slugs) %}
-          <a href="/tags/{{ slug }}.html" class="tag">{{ tag }}</a>
+          <a href="{{ site_url }}/tags/{{ slug }}.html" class="tag">{{ tag }}</a>
         {% endfor %}
       </div>
       {% if article.summary %}
@@ -41,5 +41,5 @@
   {% endfor %}
 </ol>
 
-<a href="/all.html" style="display:inline-block; margin-top:1.5rem; font-size:0.85rem;">← {{ t('back_to_all') }}</a>
+<a href="{{ site_url }}/all.html" style="display:inline-block; margin-top:1.5rem; font-size:0.85rem;">← {{ t('back_to_all') }}</a>
 {% endblock %}

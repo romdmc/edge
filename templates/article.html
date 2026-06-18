@@ -64,7 +64,7 @@
   {% if article.topics %}
   <div class="article-tags">
     {% for tag, slug in zip(article.topics, article.topic_slugs) %}
-      <a href="/tags/{{ slug }}.html" class="tag">{{ tag }}</a>
+      <a href="{{ site_url }}/tags/{{ slug }}.html" class="tag">{{ tag }}</a>
     {% endfor %}
   </div>
   {% endif %}
@@ -97,7 +97,7 @@
     <h2 class="section-title">{{ t('same_source') }}</h2>
     <ul class="related-list">
       {% for rel in related_articles %}
-      <li><a href="/articles/{{ rel.id }}.html">{{ rel.title }}</a> <span style="opacity:.5;">— {{ "%.1f"|format(rel.overall_score) }}</span></li>
+      <li><a href="{{ site_url }}/articles/{{ rel.id }}.html">{{ rel.title }}</a> <span style="opacity:.5;">— {{ "%.1f"|format(rel.overall_score) }}</span></li>
       {% endfor %}
     </ul>
   </div>
@@ -171,7 +171,7 @@
 
   // Fetch current vote counts
   function fetchVotes() {
-    fetch('/api/articles/' + articleId)
+    fetch('{{ api_base }}/api/articles/' + articleId)
       .then(function(r) { return r.json(); })
       .then(function(data) {
         var up = data.upvotes || 0;
@@ -192,7 +192,7 @@
     voteUpBtn.disabled = true;
     voteDownBtn.disabled = true;
 
-    fetch('/api/articles/' + articleId + '/vote', {
+    fetch('{{ api_base }}/api/articles/' + articleId + '/vote', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ direction: direction })
@@ -244,7 +244,7 @@
   }
 
   function fetchComments() {
-    fetch('/api/articles/' + articleId + '/comments')
+    fetch('{{ api_base }}/api/articles/' + articleId + '/comments')
       .then(function(r) { return r.json(); })
       .then(function(data) {
         var items = data.data || [];
@@ -296,7 +296,7 @@
     feedback.textContent = '';
     feedback.className = 'comment-feedback';
 
-    fetch('/api/articles/' + articleId + '/comments', {
+    fetch('{{ api_base }}/api/articles/' + articleId + '/comments', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: content, author_name: author })

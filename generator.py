@@ -848,6 +848,8 @@ class Generator:
         self._env.globals["t"] = lambda key, **kw: translate(key, lang=self.lang, **kw)
         self._env.globals["lang"] = self.lang
         self._env.globals["zip"] = zip
+        self._env.globals["site_url"] = self.site_url
+        self._env.globals["api_base"] = os.environ.get("EDGE_API_BASE", "")
 
     # -- hash management ----------------------------------------------------
 

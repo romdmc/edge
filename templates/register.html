@@ -50,7 +50,7 @@
   </form>
 
   <p style="margin-top:1.2rem;text-align:center;font-size:0.85rem;color:var(--fg-dim);">
-    {{ t('nav_login') }} ? <a href="/login.html">{{ t('login_btn') }}</a>
+    {{ t('nav_login') }} ? <a href="{{ site_url }}/login.html">{{ t('login_btn') }}</a>
   </p>
 </div>
 
@@ -75,7 +75,7 @@ function doRegister(e) {
     return false;
   }
 
-  fetch('/api/auth/register', {
+  fetch('{{ api_base }}/api/auth/register', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({email: email, password: password, display_name: displayName})
