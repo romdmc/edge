@@ -37,6 +37,7 @@ import hashlib
 import html as html_module
 import json
 import logging
+import os
 import re
 import shutil
 import sqlite3
