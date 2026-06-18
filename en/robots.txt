@@ -1,0 +1,7 @@
+# EDGE robots.txt
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+Sitemap: /sitemap.xml
