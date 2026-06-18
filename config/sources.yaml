@@ -181,6 +181,234 @@ rss:
     config:
       max_items: 10
 
+  # --- AI / ML (additional) ---
+  - name: "DeepMind Blog"
+    url: "https://deepmind.google/discover/blog/rss.xml"
+    config:
+      max_items: 10
+
+  - name: "Anthropic Blog"
+    url: "https://www.anthropic.com/rss.xml"
+    config:
+      max_items: 10
+
+  - name: "Meta AI Blog"
+    url: "https://ai.meta.com/rss/"
+    config:
+      max_items: 10
+
+  - name: "Microsoft AI Blog"
+    url: "https://blogs.microsoft.com/ai/feed/"
+    config:
+      max_items: 10
+
+  - name: "arXiv - ML (cs.LG)"
+    url: "https://export.arxiv.org/api/query?search_query=cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=20"
+    config:
+      max_items: 20
+
+  - name: "arXiv - CV (cs.CV)"
+    url: "https://export.arxiv.org/api/query?search_query=cat:cs.CV&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    config:
+      max_items: 15
+
+  - name: "Sebastian Ruder"
+    url: "https://ruder.io/rss/index.rss"
+    config:
+      max_items: 10
+
+  - name: "Jay Alammar"
+    url: "https://jalammar.github.io/feed.xml"
+    config:
+      max_items: 10
+
+  - name: "Distill.pub"
+    url: "https://distill.pub/rss.xml"
+    config:
+      max_items: 10
+
+  # --- Cybersecurity ---
+  - name: "BleepingComputer"
+    url: "https://www.bleepingcomputer.com/feed/"
+    config:
+      max_items: 15
+
+  - name: "The Hacker News"
+    url: "https://feeds.feedburner.com/TheHackersNews"
+    config:
+      max_items: 15
+
+  - name: "Dark Reading"
+    url: "https://www.darkreading.com/rss.xml"
+    config:
+      max_items: 15
+
+  - name: "SecurityWeek"
+    url: "https://www.securityweek.com/feed/"
+    config:
+      max_items: 10
+
+  - name: "CVE Details"
+    url: "https://www.cvedetails.com/vulnerability-feed.php"
+    config:
+      max_items: 10
+
+  # --- Cloud / DevOps / Infra ---
+  - name: "Google Cloud Blog"
+    url: "https://cloud.google.com/blog/rss"
+    config:
+      max_items: 10
+
+  - name: "Azure Blog"
+    url: "https://azure.microsoft.com/en-us/blog/feed/"
+    config:
+      max_items: 10
+
+  - name: "Cloudflare Blog"
+    url: "https://blog.cloudflare.com/rss/"
+    config:
+      max_items: 10
+
+  - name: "Docker Blog"
+    url: "https://www.docker.com/blog/feed/"
+    config:
+      max_items: 10
+
+  - name: "Kubernetes Blog"
+    url: "https://kubernetes.io/feed.xml"
+    config:
+      max_items: 10
+
+  - name: "HashiCorp Blog"
+    url: "https://www.hashicorp.com/blog/feed.xml"
+    config:
+      max_items: 10
+
+  - name: "DigitalOcean Blog"
+    url: "https://www.digitalocean.com/blog/rss"
+    config:
+      max_items: 10
+
+  # --- Open Source / Dev ---
+  - name: "Mozilla Hacks"
+    url: "https://hacks.mozilla.org/feed/"
+    config:
+      max_items: 10
+
+  - name: "CSS-Tricks"
+    url: "https://css-tricks.com/feed/"
+    config:
+      max_items: 10
+
+  - name: "Smashing Magazine"
+    url: "https://www.smashingmagazine.com/feed/"
+    config:
+      max_items: 10
+
+  - name: "Stack Overflow Blog"
+    url: "https://stackoverflow.blog/feed/"
+    config:
+      max_items: 10
+
+  - name: "Vercel Blog"
+    url: "https://vercel.com/feed.xml"
+    config:
+      max_items: 10
+
+  - name: "Netlify Blog"
+    url: "https://www.netlify.com/blog/feed.xml"
+    config:
+      max_items: 10
+
+  # --- Hardware / Semiconductor ---
+  - name: "AnandTech"
+    url: "https://www.anandtech.com/rss/"
+    config:
+      max_items: 15
+
+  - name: "Tom's Hardware"
+    url: "https://www.tomshardware.com/feeds/all"
+    config:
+      max_items: 15
+
+  - name: "ServeTheHome"
+    url: "https://www.servethehome.com/feed/"
+    config:
+      max_items: 10
+
+  # --- Startups / Business ---
+  - name: "Product Hunt"
+    url: "https://www.producthunt.com/feed"
+    config:
+      max_items: 15
+
+  - name: "Y Combinator"
+    url: "https://www.ycombinator.com/rss"
+    config:
+      max_items: 10
+
+  - name: "TechCrunch Startups"
+    url: "https://techcrunch.com/category/startups/feed/"
+    config:
+      max_items: 15
+
+  # --- Science / Deep Tech ---
+  - name: "Nature - Technology"
+    url: "https://www.nature.com/nattechnol.rss"
+    config:
+      max_items: 10
+
+  - name: "IEEE Spectrum"
+    url: "https://spectrum.ieee.org/feeds/feed.rss"
+    config:
+      max_items: 15
+
+  - name: "New Scientist - Technology"
+    url: "https://www.newscientist.com/feed/technology/"
+    config:
+      max_items: 10
+
+  # --- French / Francophone (additional) ---
+  - name: "01Net"
+    url: "https://www.01net.com/feed/"
+    config:
+      max_items: 15
+
+  - name: "Clubic"
+    url: "https://www.clubic.com/feed/rss.xml"
+    config:
+      max_items: 15
+
+  - name: "Numerama"
+    url: "https://www.numerama.com/feed/"
+    config:
+      max_items: 15
+
+  - name: "Les Numériques"
+    url: "https://www.lesnumeriques.com/rss.xml"
+    config:
+      max_items: 15
+
+  - name: "GoodTech"
+    url: "https://goodtech.info/feed/"
+    config:
+      max_items: 10
+
+  - name: "L'Informaticien"
+    url: "https://www.linformaticien.com/rss"
+    config:
+      max_items: 10
+
+  - name: "Silicon"
+    url: "https://www.silicon.fr/feed"
+    config:
+      max_items: 10
+
+  - name: "Alliancy"
+    url: "https://www.alliancy.fr/feed"
+    config:
+      max_items: 10
+
 reddit:
   - name: "r/programming"
     url: "https://old.reddit.com/r/programming/top.json?t=day&limit=25"
@@ -230,6 +458,60 @@ reddit:
       subreddit: "cloudcomputing"
       limit: 25
 
+  - name: "r/cybersecurity"
+    url: "https://old.reddit.com/r/cybersecurity/top.json?t=day&limit=25"
+    config:
+      subreddit: "cybersecurity"
+      limit: 25
+
+  - name: "r/netsec"
+    url: "https://old.reddit.com/r/netsec/top.json?t=day&limit=25"
+    config:
+      subreddit: "netsec"
+      limit: 25
+
+  - name: "r/artificial"
+    url: "https://old.reddit.com/r/artificial/top.json?t=day&limit=25"
+    config:
+      subreddit: "artificial"
+      limit: 25
+
+  - name: "r/ChatGPT"
+    url: "https://old.reddit.com/r/ChatGPT/top.json?t=day&limit=25"
+    config:
+      subreddit: "ChatGPT"
+      limit: 25
+
+  - name: "r/LocalLLaMA"
+    url: "https://old.reddit.com/r/LocalLLaMA/top.json?t=day&limit=25"
+    config:
+      subreddit: "LocalLLaMA"
+      limit: 25
+
+  - name: "r/Futurology"
+    url: "https://old.reddit.com/r/Futurology/top.json?t=day&limit=25"
+    config:
+      subreddit: "Futurology"
+      limit: 25
+
+  - name: "r/homelab"
+    url: "https://old.reddit.com/r/homelab/top.json?t=day&limit=25"
+    config:
+      subreddit: "homelab"
+      limit: 25
+
+  - name: "r/linux"
+    url: "https://old.reddit.com/r/linux/top.json?t=day&limit=25"
+    config:
+      subreddit: "linux"
+      limit: 25
+
+  - name: "r/rust"
+    url: "https://old.reddit.com/r/rust/top.json?t=day&limit=25"
+    config:
+      subreddit: "rust"
+      limit: 25
+
 youtube:
   - name: "Fireship"
     url: "UCsBjURrPoezykLs9EqgamOA"
@@ -241,4 +523,40 @@ youtube:
     url: "UC8ENHE5xdFSwx71u3fDHX_w"
     config:
       channel_id: "UC8ENHE5xdFSwx71u3fDHX_w"
+      max_videos: 5
+
+  - name: "Lex Fridman"
+    url: "UCSHZKyawb77ixDdsGog4iWA"
+    config:
+      channel_id: "UCSHZKyawb77ixDdsGog4iWA"
+      max_videos: 3
+
+  - name: "Two Minute Papers"
+    url: "UCbfYPyITQ-7l4upoX8nvctg"
+    config:
+      channel_id: "UCbfYPyITQ-7l4upoX8nvctg"
+      max_videos: 5
+
+  - name: "Computerphile"
+    url: "UC9-y-6csu5WGm29I7JiwpnA"
+    config:
+      channel_id: "UC9-y-6csu5WGm29I7JiwpnA"
+      max_videos: 5
+
+  - name: "3Blue1Brown"
+    url: "UCYO_jab_esuFRV4b17AJtAw"
+    config:
+      channel_id: "UCYO_jab_esuFRV4b17AJtAw"
+      max_videos: 3
+
+  - name: "NetworkChuck"
+    url: "UC9x0AN7BWHpCDHSm9NiJFJQ"
+    config:
+      channel_id: "UC9x0AN7BWHpCDHSm9NiJFJQ"
+      max_videos: 5
+
+  - name: "Theo - t3.gg"
+    url: "UCbRP3c757lWg9M-U7TyEkXA"
+    config:
+      channel_id: "UCbRP3c757lWg9M-U7TyEkXA"
       max_videos: 5

@@ -1,0 +1,324 @@
+{% extends "base.html" %}
+{% block title %}EDGE — Admin{% endblock %}
+
+{% block content %}
+<div id="admin-auth-check" style="max-width:420px;margin:4rem auto;text-align:center;">
+  <p style="color:var(--fg-dim);">Redirection en cours...</p>
+</div>
+
+<div id="admin-panel" style="display:none;">
+  <!-- Header -->
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.8rem;">
+    <h1 style="font-size:1.3rem;font-weight:700;">⚙️ Panel Admin</h1>
+    <div style="display:flex;gap:0.5rem;align-items:center;">
+      <span id="admin-user-display" style="font-size:0.82rem;color:var(--fg-dim);"></span>
+      <button onclick="doAdminLogout()" style="padding:0.3rem 0.8rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg-dim);cursor:pointer;font-size:0.8rem;">Déconnexion</button>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div style="display:flex;gap:0.3rem;margin-bottom:1.5rem;border-bottom:1px solid var(--border);padding-bottom:0;flex-wrap:wrap;">
+    <button class="admin-tab active" onclick="switchTab('kpi')" id="tab-kpi" style="padding:0.5rem 1rem;background:var(--accent);color:#fff;border:none;border-radius:var(--radius) var(--radius) 0 0;cursor:pointer;font-size:0.85rem;font-weight:600;">📊 KPI</button>
+    <button class="admin-tab" onclick="switchTab('sources')" id="tab-sources" style="padding:0.5rem 1rem;background:var(--bg-card);color:var(--fg-dim);border:1px solid var(--border);border-bottom:none;border-radius:var(--radius) var(--radius) 0 0;cursor:pointer;font-size:0.85rem;font-weight:600;">📡 Sources</button>
+    <button class="admin-tab" onclick="switchTab('users')" id="tab-users" style="padding:0.5rem 1rem;background:var(--bg-card);color:var(--fg-dim);border:1px solid var(--border);border-bottom:none;border-radius:var(--radius) var(--radius) 0 0;cursor:pointer;font-size:0.85rem;font-weight:600;">👥 Utilisateurs</button>
+  </div>
+
+  <!-- ===== KPI TAB ===== -->
+  <div id="tab-content-kpi" class="admin-tab-content">
+    <div id="kpi-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2rem;">
+      <!-- Filled by JS -->
+    </div>
+
+    <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--fg-dim);">📈 Top Tags</h2>
+    <div id="kpi-tags" style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:2rem;"></div>
+
+    <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--fg-dim);">📰 Derniers articles</h2>
+    <div id="kpi-articles"></div>
+  </div>
+
+  <!-- ===== SOURCES TAB ===== -->
+  <div id="tab-content-sources" class="admin-tab-content" style="display:none;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem;">
+      <h2 style="font-size:1rem;font-weight:700;color:var(--fg-dim);">📡 Sources RSS</h2>
+      <button onclick="showAddSourceForm()" style="padding:0.4rem 1rem;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-size:0.85rem;font-weight:600;">+ Ajouter</button>
+    </div>
+
+    <!-- Add source form -->
+    <div id="add-source-form" style="display:none;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;margin-bottom:1.5rem;">
+      <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:1rem;">Nouvelle source</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:0.8rem;">
+        <div>
+          <label style="display:block;font-size:0.78rem;color:var(--fg-dim);margin-bottom:0.2rem;">Nom</label>
+          <input type="text" id="src-name" placeholder="Ex: TechCrunch" style="width:100%;padding:0.5rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--fg);font-size:0.85rem;">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.78rem;color:var(--fg-dim);margin-bottom:0.2rem;">URL RSS</label>
+          <input type="url" id="src-url" placeholder="https://..." style="width:100%;padding:0.5rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--fg);font-size:0.85rem;">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:0.78rem;color:var(--fg-dim);margin-bottom:0.2rem;">Catégorie</label>
+          <select id="src-category" style="width:100%;padding:0.5rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--fg);font-size:0.85rem;">
+            <option value="tech">Tech</option>
+            <option value="ai">AI / ML</option>
+            <option value="cyber">Cybersécurité</option>
+            <option value="cloud">Cloud / DevOps</option>
+            <option value="dev">Dev / Open Source</option>
+            <option value="hardware">Hardware</option>
+            <option value="startup">Startup / Business</option>
+            <option value="science">Science / Deep Tech</option>
+            <option value="fr">Français</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:0.78rem;color:var(--fg-dim);margin-bottom:0.2rem;">Max articles</label>
+          <input type="number" id="src-max" value="15" min="1" max="50" style="width:100%;padding:0.5rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--fg);font-size:0.85rem;">
+        </div>
+        <div style="display:flex;align-items:flex-end;">
+          <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;cursor:pointer;">
+            <input type="checkbox" id="src-active" checked> Active
+          </label>
+        </div>
+      </div>
+      <div style="display:flex;gap:0.5rem;">
+        <button onclick="addSource()" style="padding:0.4rem 1.2rem;background:var(--green);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-size:0.85rem;font-weight:600;">✓ Sauvegarder</button>
+        <button onclick="hideAddSourceForm()" style="padding:0.4rem 1.2rem;background:var(--bg);color:var(--fg-dim);border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;font-size:0.85rem;">Annuler</button>
+      </div>
+    </div>
+
+    <!-- Sources list -->
+    <div id="sources-list"></div>
+  </div>
+
+  <!-- ===== USERS TAB ===== -->
+  <div id="tab-content-users" class="admin-tab-content" style="display:none;">
+    <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--fg-dim);">👥 Utilisateurs enregistrés</h2>
+    <div id="users-list"></div>
+  </div>
+</div>
+
+<script>
+// ===== Auth check =====
+var SESSION_KEY = 'edge_session';
+var session = null;
+try { session = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); } catch(e) {}
+
+if (!session || !session.token) {
+  document.getElementById('admin-auth-check').innerHTML = '<p style="color:var(--fg-dim);margin-bottom:1rem;">Accès réservé aux administrateurs.</p><a href="{{ site_url }}/login.html" style="color:var(--accent);">Se connecter</a>';
+} else {
+  document.getElementById('admin-auth-check').style.display = 'none';
+  document.getElementById('admin-panel').style.display = 'block';
+  document.getElementById('admin-user-display').textContent = session.display_name + ' (' + session.role + ')';
+  loadKPI();
+}
+
+function doAdminLogout() {
+  localStorage.removeItem(SESSION_KEY);
+  window.location.href = '{{ site_url }}/login.html';
+}
+
+// ===== Tabs =====
+function switchTab(name) {
+  document.querySelectorAll('.admin-tab-content').forEach(function(el){ el.style.display = 'none'; });
+  document.querySelectorAll('.admin-tab').forEach(function(el){
+    el.style.background = 'var(--bg-card)';
+    el.style.color = 'var(--fg-dim)';
+  });
+  document.getElementById('tab-content-' + name).style.display = 'block';
+  var activeTab = document.getElementById('tab-' + name);
+  activeTab.style.background = 'var(--accent)';
+  activeTab.style.color = '#fff';
+
+  if (name === 'kpi') loadKPI();
+  if (name === 'sources') loadSources();
+  if (name === 'users') loadUsers();
+}
+
+// ===== KPI =====
+function loadKPI() {
+  // Count articles from the page
+  var articles = document.querySelectorAll('.article-item');
+  var totalArticles = articles.length;
+
+  // Count tags
+  var tags = {};
+  document.querySelectorAll('.tag').forEach(function(t){
+    var txt = t.textContent.trim();
+    tags[txt] = (tags[txt] || 0) + 1;
+  });
+  var totalTags = Object.keys(tags).length;
+  var sortedTags = Object.entries(tags).sort(function(a,b){ return b[1]-a[1]; }).slice(0, 20);
+
+  // Sources count from sources list
+  var sources = getSources();
+  var activeSources = sources.filter(function(s){ return s.active !== false; }).length;
+
+  // Users
+  var users = getUsers();
+  var totalUsers = Object.keys(users).length;
+
+  // Build KPI cards
+  var kpiHtml = '';
+  var kpis = [
+    { label: 'Articles', value: totalArticles, icon: '📰', color: 'var(--accent)' },
+    { label: 'Tags', value: totalTags, icon: '🏷️', color: 'var(--blue)' },
+    { label: 'Sources actives', value: activeSources, icon: '📡', color: 'var(--green)' },
+    { label: 'Utilisateurs', value: totalUsers, icon: '👥', color: 'var(--yellow)' },
+  ];
+  kpis.forEach(function(k){
+    kpiHtml += '<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;text-align:center;">';
+    kpiHtml += '<div style="font-size:1.5rem;margin-bottom:0.3rem;">' + k.icon + '</div>';
+    kpiHtml += '<div style="font-size:1.8rem;font-weight:800;color:' + k.color + ';">' + k.value + '</div>';
+    kpiHtml += '<div style="font-size:0.78rem;color:var(--fg-dim);margin-top:0.2rem;">' + k.label + '</div>';
+    kpiHtml += '</div>';
+  });
+  document.getElementById('kpi-grid').innerHTML = kpiHtml;
+
+  // Tags cloud
+  var tagsHtml = '';
+  sortedTags.forEach(function(t){
+    var size = Math.max(0.7, Math.min(1.4, 0.7 + t[1] * 0.1));
+    tagsHtml += '<span class="tag" style="font-size:' + size + 'rem;">' + t[0] + ' (' + t[1] + ')</span>';
+  });
+  document.getElementById('kpi-tags').innerHTML = tagsHtml || '<span style="color:var(--fg-muted);font-size:0.85rem;">Aucun tag</span>';
+}
+
+// ===== Sources management =====
+var SOURCES_KEY = 'edge_sources';
+
+function getSources() {
+  try { return JSON.parse(localStorage.getItem(SOURCES_KEY) || '[]'); } catch(e) { return []; }
+}
+function saveSources(s) { localStorage.setItem(SOURCES_KEY, JSON.stringify(s)); }
+
+function loadSources() {
+  var sources = getSources();
+  if (sources.length === 0) {
+    // Initialize from built-in list
+    sources = getBuiltinSources();
+    saveSources(sources);
+  }
+
+  var html = '<div style="display:grid;gap:0.6rem;">';
+  sources.forEach(function(s, i){
+    var statusColor = s.active !== false ? 'var(--green)' : '#f44336';
+    var statusIcon = s.active !== false ? '●' : '○';
+    html += '<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:0.8rem 1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">';
+    html += '<div>';
+    html += '<div style="font-weight:600;font-size:0.9rem;"><span style="color:' + statusColor + ';">' + statusIcon + '</span> ' + s.name + '</div>';
+    html += '<div style="font-size:0.75rem;color:var(--fg-dim);margin-top:0.2rem;">' + s.url + '</div>';
+    html += '<div style="font-size:0.72rem;color:var(--fg-muted);margin-top:0.2rem;">' + (s.category || 'tech') + ' · max: ' + (s.max_items || 15) + '</div>';
+    html += '</div>';
+    html += '<div style="display:flex;gap:0.3rem;">';
+    html += '<button onclick="toggleSource(' + i + ')" style="padding:0.25rem 0.6rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg-dim);cursor:pointer;font-size:0.75rem;">' + (s.active !== false ? 'Désactiver' : 'Activer') + '</button>';
+    html += '<button onclick="deleteSource(' + i + ')" style="padding:0.25rem 0.6rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:#f44336;cursor:pointer;font-size:0.75rem;">✕</button>';
+    html += '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  document.getElementById('sources-list').innerHTML = html;
+}
+
+function getBuiltinSources() {
+  return [
+    { name: "Hacker News", url: "https://hnrss.org/frontpage?count=30", category: "tech", max_items: 30, active: true },
+    { name: "Ars Technica", url: "https://feeds.arstechnica.com/arstechnica/index", category: "tech", max_items: 20, active: true },
+    { name: "The Verge", url: "https://www.theverge.com/rss/index.xml", category: "tech", max_items: 20, active: true },
+    { name: "TechCrunch", url: "https://techcrunch.com/feed/", category: "tech", max_items: 20, active: true },
+    { name: "Wired", url: "https://www.wired.com/feed/rss", category: "tech", max_items: 20, active: true },
+    { name: "Lobsters", url: "https://lobste.rs/rss", category: "dev", max_items: 30, active: true },
+    { name: "Slashdot", url: "https://rss.slashdot.org/Slashdot/slashdotMain", category: "tech", max_items: 20, active: true },
+    { name: "MIT Technology Review", url: "https://www.technologyreview.com/feed/", category: "science", max_items: 15, active: true },
+    { name: "The Register", url: "https://www.theregister.com/headlines.atom", category: "tech", max_items: 20, active: true },
+    { name: "Dev.to", url: "https://dev.to/feed", category: "dev", max_items: 30, active: true },
+    { name: "DeepMind Blog", url: "https://deepmind.google/discover/blog/rss.xml", category: "ai", max_items: 10, active: true },
+    { name: "Anthropic Blog", url: "https://www.anthropic.com/rss.xml", category: "ai", max_items: 10, active: true },
+    { name: "OpenAI Blog", url: "https://openai.com/blog/rss.xml", category: "ai", max_items: 10, active: true },
+    { name: "Google AI Blog", url: "https://blog.google/technology/ai/rss/", category: "ai", max_items: 10, active: true },
+    { name: "Hugging Face Blog", url: "https://huggingface.co/blog/feed.xml", category: "ai", max_items: 10, active: true },
+    { name: "BleepingComputer", url: "https://www.bleepingcomputer.com/feed/", category: "cyber", max_items: 15, active: true },
+    { name: "The Hacker News", url: "https://feeds.feedburner.com/TheHackersNews", category: "cyber", max_items: 15, active: true },
+    { name: "Cloudflare Blog", url: "https://blog.cloudflare.com/rss/", category: "cloud", max_items: 10, active: true },
+    { name: "AWS News Blog", url: "https://aws.amazon.com/blogs/aws/feed/", category: "cloud", max_items: 10, active: true },
+    { name: "Google Cloud Blog", url: "https://cloud.google.com/blog/rss", category: "cloud", max_items: 10, active: true },
+    { name: "Phoronix", url: "https://www.phoronix.com/rss.php", category: "hardware", max_items: 20, active: true },
+    { name: "AnandTech", url: "https://www.anandtech.com/rss/", category: "hardware", max_items: 15, active: true },
+    { name: "Product Hunt", url: "https://www.producthunt.com/feed", category: "startup", max_items: 15, active: true },
+    { name: "IEEE Spectrum", url: "https://spectrum.ieee.org/feeds/feed.rss", category: "science", max_items: 15, active: true },
+    { name: "Le Monde Informatique", url: "https://www.lemondeinformatique.fr/rss/rss.xml", category: "fr", max_items: 15, active: true },
+    { name: "Journal du Net", url: "https://www.journaldunet.com/rss/", category: "fr", max_items: 15, active: true },
+    { name: "Numerama", url: "https://www.numerama.com/feed/", category: "fr", max_items: 15, active: true },
+    { name: "01Net", url: "https://www.01net.com/feed/", category: "fr", max_items: 15, active: true },
+    { name: "Clubic", url: "https://www.clubic.com/feed/rss.xml", category: "fr", max_items: 15, active: true },
+  ];
+}
+
+function showAddSourceForm() { document.getElementById('add-source-form').style.display = 'block'; }
+function hideAddSourceForm() { document.getElementById('add-source-form').style.display = 'none'; }
+
+function addSource() {
+  var name = document.getElementById('src-name').value.trim();
+  var url = document.getElementById('src-url').value.trim();
+  var category = document.getElementById('src-category').value;
+  var maxItems = parseInt(document.getElementById('src-max').value) || 15;
+  var active = document.getElementById('src-active').checked;
+
+  if (!name || !url) { alert('Nom et URL requis'); return; }
+
+  var sources = getSources();
+  sources.push({ name: name, url: url, category: category, max_items: maxItems, active: active });
+  saveSources(sources);
+  hideAddSourceForm();
+  loadSources();
+  // Clear form
+  document.getElementById('src-name').value = '';
+  document.getElementById('src-url').value = '';
+}
+
+function toggleSource(i) {
+  var sources = getSources();
+  if (sources[i]) {
+    sources[i].active = sources[i].active === false ? true : false;
+    saveSources(sources);
+    loadSources();
+  }
+}
+
+function deleteSource(i) {
+  if (!confirm('Supprimer cette source ?')) return;
+  var sources = getSources();
+  sources.splice(i, 1);
+  saveSources(sources);
+  loadSources();
+}
+
+// ===== Users =====
+var DB_KEY = 'edge_users';
+
+function getUsers() {
+  try { return JSON.parse(localStorage.getItem(DB_KEY) || '{}'); } catch(e) { return {}; }
+}
+
+function loadUsers() {
+  var users = getUsers();
+  var emails = Object.keys(users);
+  if (emails.length === 0) {
+    document.getElementById('users-list').innerHTML = '<p style="color:var(--fg-muted);font-size:0.85rem;">Aucun utilisateur inscrit.</p>';
+    return;
+  }
+  var html = '<div style="display:grid;gap:0.5rem;">';
+  emails.forEach(function(email){
+    var u = users[email];
+    html += '<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:0.8rem 1rem;display:flex;justify-content:space-between;align-items:center;">';
+    html += '<div>';
+    html += '<div style="font-weight:600;">' + u.display_name + ' <span style="font-size:0.75rem;color:var(--fg-muted);font-weight:400;">' + email + '</span></div>';
+    html += '<div style="font-size:0.75rem;color:var(--fg-dim);">Rôle: <strong>' + (u.role || 'user') + '</strong> · Inscrit: ' + (u.created_at ? u.created_at.substring(0,10) : '?') + '</div>';
+    html += '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  document.getElementById('users-list').innerHTML = html;
+}
+</script>
+{% endblock %}

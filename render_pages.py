@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Render special pages (login, register, newsletter) with Jinja2 templates.
-These pages need site_url and api_base to work correctly on GitHub Pages.
+Render special pages (login, register, newsletter, admin) with Jinja2 templates.
+These pages need site_url to work correctly on GitHub Pages.
 """
 import os, sys
 from pathlib import Path
@@ -9,7 +9,6 @@ from jinja2 import Environment, FileSystemLoader
 
 # Configuration
 SITE_URL = os.environ.get('EDGE_SITE_URL', 'https://romdmc.github.io/edge')
-API_BASE = os.environ.get('EDGE_API_BASE', 'http://72.60.187.136:8081')
 TEMPLATES_DIR = Path(__file__).parent / 'templates'
 OUTPUT_DIR = Path(sys.argv[1]) if len(sys.argv) > 1 else Path('output')
 
@@ -27,6 +26,7 @@ TRANSLATIONS = {
         'password_label': 'Mot de passe', 'password_confirm_label': 'Confirmer le mot de passe',
         'register_btn': "S'inscrire", 'register_success': 'Inscription réussie !',
         'register_error': 'Erreur', 'register_has_account': 'Déjà un compte',
+        'password_mismatch': 'Les mots de passe ne correspondent pas.',
         'newsletter_subscribe': 'Newsletter', 'newsletter_email_placeholder': 'votre@email.com',
         'newsletter_subscribe_btn': "S'abonner", 'newsletter_success': 'Merci pour votre inscription !',
         'newsletter_error': 'Erreur. Veuillez réessayer.', 'newsletter_unsubscribe': 'Désinscription',
@@ -46,6 +46,7 @@ TRANSLATIONS = {
         'password_label': 'Password', 'password_confirm_label': 'Confirm password',
         'register_btn': 'Sign up', 'register_success': 'Registered!',
         'register_error': 'Error', 'register_has_account': 'Already have an account',
+        'password_mismatch': 'Passwords do not match.',
         'newsletter_subscribe': 'Newsletter', 'newsletter_email_placeholder': 'your@email.com',
         'newsletter_subscribe_btn': 'Subscribe', 'newsletter_success': 'Thanks for subscribing!',
         'newsletter_error': 'Error. Please try again.', 'newsletter_unsubscribe': 'Unsubscribe',
@@ -61,7 +62,7 @@ def t(key, lang='fr', **kw):
 # Jinja2 env
 env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
 env.globals['site_url'] = SITE_URL
-env.globals['api_base'] = API_BASE
+env.globals['api_base'] = ''  # No backend on GitHub Pages
 env.globals['t'] = t
 env.globals['lang'] = 'fr'
 env.globals['active_page'] = ''
@@ -71,6 +72,7 @@ env.globals['generated_at'] = ''
 PAGES = [
     ('login.html', 'login.html', {'active_page': 'login'}),
     ('register.html', 'register.html', {'active_page': 'register'}),
+    ('admin.html', 'admin.html', {'active_page': 'admin'}),
     ('newsletter_subscribe.html', 'newsletter_subscribe.html', {'active_page': 'newsletter'}),
     ('newsletter_unsubscribe.html', 'newsletter_unsubscribe.html', {'active_page': 'newsletter'}),
 ]

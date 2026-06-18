@@ -761,56 +761,80 @@
   </footer>
 
   <script>
-    async function handleNewsletterSubscribe(e) {
+    // ===== Newsletter (localStorage on static site) =====
+    function handleNewsletterSubscribe(e) {
       e.preventDefault();
       var email = document.getElementById('newsletter-email').value.trim();
       var btn = document.getElementById('newsletter-btn');
       var msg = document.getElementById('newsletter-msg');
       btn.disabled = true;
       msg.style.display = 'none';
-      try {
-        var res = await fetch('{{ api_base }}/api/newsletter/subscribe', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({email: email})
-        });
-        var data = await res.json();
-        if (res.ok) {
-          msg.textContent = '{{ t('newsletter_success') }}';
-          msg.style.color = '#4caf50';
-          msg.style.display = 'block';
-          document.getElementById('newsletter-form').reset();
-        } else {
-          msg.textContent = (data && data.error) || '{{ t('newsletter_error') }}';
-          msg.style.color = '#f44336';
-          msg.style.display = 'block';
-        }
-      } catch (err) {
-        msg.textContent = '{{ t('newsletter_error') }}';
-        msg.style.color = '#f44336';
+
+      // Store in localStorage
+      var subs = JSON.parse(localStorage.getItem('edge_newsletter') || '[]');
+      if (subs.indexOf(email) >= 0) {
+        msg.textContent = 'Déjà inscrit !';
+        msg.style.color = 'var(--yellow)';
         msg.style.display = 'block';
-      } finally {
         btn.disabled = false;
+        return false;
       }
+      subs.push(email);
+      localStorage.setItem('edge_newsletter', JSON.stringify(subs));
+
+      msg.textContent = 'Merci pour votre inscription !';
+      msg.style.color = '#4caf50';
+      msg.style.display = 'block';
+      document.getElementById('newsletter-form').reset();
+      btn.disabled = false;
       return false;
     }
   </script>
 
   <script>
+    // ===== Auth nav (localStorage) =====
+    function updateAuthNav() {
+      var session = null;
+      try { session = JSON.parse(localStorage.getItem('edge_session') || 'null'); } catch(e) {}
+      var loginLink  = document.getElementById('auth-login-link');
+      var registerLink = document.getElementById('auth-register-link');
+      var logoutLink = document.getElementById('auth-logout-link');
+      var userName   = document.getElementById('auth-user-name');
+      var sep        = document.querySelector('.auth-nav-sep');
+      if (session && session.token) {
+        if (loginLink)  loginLink.style.display = 'none';
+        if (registerLink) registerLink.style.display = 'none';
+        if (sep) sep.style.display = 'none';
+        if (userName) { userName.textContent = session.display_name || session.email; userName.style.display = ''; }
+        if (logoutLink) { logoutLink.style.display = ''; }
+      } else {
+        if (loginLink)  loginLink.style.display = '';
+        if (registerLink) registerLink.style.display = '';
+        if (sep) sep.style.display = '';
+        if (userName) { userName.style.display = 'none'; }
+        if (logoutLink) { logoutLink.style.display = 'none'; }
+      }
+    }
+    function doLogout() {
+      localStorage.removeItem('edge_session');
+      window.location.href = '{{ site_url }}/';
+    }
+
+    // ===== Theme toggle =====
     function toggleTheme() {
-      const html = document.documentElement;
-      const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+      var html = document.documentElement;
+      var next = html.dataset.theme === 'dark' ? 'light' : 'dark';
       html.dataset.theme = next;
       localStorage.setItem('edge-theme', next);
       document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
     }
-    // Restore saved theme
-    const saved = localStorage.getItem('edge-theme');
-    if (saved) {
-      document.documentElement.dataset.theme = saved;
-      document.querySelector('.theme-toggle').textContent = saved === 'dark' ? '☀️' : '🌙';
+    var savedTheme = localStorage.getItem('edge-theme');
+    if (savedTheme) {
+      document.documentElement.dataset.theme = savedTheme;
+      document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
     }
-    // Language switcher: set cookie and reload
+
+    // ===== Language switcher =====
     document.querySelectorAll('.lang-switcher a').forEach(function(a) {
       a.addEventListener('click', function(e) {
         var lang = this.getAttribute('href').replace('?lang=', '');
@@ -822,53 +846,7 @@
         }
       });
     });
-    // Search: redirect to search.html with query param
-    function doSearch() {
-      var q = document.getElementById('search-input').value.trim();
-      if (q) {
-        window.location.href = '/search.html?q=' + encodeURIComponent(q);
-      }
-    }
 
-    // ===== Auth nav =====
-    function updateAuthNav() {
-      var token = localStorage.getItem('edge_token');
-      var userStr = localStorage.getItem('edge_user');
-      var loginLink  = document.getElementById('auth-login-link');
-      var registerLink = document.getElementById('auth-register-link');
-      var logoutLink = document.getElementById('auth-logout-link');
-      var userName   = document.getElementById('auth-user-name');
-      var sep        = document.querySelector('.auth-nav-sep');
-      if (token && userStr) {
-        try {
-          var user = JSON.parse(userStr);
-          if (loginLink)  loginLink.style.display = 'none';
-          if (registerLink) registerLink.style.display = 'none';
-          if (sep) sep.style.display = 'none';
-          if (userName) { userName.textContent = user.display_name || user.email; userName.style.display = ''; }
-          if (logoutLink) { logoutLink.style.display = ''; }
-        } catch(e) {}
-      } else {
-        if (loginLink)  loginLink.style.display = '';
-        if (registerLink) registerLink.style.display = '';
-        if (sep) sep.style.display = '';
-        if (userName) { userName.style.display = 'none'; }
-        if (logoutLink) { logoutLink.style.display = 'none'; }
-      }
-    }
-    function doLogout() {
-      var token = localStorage.getItem('edge_token');
-      if (token) {
-        fetch('{{ api_base }}/api/auth/logout', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({token: token})
-        }).catch(function(){});
-      }
-      localStorage.removeItem('edge_token');
-      localStorage.removeItem('edge_user');
-      window.location.href = '/';
-    }
     // Run on every page load
     updateAuthNav();
   </script>

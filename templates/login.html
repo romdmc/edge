@@ -34,11 +34,32 @@
   </form>
 
   <p style="margin-top:1.2rem;text-align:center;font-size:0.85rem;color:var(--fg-dim);">
-    {{ t('nav_register') }} ? <a href="{{ site_url }}/register.html">{{ t('register_btn') }}</a>
+    {{ t('login_no_account') }} ? <a href="{{ site_url }}/register.html">{{ t('register_btn') }}</a>
   </p>
 </div>
 
 <script>
+// ===== Local Auth System (localStorage + SHA-256) =====
+var DB_KEY = 'edge_users';
+var SESSION_KEY = 'edge_session';
+
+function getUsers() {
+  try { return JSON.parse(localStorage.getItem(DB_KEY) || '{}'); } catch(e) { return {}; }
+}
+function saveUsers(u) { localStorage.setItem(DB_KEY, JSON.stringify(u)); }
+
+async function hashPassword(password, salt) {
+  var data = new TextEncoder().encode(salt + password);
+  var hash = await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(hash)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+}
+
+function genSalt() {
+  var arr = new Uint8Array(16);
+  crypto.getRandomValues(arr);
+  return Array.from(arr).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+}
+
 function showAuthMessage(msg, isError) {
   var el = document.getElementById('auth-message');
   el.textContent = msg;
@@ -47,27 +68,36 @@ function showAuthMessage(msg, isError) {
   el.style.color = isError ? '#f44336' : 'var(--green)';
   el.style.border = '1px solid ' + (isError ? 'rgba(244,67,54,.3)' : 'rgba(76,175,80,.3)');
 }
-function doLogin(e) {
+
+async function doLogin(e) {
   e.preventDefault();
-  var email = document.getElementById('email').value.trim();
+  var email = document.getElementById('email').value.trim().toLowerCase();
   var password = document.getElementById('password').value;
-  fetch('{{ api_base }}/api/auth/login', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({email: email, password: password})
-  })
-  .then(function(r) { return r.json().then(function(d) {return {ok:r.ok,status:r.status,data:d};}); })
-  .then(function(r) {
-    if (r.ok) {
-      localStorage.setItem('edge_token', r.data.token);
-      localStorage.setItem('edge_user', JSON.stringify(r.data.user));
-      showAuthMessage({{ t('login_success')|tojson }}, false);
-      setTimeout(function(){ window.location.href = '/'; }, 800);
-    } else {
-      showAuthMessage(r.data.error || {{ t('login_error')|tojson }}, true);
-    }
-  })
-  .catch(function(){ showAuthMessage({{ t('login_error')|tojson }}, true); });
+  var users = getUsers();
+
+  if (!users[email]) {
+    showAuthMessage('Email non enregistré. Inscrivez-vous d\'abord.', true);
+    return false;
+  }
+
+  var h = await hashPassword(password, users[email].salt);
+  if (h !== users[email].hash) {
+    showAuthMessage('Mot de passe incorrect.', true);
+    return false;
+  }
+
+  // Create session
+  var token = genSalt();
+  localStorage.setItem(SESSION_KEY, JSON.stringify({
+    token: token,
+    email: email,
+    display_name: users[email].display_name,
+    role: users[email].role || 'user',
+    login_at: new Date().toISOString()
+  }));
+
+  showAuthMessage('Connexion réussie ! Redirection...', false);
+  setTimeout(function(){ window.location.href = '{{ site_url }}/admin.html'; }, 800);
   return false;
 }
 </script>

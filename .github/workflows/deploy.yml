@@ -79,8 +79,6 @@ jobs:
           " || echo "WARNING: Trends step failed (non-fatal)"
 
       - name: Generate FR site
-        env:
-          EDGE_API_BASE: "http://72.60.187.136:8081"
         run: |
           python3 -c "
           from generator import generate_site
@@ -90,8 +88,6 @@ jobs:
           "
 
       - name: Generate EN site
-        env:
-          EDGE_API_BASE: "http://72.60.187.136:8081"
         run: |
           python3 -c "
           from generator import generate_site
@@ -101,6 +97,8 @@ jobs:
           "
 
       - name: Prepare GitHub Pages artifact
+        env:
+          EDGE_SITE_URL: "https://romdmc.github.io/edge"
         run: |
           mkdir -p _site
           # Copy FR site (root)
@@ -108,9 +106,9 @@ jobs:
           # Copy EN site (subfolder)
           cp -r output/en/. _site/en/
           # Copy static assets
-          cp -r static/. _site/static/
-          cp -r static/. _site/en/static/
-          # Copy templates (login, register, newsletter) — render with Jinja2
+          cp -r static/. _site/static/ 2>/dev/null || true
+          cp -r static/. _site/en/static/ 2>/dev/null || true
+          # Render special pages (login, register, admin, newsletter) with Jinja2
           python3 render_pages.py _site
           # .nojekyll to disable Jekyll processing
           touch _site/.nojekyll

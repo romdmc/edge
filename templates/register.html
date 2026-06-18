@@ -50,11 +50,31 @@
   </form>
 
   <p style="margin-top:1.2rem;text-align:center;font-size:0.85rem;color:var(--fg-dim);">
-    {{ t('nav_login') }} ? <a href="{{ site_url }}/login.html">{{ t('login_btn') }}</a>
+    {{ t('register_has_account') }} ? <a href="{{ site_url }}/login.html">{{ t('login_btn') }}</a>
   </p>
 </div>
 
 <script>
+// ===== Local Auth System (localStorage + SHA-256) =====
+var DB_KEY = 'edge_users';
+
+function getUsers() {
+  try { return JSON.parse(localStorage.getItem(DB_KEY) || '{}'); } catch(e) { return {}; }
+}
+function saveUsers(u) { localStorage.setItem(DB_KEY, JSON.stringify(u)); }
+
+async function hashPassword(password, salt) {
+  var data = new TextEncoder().encode(salt + password);
+  var hash = await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(hash)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+}
+
+function genSalt() {
+  var arr = new Uint8Array(16);
+  crypto.getRandomValues(arr);
+  return Array.from(arr).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+}
+
 function showAuthMessage(msg, isError) {
   var el = document.getElementById('auth-message');
   el.textContent = msg;
@@ -63,33 +83,45 @@ function showAuthMessage(msg, isError) {
   el.style.color = isError ? '#f44336' : 'var(--green)';
   el.style.border = '1px solid ' + (isError ? 'rgba(244,67,54,.3)' : 'rgba(76,175,80,.3)');
 }
-function doRegister(e) {
+
+async function doRegister(e) {
   e.preventDefault();
   var displayName = document.getElementById('display_name').value.trim();
-  var email = document.getElementById('email').value.trim();
+  var email = document.getElementById('email').value.trim().toLowerCase();
   var password = document.getElementById('password').value;
   var passwordConfirm = document.getElementById('password_confirm').value;
 
   if (password !== passwordConfirm) {
-    showAuthMessage({{ t('password_mismatch')|tojson }}, true);
+    showAuthMessage('Les mots de passe ne correspondent pas.', true);
+    return false;
+  }
+  if (password.length < 6) {
+    showAuthMessage('Le mot de passe doit faire au moins 6 caractères.', true);
     return false;
   }
 
-  fetch('{{ api_base }}/api/auth/register', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({email: email, password: password, display_name: displayName})
-  })
-  .then(function(r) { return r.json().then(function(d) {return {ok:r.ok,status:r.status,data:d};}); })
-  .then(function(r) {
-    if (r.ok) {
-      showAuthMessage({{ t('register_success')|tojson }}, false);
-      setTimeout(function(){ window.location.href = '/login.html'; }, 1200);
-    } else {
-      showAuthMessage(r.data.error || {{ t('register_error')|tojson }}, true);
-    }
-  })
-  .catch(function(){ showAuthMessage({{ t('register_error')|tojson }}, true); });
+  var users = getUsers();
+  if (users[email]) {
+    showAuthMessage('Un compte avec cet email existe déjà.', true);
+    return false;
+  }
+
+  var salt = genSalt();
+  var hash = await hashPassword(password, salt);
+  var isFirst = Object.keys(users).length === 0;
+
+  users[email] = {
+    display_name: displayName,
+    email: email,
+    salt: salt,
+    hash: hash,
+    role: isFirst ? 'admin' : 'user',
+    created_at: new Date().toISOString()
+  };
+  saveUsers(users);
+
+  showAuthMessage('Inscription réussie ! Redirection...', false);
+  setTimeout(function(){ window.location.href = '{{ site_url }}/login.html'; }, 1200);
   return false;
 }
 </script>

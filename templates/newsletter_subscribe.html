@@ -126,7 +126,7 @@
   </div>
 
   <script>
-    async function handleSubscribe(e) {
+    function handleSubscribe(e) {
       e.preventDefault();
       var email = document.getElementById('email').value.trim();
       var btn = document.getElementById('submit-btn');
@@ -134,27 +134,22 @@
       btn.disabled = true;
       msg.className = 'msg';
       msg.style.display = 'none';
-      try {
-        var res = await fetch('{{ api_base }}/api/newsletter/subscribe', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({email: email})
-        });
-        var data = await res.json();
-        if (res.ok) {
-          msg.textContent = 'Merci ! Vous recevrez notre digest hebdomadaire.';
-          msg.className = 'msg success';
-          document.getElementById('newsletter-form').reset();
-        } else {
-          msg.textContent = (data && data.error) || 'Erreur. Vérifiez votre email.';
-          msg.className = 'msg error';
-        }
-      } catch (err) {
-        msg.textContent = 'Erreur de connexion. Réessayez.';
-        msg.className = 'msg error';
-      } finally {
+
+      // Store in localStorage
+      var subs = JSON.parse(localStorage.getItem('edge_newsletter') || '[]');
+      if (subs.indexOf(email) >= 0) {
+        msg.textContent = 'Vous êtes déjà inscrit !';
+        msg.className = 'msg success';
         btn.disabled = false;
+        return false;
       }
+      subs.push(email);
+      localStorage.setItem('edge_newsletter', JSON.stringify(subs));
+
+      msg.textContent = 'Merci ! Vous recevrez notre digest hebdomadaire.';
+      msg.className = 'msg success';
+      document.getElementById('newsletter-form').reset();
+      btn.disabled = false;
       return false;
     }
   </script>
