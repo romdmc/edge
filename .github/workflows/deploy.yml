@@ -72,10 +72,11 @@ jobs:
       - name: Detect trends
         run: |
           python3 -c "
+          from pathlib import Path
           from trends import run_trends
-          report = run_trends(db_path='data/edge.db', output_dir='data', min_score=5.0)
+          report = run_trends(db_path=Path('data/edge.db'), output_dir=Path('output'), min_score=5.0)
           print(f'Trends: {len(report.top_trends)} top, {len(report.emerging)} emerging')
-          " || echo "⚠ Trends step failed (non-fatal)"
+          " || echo "WARNING: Trends step failed (non-fatal)"
 
       - name: Generate FR site
         env:
