@@ -737,11 +737,11 @@
       
 <div class="article-header">
   <h1>📡 Sources</h1>
-  <p style="color:var(--fg-dim);font-size:0.9rem;">9 sources actives · 30 articles au total</p>
+  <p style="color:var(--fg-dim);font-size:0.9rem;">11 sources actives · 36 articles au total</p>
 </div>
 
 <div class="stats-bar">
-  <span><strong>9</strong> sources actives</span>
+  <span><strong>11</strong> sources actives</span>
   <span><strong>Score moy.:</strong> 5.9</span>
 </div>
 
@@ -775,6 +775,39 @@
     <span class="tag">coûts infrastructure</span>
     
     <span class="tag">gouvernance cloud</span>
+    
+  </div>
+  
+</div>
+
+<div class="source-card">
+  <div class="source-header">
+    <h2 class="source-name">
+      <a href="/sources/silicon.html">Silicon</a>
+    </h2>
+    <div class="source-stats">
+      <span class="source-count">5 articles</span>
+      <span class="source-avg">Moy.: <strong>5.7</strong></span>
+    </div>
+  </div>
+  
+  <p class="source-latest">
+    Dernier article: <a href="/articles/2258.html">IA : après l’ivresse, le budget</a>
+    <span style="color:var(--fg-muted);font-size:0.78rem;"> · 2026-06-19</span>
+  </p>
+  
+  
+  <div class="source-topics">
+    
+    <span class="tag">transformation IA</span>
+    
+    <span class="tag">souveraineté</span>
+    
+    <span class="tag">efficience publique</span>
+    
+    <span class="tag">virtualisation</span>
+    
+    <span class="tag">datacenter</span>
     
   </div>
   
@@ -996,6 +1029,30 @@
 <div class="source-card">
   <div class="source-header">
     <h2 class="source-name">
+      <a href="/sources/les-num-riques.html">Les Numériques</a>
+    </h2>
+    <div class="source-stats">
+      <span class="source-count">1 articles</span>
+      <span class="source-avg">Moy.: <strong>5.0</strong></span>
+    </div>
+  </div>
+  
+  
+  <div class="source-topics">
+    
+    <span class="tag">IoT</span>
+    
+    <span class="tag">objet connecté</span>
+    
+    <span class="tag">sécurité domestique</span>
+    
+  </div>
+  
+</div>
+
+<div class="source-card">
+  <div class="source-header">
+    <h2 class="source-name">
       <a href="/sources/infoq.html">InfoQ</a>
     </h2>
     <div class="source-stats">
@@ -1028,7 +1085,7 @@
 
   <footer>
     <div class="container">
-      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-06-18 06:30 UTC
+      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-07-09 06:10 UTC
       <br>
       <small style="color:var(--fg-muted);font-size:0.72rem;">
         Projet incubé par <strong>DOMORIA SAS</strong> — SIREN 104 147 467 — 31 Voie Romaine, 31410 Saint-Hilaire, Occitanie, France
@@ -1049,56 +1106,80 @@
   </footer>
 
   <script>
-    async function handleNewsletterSubscribe(e) {
+    // ===== Newsletter (localStorage on static site) =====
+    function handleNewsletterSubscribe(e) {
       e.preventDefault();
       var email = document.getElementById('newsletter-email').value.trim();
       var btn = document.getElementById('newsletter-btn');
       var msg = document.getElementById('newsletter-msg');
       btn.disabled = true;
       msg.style.display = 'none';
-      try {
-        var res = await fetch('http://72.60.187.136:8081/api/newsletter/subscribe', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({email: email})
-        });
-        var data = await res.json();
-        if (res.ok) {
-          msg.textContent = 'Merci ! Vous recevrez notre digest hebdomadaire.';
-          msg.style.color = '#4caf50';
-          msg.style.display = 'block';
-          document.getElementById('newsletter-form').reset();
-        } else {
-          msg.textContent = (data && data.error) || 'Erreur. Vérifiez votre email.';
-          msg.style.color = '#f44336';
-          msg.style.display = 'block';
-        }
-      } catch (err) {
-        msg.textContent = 'Erreur. Vérifiez votre email.';
-        msg.style.color = '#f44336';
+
+      // Store in localStorage
+      var subs = JSON.parse(localStorage.getItem('edge_newsletter') || '[]');
+      if (subs.indexOf(email) >= 0) {
+        msg.textContent = 'Déjà inscrit !';
+        msg.style.color = 'var(--yellow)';
         msg.style.display = 'block';
-      } finally {
         btn.disabled = false;
+        return false;
       }
+      subs.push(email);
+      localStorage.setItem('edge_newsletter', JSON.stringify(subs));
+
+      msg.textContent = 'Merci pour votre inscription !';
+      msg.style.color = '#4caf50';
+      msg.style.display = 'block';
+      document.getElementById('newsletter-form').reset();
+      btn.disabled = false;
       return false;
     }
   </script>
 
   <script>
+    // ===== Auth nav (localStorage) =====
+    function updateAuthNav() {
+      var session = null;
+      try { session = JSON.parse(localStorage.getItem('edge_session') || 'null'); } catch(e) {}
+      var loginLink  = document.getElementById('auth-login-link');
+      var registerLink = document.getElementById('auth-register-link');
+      var logoutLink = document.getElementById('auth-logout-link');
+      var userName   = document.getElementById('auth-user-name');
+      var sep        = document.querySelector('.auth-nav-sep');
+      if (session && session.token) {
+        if (loginLink)  loginLink.style.display = 'none';
+        if (registerLink) registerLink.style.display = 'none';
+        if (sep) sep.style.display = 'none';
+        if (userName) { userName.textContent = session.display_name || session.email; userName.style.display = ''; }
+        if (logoutLink) { logoutLink.style.display = ''; }
+      } else {
+        if (loginLink)  loginLink.style.display = '';
+        if (registerLink) registerLink.style.display = '';
+        if (sep) sep.style.display = '';
+        if (userName) { userName.style.display = 'none'; }
+        if (logoutLink) { logoutLink.style.display = 'none'; }
+      }
+    }
+    function doLogout() {
+      localStorage.removeItem('edge_session');
+      window.location.href = '/';
+    }
+
+    // ===== Theme toggle =====
     function toggleTheme() {
-      const html = document.documentElement;
-      const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+      var html = document.documentElement;
+      var next = html.dataset.theme === 'dark' ? 'light' : 'dark';
       html.dataset.theme = next;
       localStorage.setItem('edge-theme', next);
       document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
     }
-    // Restore saved theme
-    const saved = localStorage.getItem('edge-theme');
-    if (saved) {
-      document.documentElement.dataset.theme = saved;
-      document.querySelector('.theme-toggle').textContent = saved === 'dark' ? '☀️' : '🌙';
+    var savedTheme = localStorage.getItem('edge-theme');
+    if (savedTheme) {
+      document.documentElement.dataset.theme = savedTheme;
+      document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
     }
-    // Language switcher: set cookie and reload
+
+    // ===== Language switcher =====
     document.querySelectorAll('.lang-switcher a').forEach(function(a) {
       a.addEventListener('click', function(e) {
         var lang = this.getAttribute('href').replace('?lang=', '');
@@ -1110,53 +1191,7 @@
         }
       });
     });
-    // Search: redirect to search.html with query param
-    function doSearch() {
-      var q = document.getElementById('search-input').value.trim();
-      if (q) {
-        window.location.href = '/search.html?q=' + encodeURIComponent(q);
-      }
-    }
 
-    // ===== Auth nav =====
-    function updateAuthNav() {
-      var token = localStorage.getItem('edge_token');
-      var userStr = localStorage.getItem('edge_user');
-      var loginLink  = document.getElementById('auth-login-link');
-      var registerLink = document.getElementById('auth-register-link');
-      var logoutLink = document.getElementById('auth-logout-link');
-      var userName   = document.getElementById('auth-user-name');
-      var sep        = document.querySelector('.auth-nav-sep');
-      if (token && userStr) {
-        try {
-          var user = JSON.parse(userStr);
-          if (loginLink)  loginLink.style.display = 'none';
-          if (registerLink) registerLink.style.display = 'none';
-          if (sep) sep.style.display = 'none';
-          if (userName) { userName.textContent = user.display_name || user.email; userName.style.display = ''; }
-          if (logoutLink) { logoutLink.style.display = ''; }
-        } catch(e) {}
-      } else {
-        if (loginLink)  loginLink.style.display = '';
-        if (registerLink) registerLink.style.display = '';
-        if (sep) sep.style.display = '';
-        if (userName) { userName.style.display = 'none'; }
-        if (logoutLink) { logoutLink.style.display = 'none'; }
-      }
-    }
-    function doLogout() {
-      var token = localStorage.getItem('edge_token');
-      if (token) {
-        fetch('http://72.60.187.136:8081/api/auth/logout', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({token: token})
-        }).catch(function(){});
-      }
-      localStorage.removeItem('edge_token');
-      localStorage.removeItem('edge_user');
-      window.location.href = '/';
-    }
     // Run on every page load
     updateAuthNav();
   </script>

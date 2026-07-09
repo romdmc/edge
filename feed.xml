@@ -5,9 +5,33 @@
     <description>Veille tech auto-améliorant. Digest quotidien des meilleures actualités tech, filtré par IA.</description>
     <link>/</link>
     <language>fr</language>
-    <lastBuildDate>Thu, 18 Jun 2026 06:30:31 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 06:10:31 GMT</lastBuildDate>
     <generator>EDGE Static Site Generator</generator>
     <ns0:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>IA : après l’ivresse, le budget</title>
+      <link>/articles/2258.html</link>
+      <guid isPermaLink="true">/articles/2258.html</guid>
+      <description>Après une phase d'expérimentation sans contrainte budgétaire, les entreprises font face à une réalité brutale : les coûts de l'IA explosent. Uber a consommé l'intégralité de son budget IA 2026 en quatre mois, tandis qu'Amazon a dû supprimer des classements internes incitant à utiliser l'IA sans justification métier. Le passage des abonnements forfaitaires à la tarification à la consommation a provoqué des chocs tarifaires majeurs, comme chez Workato dont la dépense a été multipliée par sept en un jour. Les entreprises imposent désormais des plafonds de dépenses et orientent leurs équipes vers des modèles moins coûteux, tandis que les fournisseurs développent des outils d'optimisation automatique des coûts.</description>
+      <pubDate>Fri, 19 Jun 2026 14:39:19 GMT</pubDate>
+      <source>Silicon</source>
+    </item>
+    <item>
+      <title>Databricks joue l’alternative à HTAP pour unifier transactionnel et analytique</title>
+      <link>/articles/2259.html</link>
+      <guid isPermaLink="true">/articles/2259.html</guid>
+      <description>Databricks prévoit d'intégrer l'architecture LTAP (Lake Transactional/Analytical Processing) à son offre Lakebase dans les prochaines semaines, combinant les technologies de Neon (acquise en mai 2025) et Mooncake (acquise en octobre 2025). Cette approche vise à unifier les traitements transactionnels (OLTP) et analytiques (OLAP) sans recourir aux pipelines traditionnels ni au compromis de performance du HTAP. Le mécanisme repose sur une conversion à la volée du format Postgres vers Parquet, exploitant les cycles CPU disponibles de la couche de stockage de Neon, avec une latence annoncée d'environ une minute.</description>
+      <pubDate>Fri, 19 Jun 2026 12:35:56 GMT</pubDate>
+      <source>Silicon</source>
+    </item>
+    <item>
+      <title>{ VivaTech 2026 } –TotalEnergies lance MethaneLive pour traquer le méthane en temps réel</title>
+      <link>/articles/1902.html</link>
+      <guid isPermaLink="true">/articles/1902.html</guid>
+      <description>TotalEnergies a dévoilé MethaneLive lors du VivaTech 2026, un centre de surveillance conçu pour détecter et analyser en temps réel les émissions de méthane sur ses opérations amont. S'appuyant sur 13 000 capteurs déployés en 2025 sur des sites onshore et offshore, le dispositif utilise des algorithmes pour alerter les opérateurs et recommander des actions correctives. Depuis son lancement début 2026, MethaneLive a permis d'identifier 35 fuites de méthane et d'en accélérer la correction. Cette initiative s'inscrit dans une logique de surveillance continue et industrialisée, combinant capteurs, analytique et intervention humaine pour transformer la donnée en action opérationnelle.</description>
+      <pubDate>Thu, 18 Jun 2026 12:03:20 GMT</pubDate>
+      <source>Silicon</source>
+    </item>
     <item>
       <title>Flipkart Wins CNCF End User Case Study Contest for Kubernetes and Chaos Engineering Scale</title>
       <link>/articles/1291.html</link>
@@ -25,12 +49,28 @@
       <source>Cloud Native Computing Foundation</source>
     </item>
     <item>
+      <title>Nos 5 conseils pour réduire votre dépendance à l’hyperviseur</title>
+      <link>/articles/1904.html</link>
+      <guid isPermaLink="true">/articles/1904.html</guid>
+      <description>Face à la dépendance croissante envers un hyperviseur unique, devenue un risque stratégique pour les DSI, cet article propose cinq conseils concrets pour reprendre le contrôle du datacenter. La première recommandation est d'adopter une couche d'abstraction agnostique, comme la Dell Automation Platform, capable d'orchestrer plusieurs hyperviseurs depuis une console unique. Il s'agit ensuite de standardiser les déploiements via des blueprints et l'Infrastructure as Code, puis de segmenter les workloads plutôt que l'infrastructure pour faire cohabiter différents hyperviseurs sur une même plateforme matérielle. L'objectif est de restaurer la liberté de choix et de réduire les coûts tout en faisant évoluer l'existant progressivement.</description>
+      <pubDate>Wed, 17 Jun 2026 16:16:16 GMT</pubDate>
+      <source>Silicon</source>
+    </item>
+    <item>
       <title>Forecasting what Matters: Decision-Focused RL for Controlled EV Charging with Unknown Departure Times</title>
       <link>/articles/1287.html</link>
       <guid isPermaLink="true">/articles/1287.html</guid>
       <description>Un cadre d'apprentissage par renforcement décisionnel (DF-RL) est proposé pour la recharge intelligente des véhicules électriques avec des heures de départ inconnues. Le prévisionniste est entraîné de bout en bout avec les retours de l'agent RL, améliorant ainsi la qualité des décisions de recharge. La méthode atteint jusqu'à 14% d'amélioration de la récompense totale et réduit de 55% l'énergie non fournie par rapport au RL sans prévision. Cette approche évite la propagation d'erreurs des modèles de prévision traditionnels.</description>
       <pubDate>Wed, 17 Jun 2026 15:37:35 GMT</pubDate>
       <source>arXiv - AI (cs.AI)</source>
+    </item>
+    <item>
+      <title>Bercy crée une Direction de l’intelligence artificielle et du numérique pour accélérer sa transformation</title>
+      <link>/articles/1907.html</link>
+      <guid isPermaLink="true">/articles/1907.html</guid>
+      <description>Le ministère de l'Économie (Bercy) a créé une Direction de l'intelligence artificielle et du numérique pour centraliser et accélérer l'intégration de l'IA au sein de ses administrations. Jusqu'ici dispersées entre plusieurs directions, les initiatives IA souffraient d'un manque de coordination. Cette nouvelle entité vise à améliorer l'efficacité des services publics — lutte contre la fraude fiscale, relation usager, pilotage des politiques publiques — tout en garantissant un usage responsable et souverain de l'IA, en conformité avec l'AI Act européen.</description>
+      <pubDate>Wed, 17 Jun 2026 12:03:37 GMT</pubDate>
+      <source>Silicon</source>
     </item>
     <item>
       <title>Qui paiera les gigawatts de l’intelligence artificielle ?</title>
@@ -126,46 +166,6 @@
       <guid isPermaLink="true">/articles/624.html</guid>
       <description>Après une série d'incidents de plateforme en 2026, l'auteur ne recommande plus Railway comme plateforme par défaut pour les charges de production sérieuses et propose Vercel comme alternative pour les applications frontend lourdes ou basées sur Next.js. Cependant, Vercel ne peut pas remplacer Railway pour les serveurs WebSocket persistants, les workers de longue durée ou les workloads Docker lourds. La migration idéale implique un déploiement fractionné : frontend sur Vercel, base de données chez un fournisseur managé, et services backend sur une plateforme de conteneurs.</description>
       <pubDate>Tue, 16 Jun 2026 11:37:33 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>Optimiza IA</title>
-      <link>/articles/626.html</link>
-      <guid isPermaLink="true">/articles/626.html</guid>
-      <description>Cet article explore l'utilisation de Python pour surveiller et optimiser les ressources système dans les applications d'intelligence artificielle, de plus en plus gourmandes en calcul. Il propose un script utilisant psutil pour mesurer en temps réel le CPU et la mémoire, et schedule pour automatiser les tâches de maintenance. Des bibliothèques comme matplotlib permettent de visualiser les tendances, tandis que des API comme CloudWatch facilitent le monitoring en environnement cloud.</description>
-      <pubDate>Tue, 16 Jun 2026 11:36:35 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>Rate Limiting Like a Jedi: Mastering the Token Bucket with Redis</title>
-      <link>/articles/627.html</link>
-      <guid isPermaLink="true">/articles/627.html</guid>
-      <description>Face à des pics de trafic menaçant leur API, l'auteur explore l'algorithme du seau à tokens (token bucket) couplé à Redis comme solution de rate limiting distribué. Contrairement aux compteurs en mémoire par instance, cette approche offre une vue globale du trafic, survit aux redémarrages et garantit l'atomicité via des scripts Lua. Une solution élégante et performante pour maîtriser les flux dans les systèmes distribués.</description>
-      <pubDate>Tue, 16 Jun 2026 11:36:30 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>Understanding ADCs and Using the ADS1115 with Raspberry Pi</title>
-      <link>/articles/628.html</link>
-      <guid isPermaLink="true">/articles/628.html</guid>
-      <description>Cet article explique le fonctionnement des convertisseurs analogique-numérique (ADC) et leur utilisation avec un Raspberry Pi, qui ne possède pas d'ADC intégré. Il détaille les trois étapes de la conversion — échantillonnage, quantification et encodage — ainsi que le rôle de la résolution en bits. L'ADS1115, un ADC 16 bits communiquant via I²C, est présenté comme la solution idéale pour lire des capteurs analogiques avec haute précision.</description>
-      <pubDate>Tue, 16 Jun 2026 11:35:42 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>commitment discount: a practical guide for production teams</title>
-      <link>/articles/549.html</link>
-      <guid isPermaLink="true">/articles/549.html</guid>
-      <description>Les équipes production restent souvent par défaut sur le tarif à la demande des clouds publics, ce qui génère un surcoût structurel massif : une flotte de 20 instances m5.xlarge peut coûter jusqu'à 48 000 $ par mois de trop. L'article identifie trois causes à cette inaction : l'absence de responsabilité claire sur les coûts, l'aversion aux engagements sans données de référence, et la confusion entre flexibilité et nécessité. Les remises d'engagement (1 ou 3 ans) sont présentées comme la solution pour les charges stables avec une variance d'utilisation inférieure à 20 % sur 90 jours.</description>
-      <pubDate>Tue, 16 Jun 2026 11:26:04 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>policy as code for multi account aws one opa ruleset six guardrails zero drift</title>
-      <link>/articles/550.html</link>
-      <guid isPermaLink="true">/articles/550.html</guid>
-      <description>La dérive de configuration dans les environnements AWS multi-comptes est un problème structurel lié à la gouvernance manuelle, et non un échec des outils. L'article défend l'approche Policy-as-Code avec Open Policy Agent (OPA) comme couche d'exécution continue, capable d'éliminer toute dérive grâce à un ensemble minimal de six garde-fous appliqués au niveau de l'API. Contrairement aux audits trimestriels et aux checklists humaines, OPA évalue en permanence chaque changement de ressource avant son application.</description>
-      <pubDate>Tue, 16 Jun 2026 11:25:40 GMT</pubDate>
       <source>Dev.to</source>
     </item>
   </channel>
