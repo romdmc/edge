@@ -5,9 +5,81 @@
     <description>Self-improving tech news. Daily digest of the best tech news, filtered by AI.</description>
     <link>/</link>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Jul 2026 06:09:28 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 06:15:00 GMT</lastBuildDate>
     <generator>EDGE Static Site Generator</generator>
     <ns0:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Configure Docker Macvlan and Ipvlan for Dedicated LAN IPs</title>
+      <link>/articles/4997.html</link>
+      <guid isPermaLink="true">/articles/4997.html</guid>
+      <description>L’article explique comment configurer Docker avec les pilotes macvlan ou ipvlan pour attribuer à chaque conteneur une adresse IP et une MAC dédiées sur le réseau LAN, indispensable pour les appliances réseau qui ne supportent pas le NAT. Il détaille les différences entre macvlan (MAC unique) et ipvlan (MAC partagée), ainsi que les contraintes spécifiques aux environnements cloud où les MAC non reconnues sont rejetées. La configuration permet aux conteneurs de fonctionner comme des machines physiques sur le même segment réseau.</description>
+      <pubDate>Sat, 11 Jul 2026 07:01:59 GMT</pubDate>
+      <source>Dev.to</source>
+    </item>
+    <item>
+      <title>ReskPoints: AI Agent Logging with Sampling, Masking, and Multi-Export</title>
+      <link>/articles/4998.html</link>
+      <guid isPermaLink="true">/articles/4998.html</guid>
+      <description>ReskPoints est une bibliothèque Python qui capture chaque action d’un agent IA avec contexte, tout en offrant un échantillonnage, un masquage de données sensibles et une exportation vers plusieurs systèmes de monitoring. Elle se déploie sans thread supplémentaire et ne consomme pas de ressources lorsqu’elle est inactive. Le but est de rendre les logs d’agents observables et compatibles avec des outils comme Datadog, Prometheus ou OpenTelemetry.</description>
+      <pubDate>Sat, 11 Jul 2026 07:01:00 GMT</pubDate>
+      <source>Dev.to</source>
+    </item>
+    <item>
+      <title>Cutting juniors is the most expensive way to cut costs</title>
+      <link>/articles/4999.html</link>
+      <guid isPermaLink="true">/articles/4999.html</guid>
+      <description>L’article soutient que réduire les postes de junior est la façon la plus coûteuse de réaliser des économies. Les juniors sont le socle de la montée en compétence vers les seniors ; sans eux, les seniors perdent leur rôle de mentor et la connaissance collective s’érode. L’argument selon lequel l’IA élimine le besoin de juniors est un piège, car l’IA ne supprime pas les tâches de base mais augmente le volume de code à vérifier, nécessitant encore des personnes à apprendre à juger.</description>
+      <pubDate>Sat, 11 Jul 2026 06:59:14 GMT</pubDate>
+      <source>Dev.to</source>
+    </item>
+    <item>
+      <title>Stop Asking. Start Delegating: How I Actually Use AI On My Site</title>
+      <link>/articles/4985.html</link>
+      <guid isPermaLink="true">/articles/4985.html</guid>
+      <description>L’auteur explique qu’il a changé sa façon d’utiliser l’IA, passant de simples questions à la délégation de tâches concrètes. Il considère l’IA comme un collègue junior capable de réaliser des travaux précis lorsqu’on lui donne un brief détaillé. En rédigeant des prompts structurés comme des tickets, il obtient des réponses plus fiables et réutilisables. Il a créé six pages « AI gallery » pour centraliser ces workflows, évitant ainsi de perdre du temps à chercher des réponses dans des chats épars.</description>
+      <pubDate>Sat, 11 Jul 2026 06:55:02 GMT</pubDate>
+      <source>Dev.to</source>
+    </item>
+    <item>
+      <title>Batch Audio and Video Conversion in Your Browser</title>
+      <link>/articles/4986.html</link>
+      <guid isPermaLink="true">/articles/4986.html</guid>
+      <description>Format Factory est un environnement de travail basé sur le navigateur qui simplifie la conversion en lot d’audio et de vidéo. Au lieu de configurer chaque fichier individuellement, l’utilisateur choisit d’abord la tâche (conversion, extraction, compression, fusion, etc.) puis applique des paramètres communs à toute la file d’attente. La file d’attente affiche l’état de chaque fichier, permettant des ajustements individuels, des retours d’erreur et des téléchargements ciblés sans reconstruire le travail. Cette approche orientée tâche réduit la répétition tout en conservant un contrôle granulaire sur les exceptions.</description>
+      <pubDate>Sat, 11 Jul 2026 06:47:51 GMT</pubDate>
+      <source>Dev.to</source>
+    </item>
+    <item>
+      <title>How My Open-Source Scanner Caught a Crypto Scammer Exposing Their Own Keys</title>
+      <link>/articles/4988.html</link>
+      <guid isPermaLink="true">/articles/4988.html</guid>
+      <description>L'auteur a développé Sentinel, un scanner de secrets open‑source, qui a découvert un dépôt GitHub contenant des clés Firebase exposées. Le dépôt était utilisé pour une opération de phishing ciblant les utilisateurs de Tether, avec des options d'authentification via Google, téléphone ou Spotify. En exposant les clés publiquement, l'auteur a neutralisé l'attaque avant qu'elle ne touche des victimes.</description>
+      <pubDate>Sat, 11 Jul 2026 06:37:35 GMT</pubDate>
+      <source>Dev.to</source>
+    </item>
+    <item>
+      <title>The week in review: agents got wallets, rails, marketplaces and escrow. They still don't have settlement.</title>
+      <link>/articles/4990.html</link>
+      <guid isPermaLink="true">/articles/4990.html</guid>
+      <description>En juin, quatre lancements majeurs ont renforcé l'écosystème des agents : un portefeuille MetaMask Agent, une interface Coinbase pour agents, une place de marché OKX.AI et un service d'entiercement Kustodia. Ces innovations forment la machine économie, mais le mécanisme de règlement final reste absent. L'article souligne que les agents doivent encore apprendre à gérer les fonds sans intermédiaire.</description>
+      <pubDate>Sat, 11 Jul 2026 06:20:43 GMT</pubDate>
+      <source>Dev.to</source>
+    </item>
+    <item>
+      <title>Cloudflare Drop</title>
+      <link>/articles/5003.html</link>
+      <guid isPermaLink="true">/articles/5003.html</guid>
+      <description>Cloudflare Drop permet de déposer un dossier dans le navigateur pour le déployer instantanément sur Cloudflare. L'outil simplifie le processus de mise en ligne de sites statiques. Un lien dirige vers la discussion.</description>
+      <pubDate>Wed, 08 Jul 2026 17:36:25 GMT</pubDate>
+      <source>Product Hunt</source>
+    </item>
+    <item>
+      <title>Effects SDK</title>
+      <link>/articles/5001.html</link>
+      <guid isPermaLink="true">/articles/5001.html</guid>
+      <description>Effects SDK est un kit de développement logiciel qui permet d’ajouter des effets vidéo et audio alimentés par l’IA à des applications en temps réel. Il vise à simplifier l’intégration d’effets complexes sans nécessiter de traitement lourd côté serveur. Le SDK est conçu pour être léger et performant, adapté aux scénarios où la latence doit rester minimale.</description>
+      <pubDate>Tue, 23 Jun 2026 06:17:54 GMT</pubDate>
+      <source>Product Hunt</source>
+    </item>
     <item>
       <title>IA : après l’ivresse, le budget</title>
       <link>/articles/2258.html</link>
@@ -94,78 +166,6 @@
       <guid isPermaLink="true">/articles/648.html</guid>
       <description>Cet article, cinquième volet d'une série sur l'architecture temps réel des plateformes de VTC, détaille le fonctionnement de l'algorithme de tarification dynamique (surge pricing). Le taux de surge est un multiplicateur de prix recalculé toutes les 30 à 60 secondes par cellule hexagonale H3, en fonction du ratio demande/offre sur une fenêtre glissante de cinq minutes. Ce mécanisme vise à rétablir l'équilibre du marché en incitant les conducteurs à se déplacer vers les zones de forte demande tout en réduisant le nombre de requêtes des passagers. L'architecture repose sur un pipeline Kafka/Flink pour agréger les données, un moteur de tarification qui calcule le multiplicateur, et un cache Redis pour le diffuser aux applications passager et conducteur.</description>
       <pubDate>Tue, 16 Jun 2026 12:02:51 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>SpaceX Reveals Orbital AI Data Center Plans — Million-Satellite Constellation for Space-Based Compute</title>
-      <link>/articles/649.html</link>
-      <guid isPermaLink="true">/articles/649.html</guid>
-      <description>SpaceX a révélé son ambition de construire des centres de données IA en orbite, en équipant sa constellation Starlink de matériel d'inférence IA, avec un objectif pouvant aller jusqu'à un million de satellites. Cette annonce, publiée par Reuters le 9 juin, s'appuie sur quatre avantages structurels de l'orbite : énergie solaire abondante (40 % de plus qu'au sol), absence de contraintes foncières et de permis, latence réduite pour l'inférence en bordure (3-5 ms), et refroidissement naturel dans le vide spatial. Cette initiative s'inscrit dans le contexte de l'introduction en bourse de SpaceX et de sa fusion avec xAI, positionnant l'acteur comme un géant de l'infrastructure IA.</description>
-      <pubDate>Tue, 16 Jun 2026 12:02:50 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>Nvidia Rubin's 10x Cheaper Tokens Hide a Footnote</title>
-      <link>/articles/635.html</link>
-      <guid isPermaLink="true">/articles/635.html</guid>
-      <description>Cet article décortique l'annonce de Nvidia concernant l'architecture Vera Rubin NVL72, promettant un coût par token jusqu'à 10 fois inférieur à Blackwell. L'auteur met en garde contre la confusion entre le calendrier marketing (annonce en janvier 2026) et le calendrier de déploiement (livraison au second semestre 2026, disponibilité large en 2027). Il précise que le facteur 10x est mesuré dans des conditions quasi idéales sur un modèle MoE (Kimi-K2-Thinking) avec un contexte long, et ne s'applique pas aux modèles denses ou aux charges de travail à contexte court. Enfin, le gain de coût repose sur le format NVFP4 (4 bits), ce qui implique un travail de quantification que toutes les équipes n'ont pas encore validé sur leurs propres modèles.</description>
-      <pubDate>Tue, 16 Jun 2026 12:01:28 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>My Homelab AI Dev Platform: What Problem It Actually Signals and Where the Limits Are</title>
-      <link>/articles/636.html</link>
-      <guid isPermaLink="true">/articles/636.html</guid>
-      <description>Cet article en anglais reprend l'analyse du phénomène homelab IA devenu viral sur Hacker News. L'auteur affirme que ce type de plateforme n'est pas une solution plug-and-play mais un pari d'infrastructure pertinent uniquement dans des conditions très spécifiques. Il met en avant trois motivations : la confidentialité du contexte, la latence contrôlée et le coût des tokens à grande échelle, tout en alertant sur les coûts opérationnels souvent ignorés. Sa thèse principale est que la qualité des réponses dépend davantage de la construction du contexte que du modèle lui-même, et que le vrai travail consiste à concevoir et sérialiser ce contexte efficacement.</description>
-      <pubDate>Tue, 16 Jun 2026 12:00:48 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>My Homelab AI Dev Platform: qué problema real señala y dónde están los límites</title>
-      <link>/articles/637.html</link>
-      <guid isPermaLink="true">/articles/637.html</guid>
-      <description>Cet article en espagnol analyse le phénomène des plateformes homelab pour le développement IA, popularisé sur Hacker News. L'auteur soutient que le vrai problème n'est pas l'exécution locale de modèles, mais le contrôle nécessaire sur le contexte d'inférence pour que l'investissement soit justifié. Il identifie trois motivations légitimes : la confidentialité du contexte, la latence maîtrisée et le coût des tokens à grande échelle, tout en soulignant que les coûts matériels (GPU, électricité) sont souvent sous-estimés. Sa thèse centrale est que le goulot d'étranglement réside dans la qualité du contexte fourni au modèle, pas dans le modèle lui-même.</description>
-      <pubDate>Tue, 16 Jun 2026 12:00:43 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>Apple’s smart home camera service is starting to impress me</title>
-      <link>/articles/631.html</link>
-      <guid isPermaLink="true">/articles/631.html</guid>
-      <description>Apple enrichit son service HomeKit Secure Video avec des fonctionnalités alimentées par Apple Intelligence, notamment des alertes plus descriptives et une recherche de vidéos en langage naturel. L'application Maison bénéficie aussi de notifications améliorées par l'IA et d'un nouveau suivi de la consommation énergétique. Ces nouveautés, annoncées lors de la WWDC, seront disponibles à l'automne et renforcent la compétitivité de l'écosystème domotique d'Apple.</description>
-      <pubDate>Tue, 16 Jun 2026 12:00:00 GMT</pubDate>
-      <source>The Verge</source>
-    </item>
-    <item>
-      <title>Coinbase Postmortem Reveals How a Localized AWS Failure Triggered a Multi-Hour Trading Outage</title>
-      <link>/articles/632.html</link>
-      <guid isPermaLink="true">/articles/632.html</guid>
-      <description>Coinbase a publié un rapport post-mortem détaillé sur sa panne du 7 mai 2026, causée par une défaillance de refroidissement localisée dans un centre de données AWS. Cette panne a entraîné une interruption de plusieurs heures, paralysant quasi totalement les échanges sur la plateforme de cryptomonnaies. L'incident illustre les risques de dépendance à un fournisseur cloud unique pour les infrastructures critiques.</description>
-      <pubDate>Tue, 16 Jun 2026 12:00:00 GMT</pubDate>
-      <source>InfoQ</source>
-    </item>
-    <item>
-      <title>Railway vs AWS: When Leaving Railway Means Owning Reliability</title>
-      <link>/articles/642.html</link>
-      <guid isPermaLink="true">/articles/642.html</guid>
-      <description>Après une série d'incidents de plateforme en 2026, l'auteur ne recommande plus Railway comme choix par défaut pour les charges de travail de production critiques. AWS offre un contrôle et une résilience supérieurs, mais exige que l'équipe assume pleinement la responsabilité de la fiabilité de son infrastructure. L'article conseille aux équipes déjà sur Railway d'évaluer dès maintenant des stratégies de sortie, sans pour autant considérer AWS comme la seule destination possible.</description>
-      <pubDate>Tue, 16 Jun 2026 11:59:44 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>How I Architected a 99.9% Uptime RAG Stack with DeepSeek — 2026 Guide</title>
-      <link>/articles/621.html</link>
-      <guid isPermaLink="true">/articles/621.html</guid>
-      <description>L'auteur détaille comment il a reconstruit son architecture RAG (Retrieval-Augmented Generation) autour de DeepSeek et Pinecone via Global API pour atteindre 99,9% de disponibilité, réduisant la latence p99 de plus de 800ms à 340ms. Le passage à DeepSeek V4 Flash a permis d'économiser environ 9 800 $ par mois par rapport à GPT-4o, grâce à des tarifs 4 à 9 fois inférieurs. L'architecture repose sur un point d'accès unique avec basculement multi-régions automatique et une fenêtre de contexte de 200K tokens sur DeepSeek V4 Pro pour les documents longs.</description>
-      <pubDate>Tue, 16 Jun 2026 11:40:33 GMT</pubDate>
-      <source>Dev.to</source>
-    </item>
-    <item>
-      <title>Railway vs Vercel (2026): When to Migrate Your Frontend and What Vercel Can't Replace</title>
-      <link>/articles/624.html</link>
-      <guid isPermaLink="true">/articles/624.html</guid>
-      <description>Après une série d'incidents de plateforme en 2026, l'auteur ne recommande plus Railway comme plateforme par défaut pour les charges de production sérieuses et propose Vercel comme alternative pour les applications frontend lourdes ou basées sur Next.js. Cependant, Vercel ne peut pas remplacer Railway pour les serveurs WebSocket persistants, les workers de longue durée ou les workloads Docker lourds. La migration idéale implique un déploiement fractionné : frontend sur Vercel, base de données chez un fournisseur managé, et services backend sur une plateforme de conteneurs.</description>
-      <pubDate>Tue, 16 Jun 2026 11:37:33 GMT</pubDate>
       <source>Dev.to</source>
     </item>
   </channel>

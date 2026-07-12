@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter EDGE — EDGE</title>
+  <style>
+    /* Newsletter-specific styles — inline for email compatibility */
+    body { margin: 0; padding: 0; background: #0d0d0d; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .wrapper { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { text-align: center; padding: 30px 0; border-bottom: 2px solid #ff6600; }
+    .header h1 { font-size: 28px; font-weight: 800; margin: 0; letter-spacing: -0.03em; }
+    .header h1 span { color: #ff6600; }
+    .header p { color: #888; font-size: 14px; margin: 8px 0 0; }
+    .week-label { text-align: center; padding: 15px 0; color: #888; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .stats { display: flex; justify-content: center; gap: 20px; padding: 15px 0; border-bottom: 1px solid #2a2a2a; margin-bottom: 20px; font-size: 13px; color: #888; }
+    .stats strong { color: #e0e0e0; }
+    .article { padding: 20px 0; border-bottom: 1px solid #2a2a2a; }
+    .article:last-child { border-bottom: none; }
+    .article-title { font-size: 17px; font-weight: 600; color: #e0e0e0; text-decoration: none; line-height: 1.35; display: block; margin-bottom: 6px; }
+    .article-title:hover { color: #ff6600; }
+    .article-meta { font-size: 12px; color: #888; margin-bottom: 8px; }
+    .article-summary { font-size: 14px; color: #aaa; line-height: 1.6; }
+    .score-badge { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 700; }
+    .score-high { background: rgba(76,175,80,.15); color: #4caf50; }
+    .score-mid { background: rgba(255,193,7,.15); color: #ffc107; }
+    .score-low { background: rgba(244,67,54,.15); color: #f44336; }
+    .tag { display: inline-block; padding: 1px 6px; border-radius: 99px; font-size: 10px; font-weight: 500; background: rgba(255,102,0,.12); color: #ff6600; border: 1px solid rgba(255,102,0,.2); text-decoration: none; }
+    .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #888; margin: 25px 0 15px; padding-bottom: 8px; border-bottom: 1px solid #2a2a2a; }
+    .cta { text-align: center; padding: 30px 0; }
+    .cta a { display: inline-block; padding: 12px 30px; background: #ff6600; color: #fff; border-radius: 6px; font-size: 14px; font-weight: 600; text-decoration: none; }
+    .cta a:hover { background: #cc5200; }
+    .footer { text-align: center; padding: 20px 0; border-top: 1px solid #2a2a2a; font-size: 11px; color: #555; margin-top: 20px; }
+    .footer strong { color: #888; }
+    .divider { border: none; border-top: 1px solid #2a2a2a; margin: 20px 0; }
+    @media (max-width: 480px) {
+      .wrapper { padding: 10px; }
+      .stats { flex-direction: column; gap: 5px; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <h1>EDG<span>E</span></h1>
+      <p>Veille tech auto-améliorant</p>
+    </div>
+
+    <div class="week-label">
+      Édition — 2026-07-06 → 2026-07-12
+    </div>
+
+    <div class="stats">
+      <span><strong>8</strong> articles</span>
+      <span><strong>Score moy.:</strong> 6.2</span>
+      <span><strong>sources:</strong> 2</span>
+    </div>
+
+    
+    <div class="section-title">🏆 Sélection de la semaine</div>
+    
+    <div class="article">
+      <a href="/articles/5003.html" class="article-title">Cloudflare Drop</a>
+      <div class="article-meta">
+        Product Hunt · 2026-07-08
+        <span class="score-badge score-high">
+          8.0
+        </span>
+      </div>
+      
+      <p class="article-summary">Cloudflare Drop permet de déposer un dossier dans le navigateur pour le déployer instantanément sur Cloudflare. L&#39;outil simplifie le processus de mise en ligne de sites statiques. Un lien dirige vers la discussion.</p>
+      
+      <div style="margin-top:8px;">
+        
+        <span class="tag">Cloudflare</span>
+        
+        <span class="tag">CDN</span>
+        
+        <span class="tag">déploiement</span>
+        
+      </div>
+    </div>
+    
+    <div class="article">
+      <a href="/articles/4998.html" class="article-title">ReskPoints: AI Agent Logging with Sampling, Masking, and Multi-Export</a>
+      <div class="article-meta">
+        Dev.to · 2026-07-11
+        <span class="score-badge score-high">
+          7.0
+        </span>
+      </div>
+      
+      <p class="article-summary">ReskPoints est une bibliothèque Python qui capture chaque action d’un agent IA avec contexte, tout en offrant un échantillonnage, un masquage de données sensibles et une exportation vers plusieurs systèmes de monitoring. Elle se déploie sans thread s...</p>
+      
+      <div style="margin-top:8px;">
+        
+        <span class="tag">logging</span>
+        
+        <span class="tag">IA</span>
+        
+        <span class="tag">observabilité</span>
+        
+      </div>
+    </div>
+    
+    <div class="article">
+      <a href="/articles/4986.html" class="article-title">Batch Audio and Video Conversion in Your Browser</a>
+      <div class="article-meta">
+        Dev.to · 2026-07-11
+        <span class="score-badge score-high">
+          7.0
+        </span>
+      </div>
+      
+      <p class="article-summary">Format Factory est un environnement de travail basé sur le navigateur qui simplifie la conversion en lot d’audio et de vidéo. Au lieu de configurer chaque fichier individuellement, l’utilisateur choisit d’abord la tâche (conversion, extraction, compr...</p>
+      
+      <div style="margin-top:8px;">
+        
+        <span class="tag">Conversion</span>
+        
+        <span class="tag">Edge</span>
+        
+        <span class="tag">Browser</span>
+        
+      </div>
+    </div>
+    
+    
+
+    
+    <div class="section-title">📰 Aussi cette semaine</div>
+    
+    <div class="article">
+      <a href="/articles/4997.html" class="article-title">Configure Docker Macvlan and Ipvlan for Dedicated LAN IPs</a>
+      <div class="article-meta">
+        Dev.to · 2026-07-11
+        <span class="score-badge score-mid">
+          6.7
+        </span>
+      </div>
+    </div>
+    
+    <div class="article">
+      <a href="/articles/4985.html" class="article-title">Stop Asking. Start Delegating: How I Actually Use AI On My Site</a>
+      <div class="article-meta">
+        Dev.to · 2026-07-11
+        <span class="score-badge score-mid">
+          5.7
+        </span>
+      </div>
+    </div>
+    
+    <div class="article">
+      <a href="/articles/4999.html" class="article-title">Cutting juniors is the most expensive way to cut costs</a>
+      <div class="article-meta">
+        Dev.to · 2026-07-11
+        <span class="score-badge score-mid">
+          5.3
+        </span>
+      </div>
+    </div>
+    
+    <div class="article">
+      <a href="/articles/4988.html" class="article-title">How My Open-Source Scanner Caught a Crypto Scammer Exposing Their Own Keys</a>
+      <div class="article-meta">
+        Dev.to · 2026-07-11
+        <span class="score-badge score-mid">
+          5.3
+        </span>
+      </div>
+    </div>
+    
+    <div class="article">
+      <a href="/articles/4990.html" class="article-title">The week in review: agents got wallets, rails, marketplaces and escrow. They still don&#39;t have settlement.</a>
+      <div class="article-meta">
+        Dev.to · 2026-07-11
+        <span class="score-badge score-mid">
+          5.0
+        </span>
+      </div>
+    </div>
+    
+    
+
+    <hr class="divider">
+
+    <div class="cta">
+      <a href="/digest-2026-07-06.html">Lire en ligne</a>
+    </div>
+
+    <div class="footer">
+      <strong>EDGE</strong> — Veille tech auto-améliorant<br>
+      Projet incubé par <strong>DOMORIA SAS</strong> — SIREN 104 147 467<br>
+      31 Voie Romaine, 31410 Saint-Hilaire, Occitanie, France<br><br>
+      <a href="/unsubscribe.html" style="color:#555;">Se désabonner</a>
+    </div>
+  </div>
+</body>
+</html>
