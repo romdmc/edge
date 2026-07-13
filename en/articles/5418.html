@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,11 @@
   <link rel="alternate" type="application/rss+xml" title="EDGE RSS" href="/feed.xml">
   <link rel="manifest" href="/manifest.json">
   
-  <title>Digest hebdomadaire — EDGE</title>
+  <meta name="description" content="Nvidia et LangChain annoncent Nemotron 3 Ultra, une architecture qui promet de réduire les coûts d’inférence d’un facteur dix tout en rivalisant avec les meille">
+  <meta property="og:title" content="Parité technologique et coûts divisés par dix : le coup de maître de Nvidia avec Nemotron 3 Ultra">
+  <meta property="og:description" content="Nvidia et LangChain annoncent Nemotron 3 Ultra, une architecture qui promet de réduire les coûts d’inférence d’un facteur dix tout en rivalisant avec les meilleurs modèles propriétaires. L’innovation ">
+
+  <title>EDGE — Parité technologique et coûts divisés par dix : le coup...</title>
   <style>
     /* ===== Reset & Base ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -707,25 +711,25 @@
     <div class="container">
       <a href="/" class="logo">EDG<span>E</span></a>
       <nav>
-        <a href="/" >Accueil</a>
-        <a href="/all.html" >Tous les articles</a>
-        <a href="/digest.html" class="active">Digest</a>
+        <a href="/" >Home</a>
+        <a href="/all.html" >All articles</a>
+        <a href="/digest.html" >Digest</a>
         <a href="/sources.html" >Sources</a>
-        <a href="/series.html" >Séries</a>
-        <a href="/trends.html" >Tendances</a>
+        <a href="/series.html" >Series</a>
+        <a href="/trends.html" >Trends</a>
         <a href="/archives.html" >Archives</a>
-        <a href="/manifeste.html" >Manifeste</a>
+        <a href="/manifeste.html" >Manifesto</a>
         <div class="lang-switcher">
-          <a href="?lang=fr" class="active-lang">FR</a>
+          <a href="?lang=fr" >FR</a>
           <span class="lang-sep">|</span>
-          <a href="?lang=en" >EN</a>
+          <a href="?lang=en" class="active-lang">EN</a>
         </div>
         <div id="auth-nav" class="auth-nav" style="display:flex;align-items:center;gap:0.5rem;">
-          <a href="/login.html" id="auth-login-link">Connexion</a>
+          <a href="/login.html" id="auth-login-link">Login</a>
           <span class="auth-nav-sep" style="color:var(--fg-muted);opacity:0.4;">|</span>
-          <a href="/register.html" id="auth-register-link">Inscription</a>
+          <a href="/register.html" id="auth-register-link">Register</a>
           <span id="auth-user-name" style="display:none;font-size:0.82rem;font-weight:600;color:var(--fg-dim);"></span>
-          <a href="#" id="auth-logout-link" style="display:none;font-size:0.82rem;" onclick="doLogout();return false;">Déconnexion</a>
+          <a href="#" id="auth-logout-link" style="display:none;font-size:0.82rem;" onclick="doLogout();return false;">Logout</a>
         </div>
         <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
       </nav>
@@ -735,352 +739,340 @@
   <main>
     <div class="container">
       
-<div class="article-header">
-  <h1>📊 Digest hebdomadaire</h1>
-  <p style="color:var(--fg-dim);font-size:0.9rem;">Semaine du 2026-07-06 — 2026-07-12 · 8 articles</p>
-</div>
+<article>
+  <div class="article-header">
+    <h1>Parité technologique et coûts divisés par dix : le coup de maître de Nvidia avec Nemotron 3 Ultra</h1>
+    <div class="article-meta">
+      <span>GoodTech</span>
+      <span>·</span>
+      <span>Rédaction</span>
+      <span>·</span>
+      <span>2026-07-13</span>
+      <span>·</span>
+      <a href="https://goodtech.info/nvidia-nemotron-3-ultra-langchain-ia-open-source/" target="_blank" rel="noopener" class="source-link">Source ↗ ↗</a>
+    </div>
+  </div>
 
-
-<div class="digest-nav">
   
-  <a href="/digest-2026-06-29.html" class="digest-nav-link">← Semaine précédente</a>
+  <div class="scores-grid">
+    <div class="score-card">
+      <div class="label">Edge Score</div>
+      <div class="value" style="color: var(--accent)">4</div>
+      <div class="score-bar"><div class="score-bar-fill" style="width:40.0%;background:var(--accent)"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="label">Value Score</div>
+      <div class="value" style="color: var(--green)">8</div>
+      <div class="score-bar"><div class="score-bar-fill" style="width:80.0%;background:var(--green)"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="label">Cost Score</div>
+      <div class="value" style="color: var(--blue)">9</div>
+      <div class="score-bar"><div class="score-bar-fill" style="width:90.0%;background:var(--blue)"></div></div>
+    </div>
+    <div class="score-card overall" style="grid-column: span 3">
+      <div class="label">Overall</div>
+      <div class="value">7.0</div>
+      <div class="score-bar"><div class="score-bar-fill" style="width:70.0%;background:var(--accent)"></div></div>
+    </div>
+  </div>
+
+  
+  <div class="vote-section" id="vote-section">
+    <span class="vote-label">Voter</span>
+    <button class="vote-btn" id="vote-up" onclick="submitVote('up')" aria-label="Upvote">
+      👍 <span id="vote-up-count">—</span>
+    </button>
+    <span class="vote-score zero" id="vote-net-score">0</span>
+    <button class="vote-btn" id="vote-down" onclick="submitVote('down')" aria-label="Downvote">
+      👎 <span id="vote-down-count">—</span>
+    </button>
+    <span class="vote-thanks" id="vote-thanks">Merci pour votre vote !</span>
+    <span class="vote-already" id="vote-already" style="display:none">Vous avez déjà voté</span>
+  </div>
+
   
   
-</div>
-
-
-<div class="stats-bar">
-  <span><strong>8</strong> articles</span>
-  <span><strong>Score moy.:</strong> 6.2</span>
-  <span><strong>Topic principal:</strong> IA</span>
-  <span><strong>digest_sources_count:</strong> 2 sources</span>
-</div>
-
-
-
-<h2 class="section-title">🏆 Articles phares</h2>
-<ul class="article-list">
+  <div class="article-tags">
+    
+      <a href="/tags/ia-open-source.html" class="tag">IA open-source</a>
+    
+      <a href="/tags/r-duction-co-ts.html" class="tag">Réduction coûts</a>
+    
+      <a href="/tags/souverainet-tech.html" class="tag">Souveraineté tech</a>
+    
+  </div>
   
-  <li class="article-item">
-    <span class="article-rank">1</span>
-    <div class="article-main">
-      <a href="/articles/5003.html" class="article-title">Cloudflare Drop</a>
-      <div class="article-meta">
-        <span>Product Hunt</span>
-        <span>·</span>
-        <span>2026-07-08</span>
-        <span class="score-badge score-high">
-          8.0
-        </span>
-        
-        <a href="/tags/cloudflare.html" class="tag">Cloudflare</a>
-        
-        <a href="/tags/cdn.html" class="tag">CDN</a>
-        
-        <a href="/tags/d-ploiement.html" class="tag">déploiement</a>
-        
-      </div>
+
+  
+  
+  <div class="article-section">
+    <h2 class="section-title">Synthesis</h2>
+    <div class="article-content summary-box">
+      Nvidia et LangChain annoncent Nemotron 3 Ultra, une architecture qui promet de réduire les coûts d’inférence d’un facteur dix tout en rivalisant avec les meilleurs modèles propriétaires. L’innovation repose sur une optimisation poussée de l’infrastructure d’agents, sans nécessiter de réentraînement des modèles. Cette avancée est présentée comme un pas majeur vers la souveraineté technologique, en offrant une solution plus économique et performante.
+    </div>
+  </div>
+  
+
+  
+  
+  <div class="article-section">
+    <h2 class="section-title">Key quotes</h2>
+    <div class="article-content">
       
-      <p style="font-size:0.85rem;color:var(--fg-dim);margin-top:0.4rem;line-height:1.5;">Cloudflare Drop permet de déposer un dossier dans le navigateur pour le déployer instantanément sur Cloudflare. L&#39;outil simplifie le processus de mise en ligne de sites statiques. Un lien dirige vers ...</p>
+      <blockquote class="key-quote">« Diviser les coûts d&#39;inférence par dix tout en égalant les meilleurs modèles d&#39;IA propriétaires »</blockquote>
+      
+      <blockquote class="key-quote">« Pas de réentraînement, tout se joue dans l&#39;optimisation de l&#39;infrastructure d&#39;agents »</blockquote>
       
     </div>
-  </li>
+  </div>
   
-  <li class="article-item">
-    <span class="article-rank">2</span>
-    <div class="article-main">
-      <a href="/articles/4998.html" class="article-title">ReskPoints: AI Agent Logging with Sampling, Masking, and Multi-Export</a>
-      <div class="article-meta">
-        <span>Dev.to</span>
-        <span>·</span>
-        <span>2026-07-11</span>
-        <span class="score-badge score-high">
-          7.0
-        </span>
-        
-        <a href="/tags/logging.html" class="tag">logging</a>
-        
-        <a href="/tags/ia.html" class="tag">IA</a>
-        
-        <a href="/tags/observabilit.html" class="tag">observabilité</a>
-        
-      </div>
-      
-      <p style="font-size:0.85rem;color:var(--fg-dim);margin-top:0.4rem;line-height:1.5;">ReskPoints est une bibliothèque Python qui capture chaque action d’un agent IA avec contexte, tout en offrant un échantillonnage, un masquage de données sensibles et une exportation vers plusieurs sys...</p>
-      
+
+  
+  
+
+  
+  <div class="source-box">
+    <a href="https://goodtech.info/nvidia-nemotron-3-ultra-langchain-ia-open-source/" target="_blank" rel="noopener" class="btn-source">
+      Read original article ↗
+    </a>
+  </div>
+
+  
+  <div class="comments-section" id="comments-section">
+    <h2 class="section-title" id="comments-title">Comments</h2>
+
+    <div class="comments-list" id="comments-list">
+      <!-- Comments loaded by JS -->
     </div>
-  </li>
-  
-  <li class="article-item">
-    <span class="article-rank">3</span>
-    <div class="article-main">
-      <a href="/articles/4986.html" class="article-title">Batch Audio and Video Conversion in Your Browser</a>
-      <div class="article-meta">
-        <span>Dev.to</span>
-        <span>·</span>
-        <span>2026-07-11</span>
-        <span class="score-badge score-high">
-          7.0
-        </span>
-        
-        <a href="/tags/conversion.html" class="tag">Conversion</a>
-        
-        <a href="/tags/edge.html" class="tag">Edge</a>
-        
-        <a href="/tags/browser.html" class="tag">Browser</a>
-        
-      </div>
-      
-      <p style="font-size:0.85rem;color:var(--fg-dim);margin-top:0.4rem;line-height:1.5;">Format Factory est un environnement de travail basé sur le navigateur qui simplifie la conversion en lot d’audio et de vidéo. Au lieu de configurer chaque fichier individuellement, l’utilisateur chois...</p>
-      
+
+    <div class="comments-empty" id="comments-empty" style="display:none">
+      No comments yet. Be the first!
     </div>
-  </li>
-  
-</ul>
 
-
-
-<h2 class="section-title">📅 Tous les articles</h2>
-
-<div class="digest-day">
-  <h3 class="digest-day-title">2026-07-08</h3>
-  <ul class="article-list">
-    
-    <li class="article-item">
-      <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">1</span>
-      <div class="article-main">
-        <a href="/articles/5003.html" class="article-title">Cloudflare Drop</a>
-        <div class="article-meta">
-          <span>Product Hunt</span>
-          <span>·</span>
-          <span class="score-badge score-high">
-            8.0
-          </span>
-          
-          <a href="/tags/cloudflare.html" class="tag">Cloudflare</a>
-          
-          <a href="/tags/cdn.html" class="tag">CDN</a>
-          
-        </div>
+    <div class="comment-form-wrapper">
+      <textarea
+        class="comment-textarea"
+        id="comment-textarea"
+        rows="3"
+        placeholder="Your comment..."
+      ></textarea>
+      <div class="comment-form-row">
+        <input
+          class="comment-author-input"
+          type="text"
+          id="comment-author"
+          placeholder="Your name"
+        />
+        <button class="comment-submit-btn" id="comment-submit" onclick="submitComment()">
+          Post
+        </button>
       </div>
-    </li>
-    
-  </ul>
-</div>
+      <div class="comment-feedback" id="comment-feedback"></div>
+    </div>
+  </div>
 
-<div class="digest-day">
-  <h3 class="digest-day-title">2026-07-11</h3>
-  <ul class="article-list">
-    
-    <li class="article-item">
-      <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">1</span>
-      <div class="article-main">
-        <a href="/articles/4998.html" class="article-title">ReskPoints: AI Agent Logging with Sampling, Masking, and Multi-Export</a>
-        <div class="article-meta">
-          <span>Dev.to</span>
-          <span>·</span>
-          <span class="score-badge score-high">
-            7.0
-          </span>
-          
-          <a href="/tags/logging.html" class="tag">logging</a>
-          
-          <a href="/tags/ia.html" class="tag">IA</a>
-          
-        </div>
-      </div>
-    </li>
-    
-    <li class="article-item">
-      <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">2</span>
-      <div class="article-main">
-        <a href="/articles/4986.html" class="article-title">Batch Audio and Video Conversion in Your Browser</a>
-        <div class="article-meta">
-          <span>Dev.to</span>
-          <span>·</span>
-          <span class="score-badge score-high">
-            7.0
-          </span>
-          
-          <a href="/tags/conversion.html" class="tag">Conversion</a>
-          
-          <a href="/tags/edge.html" class="tag">Edge</a>
-          
-        </div>
-      </div>
-    </li>
-    
-    <li class="article-item">
-      <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">3</span>
-      <div class="article-main">
-        <a href="/articles/4997.html" class="article-title">Configure Docker Macvlan and Ipvlan for Dedicated LAN IPs</a>
-        <div class="article-meta">
-          <span>Dev.to</span>
-          <span>·</span>
-          <span class="score-badge score-mid">
-            6.7
-          </span>
-          
-          <a href="/tags/docker.html" class="tag">Docker</a>
-          
-          <a href="/tags/macvlan.html" class="tag">macvlan</a>
-          
-        </div>
-      </div>
-    </li>
-    
-    <li class="article-item">
-      <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">4</span>
-      <div class="article-main">
-        <a href="/articles/4985.html" class="article-title">Stop Asking. Start Delegating: How I Actually Use AI On My Site</a>
-        <div class="article-meta">
-          <span>Dev.to</span>
-          <span>·</span>
-          <span class="score-badge score-mid">
-            5.7
-          </span>
-          
-          <a href="/tags/ia.html" class="tag">IA</a>
-          
-          <a href="/tags/delegation.html" class="tag">Delegation</a>
-          
-        </div>
-      </div>
-    </li>
-    
-    <li class="article-item">
-      <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">5</span>
-      <div class="article-main">
-        <a href="/articles/4999.html" class="article-title">Cutting juniors is the most expensive way to cut costs</a>
-        <div class="article-meta">
-          <span>Dev.to</span>
-          <span>·</span>
-          <span class="score-badge score-mid">
-            5.3
-          </span>
-          
-          <a href="/tags/ressources-humaines.html" class="tag">ressources humaines</a>
-          
-          <a href="/tags/ia.html" class="tag">IA</a>
-          
-        </div>
-      </div>
-    </li>
-    
-    <li class="article-item">
-      <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">6</span>
-      <div class="article-main">
-        <a href="/articles/4988.html" class="article-title">How My Open-Source Scanner Caught a Crypto Scammer Exposing Their Own Keys</a>
-        <div class="article-meta">
-          <span>Dev.to</span>
-          <span>·</span>
-          <span class="score-badge score-mid">
-            5.3
-          </span>
-          
-          <a href="/tags/s-curit.html" class="tag">sécurité</a>
-          
-          <a href="/tags/scanner-secrets.html" class="tag">scanner secrets</a>
-          
-        </div>
-      </div>
-    </li>
-    
-    <li class="article-item">
-      <span class="article-rank" style="font-size:0.9rem;color:var(--fg-muted);">7</span>
-      <div class="article-main">
-        <a href="/articles/4990.html" class="article-title">The week in review: agents got wallets, rails, marketplaces and escrow. They still don&#39;t have settlement.</a>
-        <div class="article-meta">
-          <span>Dev.to</span>
-          <span>·</span>
-          <span class="score-badge score-mid">
-            5.0
-          </span>
-          
-          <a href="/tags/conomie-des-agents.html" class="tag">économie des agents</a>
-          
-          <a href="/tags/escrow.html" class="tag">escrow</a>
-          
-        </div>
-      </div>
-    </li>
-    
-  </ul>
-</div>
+</article>
 
+<script>
+(function() {
+  var articleId = "5418";
+  var storageKey = 'edge_vote_' + articleId;
+  var voteUpBtn = document.getElementById('vote-up');
+  var voteDownBtn = document.getElementById('vote-down');
+  var netScoreEl = document.getElementById('vote-net-score');
+  var upCountEl = document.getElementById('vote-up-count');
+  var downCountEl = document.getElementById('vote-down-count');
+  var thanksEl = document.getElementById('vote-thanks');
+  var alreadyEl = document.getElementById('vote-already');
 
+  // Check if user already voted
+  var previousVote = localStorage.getItem(storageKey);
+  if (previousVote) {
+    if (previousVote === 'up') {
+      voteUpBtn.classList.add('voted-up');
+    } else {
+      voteDownBtn.classList.add('voted-down');
+    }
+    alreadyEl.style.display = '';
+  }
 
+  // Fetch current vote counts
+  function fetchVotes() {
+    fetch('http://72.60.187.136:8081/api/articles/' + articleId)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var up = data.upvotes || 0;
+        var down = data.downvotes || 0;
+        var net = up - down;
+        upCountEl.textContent = up;
+        downCountEl.textContent = down;
+        netScoreEl.textContent = (net > 0 ? '+' : '') + net;
+        netScoreEl.className = 'vote-score ' + (net > 0 ? 'positive' : net < 0 ? 'negative' : 'zero');
+      })
+      .catch(function() { /* silent fail */ });
+  }
 
-<h2 class="section-title">🏷️ Topics de la semaine</h2>
-<div class="tag-cloud">
-  
-  <a href="/tags/ia.html" class="tag" style="font-size:0.85rem;">IA <span style="opacity:0.6;">(3)</span></a>
-  
-  <a href="/tags/s-curit.html" class="tag" style="font-size:0.7999999999999999rem;">sécurité <span style="opacity:0.6;">(2)</span></a>
-  
-  <a href="/tags/cloudflare.html" class="tag" style="font-size:0.75rem;">Cloudflare <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/cdn.html" class="tag" style="font-size:0.75rem;">CDN <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/d-ploiement.html" class="tag" style="font-size:0.75rem;">déploiement <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/edge.html" class="tag" style="font-size:0.75rem;">edge <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/logging.html" class="tag" style="font-size:0.75rem;">logging <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/observabilit.html" class="tag" style="font-size:0.75rem;">observabilité <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/sampling.html" class="tag" style="font-size:0.75rem;">sampling <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/conversion.html" class="tag" style="font-size:0.75rem;">Conversion <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/edge.html" class="tag" style="font-size:0.75rem;">Edge <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/browser.html" class="tag" style="font-size:0.75rem;">Browser <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/batch.html" class="tag" style="font-size:0.75rem;">Batch <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/media.html" class="tag" style="font-size:0.75rem;">Media <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/docker.html" class="tag" style="font-size:0.75rem;">Docker <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/macvlan.html" class="tag" style="font-size:0.75rem;">macvlan <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/ipvlan.html" class="tag" style="font-size:0.75rem;">ipvlan <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/r-seau.html" class="tag" style="font-size:0.75rem;">réseau <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/conteneurs.html" class="tag" style="font-size:0.75rem;">conteneurs <span style="opacity:0.6;">(1)</span></a>
-  
-  <a href="/tags/delegation.html" class="tag" style="font-size:0.75rem;">Delegation <span style="opacity:0.6;">(1)</span></a>
-  
-</div>
+  // Submit a vote
+  window.submitVote = function(direction) {
+    if (localStorage.getItem(storageKey)) return; // already voted
 
+    voteUpBtn.disabled = true;
+    voteDownBtn.disabled = true;
 
+    fetch('http://72.60.187.136:8081/api/articles/' + articleId + '/vote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ direction: direction })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      localStorage.setItem(storageKey, direction);
+      if (direction === 'up') {
+        voteUpBtn.classList.add('voted-up');
+      } else {
+        voteDownBtn.classList.add('voted-down');
+      }
+      alreadyEl.style.display = '';
+      // Update counts from response
+      var up = data.upvotes || 0;
+      var down = data.downvotes || 0;
+      var net = up - down;
+      upCountEl.textContent = up;
+      downCountEl.textContent = down;
+      netScoreEl.textContent = (net > 0 ? '+' : '') + net;
+      netScoreEl.className = 'vote-score ' + (net > 0 ? 'positive' : net < 0 ? 'negative' : 'zero');
+      // Show thanks message
+      thanksEl.classList.add('show');
+      setTimeout(function() { thanksEl.classList.remove('show'); }, 2000);
+    })
+    .catch(function() {
+      voteUpBtn.disabled = false;
+      voteDownBtn.disabled = false;
+    });
+  };
 
-<div class="digest-cta">
-  <p>Recevez ce digest par email chaque semaine</p>
-  <a href="/newsletter.html" class="btn-source">Voir la newsletter</a>
-</div>
+  // Load counts on page load
+  fetchVotes();
+
+  // ── Comments ───────────────────────────────────────────────────────
+  var commentsList = document.getElementById('comments-list');
+  var commentsEmpty = document.getElementById('comments-empty');
+  var textarea = document.getElementById('comment-textarea');
+  var authorInput = document.getElementById('comment-author');
+  var feedback = document.getElementById('comment-feedback');
+  var submitBtn = document.getElementById('comment-submit');
+
+  // Pre-fill author name if logged in
+  var edgeUser = null;
+  try { edgeUser = JSON.parse(localStorage.getItem('edge_user') || 'null'); } catch(e) {}
+  if (edgeUser && edgeUser.display_name) {
+    authorInput.value = edgeUser.display_name;
+    authorInput.readOnly = true;
+  }
+
+  function fetchComments() {
+    fetch('http://72.60.187.136:8081/api/articles/' + articleId + '/comments')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var items = data.data || [];
+        commentsList.innerHTML = '';
+        if (items.length === 0) {
+          commentsEmpty.style.display = '';
+          commentsList.style.display = 'none';
+        } else {
+          commentsEmpty.style.display = 'none';
+          commentsList.style.display = '';
+          items.forEach(function(c) {
+            var el = document.createElement('div');
+            el.className = 'comment-item';
+            var date = (c.created_at || '').slice(0, 10);
+            el.innerHTML =
+              '<div class="comment-meta">' +
+                '<span class="comment-author">' + escapeHtml(c.author_name) + '</span>' +
+                '<span class="comment-date">' + escapeHtml(date) + '</span>' +
+              '</div>' +
+              '<div class="comment-body">' + escapeHtml(c.content) + '</div>';
+            commentsList.appendChild(el);
+          });
+        }
+      })
+      .catch(function() { /* silent fail */ });
+  }
+
+  function escapeHtml(s) {
+    var div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  window.submitComment = function() {
+    var content = textarea.value.trim();
+    var author = authorInput.value.trim();
+    if (!content) {
+      feedback.textContent = 'Please enter a comment.';
+      feedback.className = 'comment-feedback comment-error';
+      return;
+    }
+    if (!author) {
+      feedback.textContent = 'Please enter your name.';
+      feedback.className = 'comment-feedback comment-error';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    feedback.textContent = '';
+    feedback.className = 'comment-feedback';
+
+    fetch('http://72.60.187.136:8081/api/articles/' + articleId + '/comments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: content, author_name: author })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      submitBtn.disabled = false;
+      if (data.id) {
+        textarea.value = '';
+        feedback.textContent = 'Comment posted!';
+        feedback.className = 'comment-feedback comment-success';
+        fetchComments();
+        setTimeout(function() { feedback.textContent = ''; }, 3000);
+      } else {
+        feedback.textContent = data.error || 'Error posting comment.';
+        feedback.className = 'comment-feedback comment-error';
+      }
+    })
+    .catch(function() {
+      submitBtn.disabled = false;
+      feedback.textContent = 'Error posting comment.';
+      feedback.className = 'comment-feedback comment-error';
+    });
+  };
+
+  // Load comments on page load
+  fetchComments();
+})();
+</script>
 
     </div>
   </main>
 
   <footer>
     <div class="container">
-      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-07-12 06:15 UTC
+      EDG<span style="color:var(--accent)">E</span> — Self-improving tech watch · Generated on 2026-07-13 06:19 UTC
       <br>
       <small style="color:var(--fg-muted);font-size:0.72rem;">
-        Projet incubé par <strong>DOMORIA SAS</strong> — SIREN 104 147 467 — 31 Voie Romaine, 31410 Saint-Hilaire, Occitanie, France
+        Project incubated by <strong>DOMORIA SAS</strong> — SIREN 104 147 467 — 31 Voie Romaine, 31410 Saint-Hilaire, Occitanie, France
       </small>
       <div id="newsletter-footer-form" style="margin-top:1rem;padding-top:0.8rem;border-top:1px solid var(--border);">
         <form id="newsletter-form" onsubmit="return handleNewsletterSubscribe(event)" style="display:flex;gap:0.4rem;justify-content:center;flex-wrap:wrap;align-items:center;">
-          <span style="font-size:0.78rem;color:var(--fg-dim);margin-right:0.3rem;">S&#39;abonner à la newsletter</span>
-          <input type="email" id="newsletter-email" placeholder="votre@email.com" required
+          <span style="font-size:0.78rem;color:var(--fg-dim);margin-right:0.3rem;">Subscribe to newsletter</span>
+          <input type="email" id="newsletter-email" placeholder="your@email.com" required
             style="padding:0.35rem 0.6rem;border:1px solid var(--border);border-radius:4px;background:var(--bg-card);color:var(--fg);font-size:0.8rem;width:180px;">
           <button type="submit" id="newsletter-btn"
             style="padding:0.35rem 0.8rem;background:var(--accent);color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.8rem;font-weight:600;">
-            S&#39;abonner
+            Subscribe
           </button>
         </form>
         <div id="newsletter-msg" style="display:none;font-size:0.78rem;margin-top:0.5rem;"></div>

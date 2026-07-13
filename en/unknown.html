@@ -749,6 +749,9 @@
 
 <nav class="date-nav">
   
+    <a href="2026-07-13.html"
+       class="">2026-07-13</a>
+  
     <a href="2026-07-11.html"
        class="">2026-07-11</a>
   
@@ -772,6 +775,40 @@
   
 </nav>
 
+
+
+<section class="top-edge" id="top-edge" aria-live="polite">
+  <h2 class="section-title">🔥 Top EDGE</h2>
+  <div class="top-edge-list" id="top-edge-list">
+    <p style="color: var(--fg-muted);">Chargement des meilleures analyses…</p>
+  </div>
+</section>
+
+<script>
+(function () {
+  var apiBase = 'http://72.60.187.136:8081';
+  var listEl = document.getElementById('top-edge-list');
+  fetch(apiBase + '/api/articles?page=1&per_page=15')
+    .then(function (r) { return r.json(); })
+    .then(function (body) {
+      var items = (body.data || []).slice();
+      items.sort(function (a, b) { return (b.overall_score || 0) - (a.overall_score || 0); });
+      var top = items.slice(0, 5);
+      if (!top.length) { listEl.innerHTML = '<p style="color:var(--fg-muted);">Aucune analyse pour le moment.</p>'; return; }
+      listEl.innerHTML = '';
+      top.forEach(function (a) {
+        var el = document.createElement('a');
+        el.className = 'top-edge-item';
+        el.href = 'articles/' + a.id + '.html';
+        el.innerHTML = '<span class="top-edge-score">' + (a.overall_score != null ? Number(a.overall_score).toFixed(1) : '–') + '</span>' +
+                       '<span class="top-edge-title">' + (a.title_fr || a.title) + '</span>' +
+                       '<span class="top-edge-src">' + (a.source_name || '') + '</span>';
+        listEl.appendChild(el);
+      });
+    })
+    .catch(function () { listEl.innerHTML = '<p style="color:var(--fg-muted);">Top EDGE indisponible (API).</p>'; });
+})();
+</script>
 
 <h2 class="section-title">Daily Digest</h2>
 
@@ -949,7 +986,7 @@
 
   <footer>
     <div class="container">
-      EDG<span style="color:var(--accent)">E</span> — Self-improving tech watch · Generated on 2026-07-12 06:15 UTC
+      EDG<span style="color:var(--accent)">E</span> — Self-improving tech watch · Generated on 2026-07-13 06:19 UTC
       <br>
       <small style="color:var(--fg-muted);font-size:0.72rem;">
         Project incubated by <strong>DOMORIA SAS</strong> — SIREN 104 147 467 — 31 Voie Romaine, 31410 Saint-Hilaire, Occitanie, France

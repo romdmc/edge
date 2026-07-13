@@ -5,9 +5,17 @@
     <description>Self-improving tech news. Daily digest of the best tech news, filtered by AI.</description>
     <link>/</link>
     <language>en</language>
-    <lastBuildDate>Sun, 12 Jul 2026 06:15:14 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2026 06:19:33 GMT</lastBuildDate>
     <generator>EDGE Static Site Generator</generator>
     <ns0:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Parité technologique et coûts divisés par dix : le coup de maître de Nvidia avec Nemotron 3 Ultra</title>
+      <link>/articles/5418.html</link>
+      <guid isPermaLink="true">/articles/5418.html</guid>
+      <description>Nvidia et LangChain annoncent Nemotron 3 Ultra, une architecture qui promet de réduire les coûts d’inférence d’un facteur dix tout en rivalisant avec les meilleurs modèles propriétaires. L’innovation repose sur une optimisation poussée de l’infrastructure d’agents, sans nécessiter de réentraînement des modèles. Cette avancée est présentée comme un pas majeur vers la souveraineté technologique, en offrant une solution plus économique et performante.</description>
+      <pubDate>Mon, 13 Jul 2026 02:50:40 GMT</pubDate>
+      <source>GoodTech</source>
+    </item>
     <item>
       <title>Configure Docker Macvlan and Ipvlan for Dedicated LAN IPs</title>
       <link>/articles/4997.html</link>
@@ -159,14 +167,6 @@
       <description>L'intelligence artificielle transforme les données brutes des tickets de caisse en un véritable levier de croissance pour les commerçants et restaurateurs. Autrefois simples preuves de transaction ou documents comptables, ces données sont désormais exploitées pour améliorer les marges et l'expérience client. L'automatisation permet de mettre fin à la donnée dormante en valorisant chaque information captée en caisse.</description>
       <pubDate>Tue, 16 Jun 2026 15:22:48 GMT</pubDate>
       <source>FrenchWeb</source>
-    </item>
-    <item>
-      <title>[System Design] Surge Pricing Algorithm: How Ride-Hailing Engines Calculate Surge Rate in Real Time</title>
-      <link>/articles/648.html</link>
-      <guid isPermaLink="true">/articles/648.html</guid>
-      <description>Cet article, cinquième volet d'une série sur l'architecture temps réel des plateformes de VTC, détaille le fonctionnement de l'algorithme de tarification dynamique (surge pricing). Le taux de surge est un multiplicateur de prix recalculé toutes les 30 à 60 secondes par cellule hexagonale H3, en fonction du ratio demande/offre sur une fenêtre glissante de cinq minutes. Ce mécanisme vise à rétablir l'équilibre du marché en incitant les conducteurs à se déplacer vers les zones de forte demande tout en réduisant le nombre de requêtes des passagers. L'architecture repose sur un pipeline Kafka/Flink pour agréger les données, un moteur de tarification qui calcule le multiplicateur, et un cache Redis pour le diffuser aux applications passager et conducteur.</description>
-      <pubDate>Tue, 16 Jun 2026 12:02:51 GMT</pubDate>
-      <source>Dev.to</source>
     </item>
   </channel>
 </rss>
