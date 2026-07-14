@@ -46,6 +46,18 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>/articles/5825.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>/articles/5827.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>/articles/5418.html</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -280,12 +292,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>/articles/5819.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>/articles/574.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>/articles/904.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>/articles/5818.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -313,6 +335,56 @@
     <loc>/articles/2468.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>/tags/llm.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/optimization.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/gpu.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/cofrgenet.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/fractional-networks.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/ai-gigafactories.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/data-centers.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/carbon-negative.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/distributed-infrastructure.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/europe.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>/tags/ia-open-source.html</loc>
@@ -630,11 +702,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>/tags/data-centers.html</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>/tags/rentabilit.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -890,6 +957,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>/tags/lectrique.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/conomie.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>/tags/cisco.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -901,6 +978,21 @@
   </url>
   <url>
     <loc>/tags/solaire.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/administratif.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/super-app.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/tags/num-rique.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

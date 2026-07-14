@@ -5,9 +5,25 @@
     <description>Self-improving tech news. Daily digest of the best tech news, filtered by AI.</description>
     <link>/</link>
     <language>en</language>
-    <lastBuildDate>Mon, 13 Jul 2026 06:19:33 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2026 06:23:07 GMT</lastBuildDate>
     <generator>EDGE Static Site Generator</generator>
     <ns0:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Pour optimiser les LLM, IBM leur fait faire des divisions</title>
+      <link>/articles/5825.html</link>
+      <guid isPermaLink="true">/articles/5825.html</guid>
+      <description>IBM Research a introduit les CoFrGeNet, des réseaux génératifs basés sur des fractions continues, capables de remplacer l’attention et les réseaux à propagation avant dans les modèles transformateurs. En transformant les fractions en un ratio de deux polynômes récursifs, le nombre de divisions GPU est réduit à une seule, améliorant l’efficacité d’entraînement et d’inférence. Les tests sur GPT‑2‑XL et Llama 3 montrent un gain de temps notable et une réduction de la taille du modèle, tout en maintenant la précision sur des benchmarks GLUE. Cette approche promet une meilleure scalabilité, notamment sur des architectures GPU plus anciennes. Les variantes CoFrGeNet‑A, ‑F et ‑B illustrent les bénéfices de remplacer l’attention, la propagation avant ou les deux.</description>
+      <pubDate>Mon, 13 Jul 2026 16:14:13 GMT</pubDate>
+      <source>Silicon</source>
+    </item>
+    <item>
+      <title>AI Gigafactories : resté dans l’ombre d’AION, Æther sort du bois</title>
+      <link>/articles/5827.html</link>
+      <guid isPermaLink="true">/articles/5827.html</guid>
+      <description>Le consortium Æther Infrastructures, dirigé par 2CRSi, ambitionne de créer la première IA Gigafactory carbone négatif en France, avec un site à Strasbourg capable d’atteindre plus de 400 MW. Le projet prévoit l’installation de serveurs à plus de 130 kW par baie, intégrant les dernières générations de processeurs comme Vera Rubin et AMD Instinct, et vise à offrir un accès bare‑metal aux acteurs technologiques émergents. 2CRSi, cotée en bourse, assure que la structure financière sera gérée par une SAS distincte afin de ne pas impacter son bilan. Le consortium compte 13 membres fondateurs, dont Dassault Systèmes, Equans et plusieurs acteurs de l’infrastructure. L’initiative est positionnée comme candidate pour le futur appel d’offres de la Commission européenne sur les AI Gigafactories.</description>
+      <pubDate>Mon, 13 Jul 2026 09:16:31 GMT</pubDate>
+      <source>Silicon</source>
+    </item>
     <item>
       <title>Parité technologique et coûts divisés par dix : le coup de maître de Nvidia avec Nemotron 3 Ultra</title>
       <link>/articles/5418.html</link>
@@ -151,22 +167,6 @@
       <description>Le ministère de l'Économie (Bercy) a créé une Direction de l'intelligence artificielle et du numérique pour centraliser et accélérer l'intégration de l'IA au sein de ses administrations. Jusqu'ici dispersées entre plusieurs directions, les initiatives IA souffraient d'un manque de coordination. Cette nouvelle entité vise à améliorer l'efficacité des services publics — lutte contre la fraude fiscale, relation usager, pilotage des politiques publiques — tout en garantissant un usage responsable et souverain de l'IA, en conformité avec l'AI Act européen.</description>
       <pubDate>Wed, 17 Jun 2026 12:03:37 GMT</pubDate>
       <source>Silicon</source>
-    </item>
-    <item>
-      <title>Qui paiera les gigawatts de l’intelligence artificielle ?</title>
-      <link>/articles/907.html</link>
-      <guid isPermaLink="true">/articles/907.html</guid>
-      <description>La course à l'intelligence artificielle entre géants technologiques comme OpenAI, Google ou Meta masque un enjeu fondamental : le coût énergétique colossal des infrastructures nécessaires. Derrière les benchmarks et les milliards de paramètres, c'est une bataille pour l'accès aux gigawatts qui se joue. La question centrale devient : qui financera la consommation électrique massive requise par ces modèles ?</description>
-      <pubDate>Wed, 17 Jun 2026 05:16:19 GMT</pubDate>
-      <source>FrenchWeb</source>
-    </item>
-    <item>
-      <title>Comment l’IA simplifie la data de caisse pour la transformer en levier de rentabilité ?</title>
-      <link>/articles/912.html</link>
-      <guid isPermaLink="true">/articles/912.html</guid>
-      <description>L'intelligence artificielle transforme les données brutes des tickets de caisse en un véritable levier de croissance pour les commerçants et restaurateurs. Autrefois simples preuves de transaction ou documents comptables, ces données sont désormais exploitées pour améliorer les marges et l'expérience client. L'automatisation permet de mettre fin à la donnée dormante en valorisant chaque information captée en caisse.</description>
-      <pubDate>Tue, 16 Jun 2026 15:22:48 GMT</pubDate>
-      <source>FrenchWeb</source>
     </item>
   </channel>
 </rss>
