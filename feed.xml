@@ -5,9 +5,57 @@
     <description>Veille tech auto-améliorant. Digest quotidien des meilleures actualités tech, filtré par IA.</description>
     <link>/</link>
     <language>fr</language>
-    <lastBuildDate>Tue, 14 Jul 2026 06:23:06 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 06:21:49 GMT</lastBuildDate>
     <generator>EDGE Static Site Generator</generator>
     <ns0:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>La France lance l’offensive open source pour libérer les robots industriels de leurs chaînes</title>
+      <link>/articles/6229.html</link>
+      <guid isPermaLink="true">/articles/6229.html</guid>
+      <description>Le consortium français Maestro, dirigé par l'Inria et le CNRS, regroupe les meilleurs logiciels open source de simulation et d'optimisation pour les robots industriels. L'initiative vise à libérer les robots de leurs chaînes logicielles propriétaires et à renforcer l'IA physique en Europe. En unissant leurs forces, les acteurs français cherchent à concurrencer les géants américains et chinois. Ce projet soutient la souveraineté technologique européenne.</description>
+      <pubDate>Wed, 15 Jul 2026 03:08:32 GMT</pubDate>
+      <source>GoodTech</source>
+    </item>
+    <item>
+      <title>Santé connectée : la Fondation Linux, Google et l’OMS s’unissent pour imposer l’IA médicale libre</title>
+      <link>/articles/6230.html</link>
+      <guid isPermaLink="true">/articles/6230.html</guid>
+      <description>La Linux Foundation, Google et l'OMS lancent l'Open Health Stack Software Foundation pour créer un socle open source universel prêt pour l'IA médicale. Le projet bénéficie d'un financement de 2,76 millions d'euros. L'objectif est d'imposer un cadre commun pour le développement d'applications médicales basées sur l'IA. Cette collaboration vise à accélérer l'innovation dans l'e-santé.</description>
+      <pubDate>Wed, 15 Jul 2026 03:04:55 GMT</pubDate>
+      <source>GoodTech</source>
+    </item>
+    <item>
+      <title>Comment Circle veut imposer l’USDC comme la monnaie des agents IA (avec de l’open source)</title>
+      <link>/articles/6231.html</link>
+      <guid isPermaLink="true">/articles/6231.html</guid>
+      <description>Circle publie sur GitHub des kits de démarrage open source pour intégrer des nanopaiements en USDC dans les agents IA. L'objectif est de faire de l'USDC la monnaie par défaut des agents autonomes, couvrant OpenAI, Claude, LangChain, etc. Les développeurs peuvent ainsi ajouter facilement des transactions micro à leurs agents. Cette initiative vise à adapter la finance au rythme des machines.</description>
+      <pubDate>Tue, 14 Jul 2026 22:57:10 GMT</pubDate>
+      <source>GoodTech</source>
+    </item>
+    <item>
+      <title>Un implant dans le cerveau sans opération : la Chine imagine son alternative à Neuralink</title>
+      <link>/articles/6203.html</link>
+      <guid isPermaLink="true">/articles/6203.html</guid>
+      <description>Alors qu’Elon Musk insère des électrodes dans les cerveaux, une startup chinoise de Hangzhou propose des bandeaux et des mains bioniques sans chirurgie. Cette approche vise à connecter le cerveau à des dispositifs externes sans intervention invasive. Le projet reflète deux visions concurrentes du cerveau connecté, l’une axée sur la chirurgie et l’autre sur la non-invasivité. L’État chinois joue un rôle de régulateur et de promoteur de la technologie. Cette initiative soulève des questions éthiques et de sécurité autour de l’implantation cérébrale.</description>
+      <pubDate>Tue, 14 Jul 2026 09:03:28 GMT</pubDate>
+      <source>01Net</source>
+    </item>
+    <item>
+      <title>Record du monde : cette berline hybride à 15 000 € peut traverser la France deux fois avec un plein !</title>
+      <link>/articles/6204.html</link>
+      <guid isPermaLink="true">/articles/6204.html</guid>
+      <description>Geely a établi un nouveau record du monde en parcourant 2 608 km d’une seule charge avec sa berline hybride Galaxy A7 EM, inscrivant le véhicule dans le Guinness Book. Le modèle, vendu à 15 000 €, démontre l’efficacité des technologies hybrides rechargeables. Ce record souligne les progrès rapides dans l’autonomie des véhicules électriques. Les performances de la Galaxy A7 EM pourraient influencer les futures normes de consommation d’énergie. L’entreprise vise à positionner son modèle comme référence en matière de mobilité durable.</description>
+      <pubDate>Tue, 14 Jul 2026 08:01:07 GMT</pubDate>
+      <source>01Net</source>
+    </item>
+    <item>
+      <title>Un taxi autonome Waymo dénonce deux adolescents à la police : l’histoire folle</title>
+      <link>/articles/6205.html</link>
+      <guid isPermaLink="true">/articles/6205.html</guid>
+      <description>Un taxi autonome Waymo a dénoncé deux adolescents à la police, les conduisant à l'arrestation après qu’ils aient bu et aspergé les passants avec des pistolets à eau. Les jeunes n’avaient pas anticipé que leur comportement pourrait être signalé par un véhicule autonome. Cette affaire met en lumière les capacités de surveillance des véhicules autonomes. Elle soulève également des questions sur la responsabilité des systèmes d’IA dans les interactions humaines. L’incident a suscité un débat sur la protection des mineurs dans un environnement automatisé.</description>
+      <pubDate>Tue, 14 Jul 2026 07:21:54 GMT</pubDate>
+      <source>01Net</source>
+    </item>
     <item>
       <title>Pour optimiser les LLM, IBM leur fait faire des divisions</title>
       <link>/articles/5825.html</link>
@@ -118,54 +166,6 @@
       <guid isPermaLink="true">/articles/2259.html</guid>
       <description>Databricks prévoit d'intégrer l'architecture LTAP (Lake Transactional/Analytical Processing) à son offre Lakebase dans les prochaines semaines, combinant les technologies de Neon (acquise en mai 2025) et Mooncake (acquise en octobre 2025). Cette approche vise à unifier les traitements transactionnels (OLTP) et analytiques (OLAP) sans recourir aux pipelines traditionnels ni au compromis de performance du HTAP. Le mécanisme repose sur une conversion à la volée du format Postgres vers Parquet, exploitant les cycles CPU disponibles de la couche de stockage de Neon, avec une latence annoncée d'environ une minute.</description>
       <pubDate>Fri, 19 Jun 2026 12:35:56 GMT</pubDate>
-      <source>Silicon</source>
-    </item>
-    <item>
-      <title>{ VivaTech 2026 } –TotalEnergies lance MethaneLive pour traquer le méthane en temps réel</title>
-      <link>/articles/1902.html</link>
-      <guid isPermaLink="true">/articles/1902.html</guid>
-      <description>TotalEnergies a dévoilé MethaneLive lors du VivaTech 2026, un centre de surveillance conçu pour détecter et analyser en temps réel les émissions de méthane sur ses opérations amont. S'appuyant sur 13 000 capteurs déployés en 2025 sur des sites onshore et offshore, le dispositif utilise des algorithmes pour alerter les opérateurs et recommander des actions correctives. Depuis son lancement début 2026, MethaneLive a permis d'identifier 35 fuites de méthane et d'en accélérer la correction. Cette initiative s'inscrit dans une logique de surveillance continue et industrialisée, combinant capteurs, analytique et intervention humaine pour transformer la donnée en action opérationnelle.</description>
-      <pubDate>Thu, 18 Jun 2026 12:03:20 GMT</pubDate>
-      <source>Silicon</source>
-    </item>
-    <item>
-      <title>Flipkart Wins CNCF End User Case Study Contest for Kubernetes and Chaos Engineering Scale</title>
-      <link>/articles/1291.html</link>
-      <guid isPermaLink="true">/articles/1291.html</guid>
-      <description>Flipkart, l'une des plus grandes plateformes e-commerce en Inde, a remporté le concours d'études de cas CNCF End User pour KubeCon + CloudNativeCon India 2026. L'entreprise a développé une plateforme centralisée de chaos engineering multi-locataire construite sur Kubernetes et LitmusChaos, un projet incubé par la CNCF. Cette solution permet d'exécuter environ 90 % des expériences de chaos en environnement de staging avant les périodes de forte affluence. L'équipe a contribué cinq correctifs et améliorations au projet LitmusChaos en amont, bénéficiant à l'ensemble de la communauté cloud native.</description>
-      <pubDate>Thu, 18 Jun 2026 06:00:00 GMT</pubDate>
-      <source>Cloud Native Computing Foundation</source>
-    </item>
-    <item>
-      <title>CNCF Welcomes New Silver Members as Global Demand for Cloud Native Infrastructure Grows</title>
-      <link>/articles/1294.html</link>
-      <guid isPermaLink="true">/articles/1294.html</guid>
-      <description>La CNCF a annoncé l'arrivée de 14 nouveaux membres Silver lors de KubeCon + CloudNativeCon India à Mumbai le 18 juin 2026. Ces nouveaux membres couvrent des domaines variés : ingénierie de plateformes, infrastructure IA, services Kubernetes gérés, fintech et logiciels d'entreprise. Selon le directeur exécutif de la CNCF, 98 % des organisations ont désormais adopté des techniques cloud native, confirmant cet écosystème comme la norme mondiale pour l'infrastructure d'entreprise. L'arrivée d'organisations spécialisées dans l'IA au sein de l'écosystème envoie un signal clair sur le rôle vital des technologies cloud native pour l'infrastructure IA.</description>
-      <pubDate>Thu, 18 Jun 2026 03:30:00 GMT</pubDate>
-      <source>Cloud Native Computing Foundation</source>
-    </item>
-    <item>
-      <title>Nos 5 conseils pour réduire votre dépendance à l’hyperviseur</title>
-      <link>/articles/1904.html</link>
-      <guid isPermaLink="true">/articles/1904.html</guid>
-      <description>Face à la dépendance croissante envers un hyperviseur unique, devenue un risque stratégique pour les DSI, cet article propose cinq conseils concrets pour reprendre le contrôle du datacenter. La première recommandation est d'adopter une couche d'abstraction agnostique, comme la Dell Automation Platform, capable d'orchestrer plusieurs hyperviseurs depuis une console unique. Il s'agit ensuite de standardiser les déploiements via des blueprints et l'Infrastructure as Code, puis de segmenter les workloads plutôt que l'infrastructure pour faire cohabiter différents hyperviseurs sur une même plateforme matérielle. L'objectif est de restaurer la liberté de choix et de réduire les coûts tout en faisant évoluer l'existant progressivement.</description>
-      <pubDate>Wed, 17 Jun 2026 16:16:16 GMT</pubDate>
-      <source>Silicon</source>
-    </item>
-    <item>
-      <title>Forecasting what Matters: Decision-Focused RL for Controlled EV Charging with Unknown Departure Times</title>
-      <link>/articles/1287.html</link>
-      <guid isPermaLink="true">/articles/1287.html</guid>
-      <description>Un cadre d'apprentissage par renforcement décisionnel (DF-RL) est proposé pour la recharge intelligente des véhicules électriques avec des heures de départ inconnues. Le prévisionniste est entraîné de bout en bout avec les retours de l'agent RL, améliorant ainsi la qualité des décisions de recharge. La méthode atteint jusqu'à 14% d'amélioration de la récompense totale et réduit de 55% l'énergie non fournie par rapport au RL sans prévision. Cette approche évite la propagation d'erreurs des modèles de prévision traditionnels.</description>
-      <pubDate>Wed, 17 Jun 2026 15:37:35 GMT</pubDate>
-      <source>arXiv - AI (cs.AI)</source>
-    </item>
-    <item>
-      <title>Bercy crée une Direction de l’intelligence artificielle et du numérique pour accélérer sa transformation</title>
-      <link>/articles/1907.html</link>
-      <guid isPermaLink="true">/articles/1907.html</guid>
-      <description>Le ministère de l'Économie (Bercy) a créé une Direction de l'intelligence artificielle et du numérique pour centraliser et accélérer l'intégration de l'IA au sein de ses administrations. Jusqu'ici dispersées entre plusieurs directions, les initiatives IA souffraient d'un manque de coordination. Cette nouvelle entité vise à améliorer l'efficacité des services publics — lutte contre la fraude fiscale, relation usager, pilotage des politiques publiques — tout en garantissant un usage responsable et souverain de l'IA, en conformité avec l'AI Act européen.</description>
-      <pubDate>Wed, 17 Jun 2026 12:03:37 GMT</pubDate>
       <source>Silicon</source>
     </item>
   </channel>
