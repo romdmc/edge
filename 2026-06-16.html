@@ -1288,6 +1288,38 @@
   
 </ol>
 
+
+<section class="autotune-badge" id="autotune-badge" aria-live="polite"
+         style="margin-top:2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem;">
+  <h2 class="section-title" style="margin-bottom:0.6rem;">🤖 Veille auto-améliorante</h2>
+  <div id="autotune-badge-body" style="font-size:0.88rem;color:var(--fg-dim);">
+    Chargement de l'état de stabilité…
+  </div>
+</section>
+
+<script>
+(function () {
+  var apiBase = 'http://72.60.187.136:8081';
+  var el = document.getElementById('autotune-badge-body');
+  fetch(apiBase + '/api/autotune')
+    .then(function (r) { return r.ok ? r.json() : Promise.reject('http ' + r.status); })
+    .then(function (d) {
+      var stable = d.stable === true;
+      var color = stable ? 'var(--green)' : 'var(--yellow)';
+      var label = stable ? 'STABLE — moteur convergé' : 'EN RÉGLAGE — auto-ajustement actif';
+      var target = Array.isArray(d.target_range) ? d.target_range.join('–') : '15.0–20.0';
+      var deb = (d.avg_published_per_day != null) ? Number(d.avg_published_per_day).toFixed(1) : '—';
+      el.innerHTML =
+        '<span style="display:inline-block;font-weight:700;color:' + color + ';">● ' + label + '</span>' +
+        ' · débit moyen <strong>' + deb + '</strong> art/j' +
+        ' · cible ' + target +
+        ' · seuil min_score <strong>' + (d.min_score != null ? d.min_score : '—') + '</strong>' +
+        ' · ' + (d.runs_considered != null ? d.runs_considered : '?') + ' runs';
+    })
+    .catch(function (e) { el.innerHTML = '<span style="color:var(--fg-muted);">État veille indisponible (API).</span>'; });
+})();
+</script>
+
 <div style="text-align: center; margin-top: 1.5rem;">
   <a href="/all.html" class="btn-source">Voir tous les articles → →</a>
 </div>
@@ -1297,7 +1329,7 @@
 
   <footer>
     <div class="container">
-      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-07-17 06:13 UTC
+      EDG<span style="color:var(--accent)">E</span> — Veille tech auto-améliorant · Généré le 2026-07-18 06:09 UTC
       <br>
       <small style="color:var(--fg-muted);font-size:0.72rem;">
         Projet incubé par <strong>DOMORIA SAS</strong> — SIREN 104 147 467 — 31 Voie Romaine, 31410 Saint-Hilaire, Occitanie, France
